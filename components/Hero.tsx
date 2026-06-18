@@ -18,13 +18,6 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Text Column */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4 text-gold animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-wider text-primary">
-                Premium Ayurvedic Vitality Combo
-              </span>
-            </div>
-
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight tracking-tight">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-light to-gold-dark block">
                 Unlock Pure Energy,
