@@ -3,26 +3,16 @@ import { ShieldCheck, Flame, Star, Sparkles } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-cream via-[#FAF6F0] to-cream py-16 lg:py-28 border-b border-cream-dark/30">
-      {/* Premium background mesh lights */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+    <section 
+      className="relative overflow-hidden py-16 lg:py-28 border-b border-cream-dark/30 bg-cover bg-center"
+      style={{ backgroundImage: "url('/hero-bg.png')" }}
+    >
+      {/* Glassmorphic overlay for luxury feel and high contrast legibility */}
+      <div className="absolute inset-0 bg-[#FAF8F5]/85 backdrop-blur-[3px] z-0" />
 
-      {/* Background Mountain Slopes decoration */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
-        <svg
-          className="absolute bottom-0 left-0 w-full"
-          viewBox="0 0 1440 200"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0 120C150 160 300 180 450 150C600 120 750 90 900 130C1050 170 1200 180 1440 140V200H0V120Z"
-            fill="currentColor"
-            className="text-primary"
-          />
-        </svg>
-      </div>
+      {/* Background mesh light leaks */}
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none z-1" />
+      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none z-1" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -47,7 +37,7 @@ export default function Hero() {
             </p>
 
             {/* Quick trust metrics */}
-            <div className="grid grid-cols-3 gap-4 py-4 max-w-md mx-auto lg:mx-0 border-y border-cream-dark/50 bg-white/40 backdrop-blur-sm rounded-xl px-4">
+            <div className="grid grid-cols-3 gap-4 py-4 max-w-md mx-auto lg:mx-0 border-y border-cream-dark/50 bg-white/60 backdrop-blur-sm rounded-xl px-4">
               <div className="text-center lg:text-left">
                 <span className="block text-2xl font-bold font-display text-primary">100%</span>
                 <span className="text-xs text-primary/60 font-semibold uppercase">Organic Herbs</span>
@@ -93,7 +83,7 @@ export default function Hero() {
 
           {/* Right Visual Image Column */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-md aspect-square bg-white/40 backdrop-blur-md rounded-3xl p-6 border border-primary/10 flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-500 group">
+            <div className="relative w-full max-w-md aspect-square bg-white/60 backdrop-blur-md rounded-3xl p-6 border border-primary/10 flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-500 group">
               {/* Decorative elements */}
               <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center animate-bounce duration-1000">
                 <Flame className="w-6 h-6 text-gold" />
