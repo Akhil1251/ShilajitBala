@@ -1,79 +1,73 @@
-import { Shield, Sparkles, HeartHandshake, EyeOff } from "lucide-react";
+import { Zap, Shield, Flame, Activity } from "lucide-react";
 
 export default function WhyChooseUs() {
   const points = [
     {
-      title: "100% Pure & Organic",
-      desc: "Contains only natural Himalayan Shilajit, organic Ashwagandha, and pure Saffron. Zero synthetic binders, chemicals, or artificial fillers.",
-      icon: <Shield className="w-6 h-6 text-gold" />
+      title: "Energy & Endurance",
+      desc: "Helps improve stamina and daily performance.",
+      icon: <Activity className="w-8 h-8 text-gold" />
     },
     {
-      title: "The Ultimate Synergy",
-      desc: "Most brands only offer capsules or oils. OjasEarth offers both together, targeting inner cellular energy and outer muscle relief simultaneously.",
-      icon: <Sparkles className="w-6 h-6 text-gold" />
+      title: "Daily Vitality",
+      desc: "Promotes natural drive and active lifestyle.",
+      icon: <Zap className="w-8 h-8 text-gold" />
     },
     {
-      title: "GMP Certified & Lab Tested",
-      desc: "Manufactured in a certified state-of-the-art facility. Every batch undergoes rigorous quality controls and purity testing.",
-      icon: <HeartHandshake className="w-6 h-6 text-gold" />
+      title: "Premium Herbs",
+      desc: "Crafted with powerful Ayurvedic ingredients.",
+      icon: <Shield className="w-8 h-8 text-gold" />
     },
     {
-      title: "Discreet Delivery",
-      desc: "We value your privacy. All orders are packed securely and delivered in plain, unmarked packages to your doorstep.",
-      icon: <EyeOff className="w-6 h-6 text-gold animate-bounce" />
+      title: "Active Lifestyle",
+      desc: "Designed to support strength, recovery and overall wellness.",
+      icon: <Flame className="w-8 h-8 text-gold" />
     }
   ];
 
   return (
-    <section id="why-choose-us" className="py-24 bg-cream scroll-mt-20 relative overflow-hidden">
-      {/* Background graphic mesh */}
-      <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-
+    <section id="features" className="py-24 bg-[#0B0B0B] scroll-mt-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 scroll-reveal">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Side: Visual Text Panel */}
-          <div className="lg:col-span-5 bg-primary text-cream p-8 sm:p-12 rounded-3xl border border-primary-light/10 space-y-6 shadow-xl relative overflow-hidden group">
-            {/* Top highlight line */}
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gold" />
-            <span className="text-xs text-gold font-bold uppercase tracking-widest block">Trust & Quality</span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-cream">
-              Why Choose OjasEarth?
-            </h2>
-            <p className="text-sm text-cream/80 leading-relaxed">
-              At OjasEarth, we believe that true vitality comes from nature. Stamina 69 is developed by combining ancient Ayurvedic wisdom with modern extraction techniques to ensure premium strength, safety, and results.
-            </p>
-            <div className="pt-4 border-t border-white/10 space-y-3 text-xs text-cream/70">
-              <p>✓ ISO 9001:2015 Quality Management Certified</p>
-              <p>✓ 100% Cruelty-Free & Sustainable Sourcing</p>
-              <p>✓ Proudly Made from Locally Harvested Herbs</p>
-            </div>
-            <div className="pt-4">
-              <a
-                href="#buy-now"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 rounded-full text-xs font-black text-primary bg-gold hover:bg-gold-light shadow-lg shadow-gold/50 border border-gold/40 animate-blink-gold cursor-pointer"
-              >
-                Choose Quality Now
-              </a>
-            </div>
-          </div>
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <span className="text-xs font-bold text-gold uppercase tracking-widest block">Core Strengths</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-black text-white uppercase tracking-tight">
+            Why Thousands Choose <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold-dark">
+              Stamina 69
+            </span>
+          </h2>
+        </div>
 
-          {/* Right Side: Bullet Grid */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {points.map((p, idx) => (
-              <div
-                key={idx}
-                className="p-6 bg-cream-dark/20 border border-cream-dark/50 rounded-2xl flex flex-col justify-between hover:bg-cream-dark/30 transition-all shadow-sm hover:shadow-md"
-              >
-                <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm mb-6">
-                  {p.icon}
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-base font-bold font-display text-primary">{p.title}</h3>
-                  <p className="text-xs text-primary/70 leading-relaxed">{p.desc}</p>
-                </div>
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {points.map((p, idx) => (
+            <div
+              key={idx}
+              className="p-8 bg-[#121212] border border-white/5 rounded-2xl flex flex-col justify-between hover:border-gold/30 transition-all duration-300 shadow-md group hover:translate-y-[-4px]"
+            >
+              <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-8 border border-white/5 group-hover:border-gold/20 transition-all">
+                {p.icon}
               </div>
-            ))}
-          </div>
+              <div className="space-y-2">
+                <h3 className="text-lg font-bold uppercase tracking-wide text-white group-hover:text-gold transition-colors font-sans">
+                  Supports {p.title}
+                </h3>
+                <p className="text-sm text-white/60 leading-relaxed font-medium">
+                  {p.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Section CTA */}
+        <div className="mt-16 text-center">
+          <a
+            href="#buy-now"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-black text-primary bg-gold hover:bg-gold-light shadow-lg shadow-gold/50 border border-gold/40 animate-glow-gold cursor-pointer"
+          >
+            Claim Your Wellness Kit Now
+          </a>
         </div>
       </div>
     </section>

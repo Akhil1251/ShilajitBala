@@ -10,24 +10,24 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    q: "Is OjasEarth Stamina 69 safe to use?",
-    a: "Yes, absolutely. Stamina 69 is made from 100% organic, lab-tested Ayurvedic herbs. It is manufactured in a GMP-certified facility and does not contain any synthetic chemicals, binders, or fillers. If you have any chronic medical conditions, please consult your physician before starting any new dietary routine."
+    q: "What is Stamina 69?",
+    a: "Stamina 69 by OjasEarth is a premium wellness kit containing 60 capsules and 30ml applicator oil. It is designed synergistically to support male vitality, endurance, daily energy, and muscle recovery."
   },
   {
-    q: "How long does it take to see noticeable results?",
-    a: "While many clients notice a boost in daily energy levels and recovery within the first week, we highly recommend using the capsule and oil combo consistently for at least 4 to 6 weeks to experience the full, long-lasting stamina and metabolic benefits."
+    q: "How should it be used?",
+    a: "Take 2 capsules daily after meals with water or milk. For the oil, apply 5-10 drops externally onto the targeted area daily, preferably morning and night, and massage in upward strokes."
   },
   {
-    q: "Why does the combo contain both capsules and oil?",
-    a: "Our dual-action design provides synergy. The capsules work internally to optimize cell metabolism and energy production using Ashwagandha, Shilajit, and Kesar. The massage oil targets muscles externally, relaxing tension and enhancing local circulation and absorption of active herbs."
+    q: "Who can use it?",
+    a: "It is designed specifically for adult men who want to support active lifestyles, speed up post-workout recovery, build lean physical strength, and maintain high vitality levels."
   },
   {
-    q: "How is the Shilajit in OjasEarth purified?",
-    a: "We practice traditional Ayurvedic 'Shodhana' purification. Sourced from high Himalayan altitudes, the raw resin is purified using pure water and organic herbal extractions (Triphala) to eliminate any heavy metals or impurities while preserving the vital fulvic acid content."
+    q: "How long does one bottle last?",
+    a: "One combo pack contains 60 capsules (30-day supply) and 30ml oil, which will easily last for a full 30 days under the recommended daily application guidelines."
   },
   {
-    q: "Is the shipping packaging discreet?",
-    a: "Yes. We respect your privacy. All orders are shipped in unmarked, plain packaging with no mention of the product name or supplement category on the outer box. We also offer free cash on delivery across India."
+    q: "What ingredients are included?",
+    a: "It is packed with wild-harvested Himalayan Shilajit, organic Ashwagandha, pure Saffron/Kesar, Safed Musli, Kaunch Beej, and Gokshura."
   }
 ];
 
@@ -39,21 +39,19 @@ export default function Faq() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-cream scroll-mt-20 relative overflow-hidden">
+    <section id="faq" className="py-24 bg-[#060606] scroll-mt-20 relative overflow-hidden border-b border-white/5">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 scroll-reveal">
         {/* Section Header */}
         <div className="text-center mb-16 space-y-3">
           <span className="text-xs font-bold text-gold uppercase tracking-widest flex items-center justify-center gap-1.5">
-            <HelpCircle className="w-4 h-4 text-gold animate-bounce" /> Got Questions?
+            <HelpCircle className="w-4 h-4 text-gold animate-bounce" /> FAQ
           </span>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-primary">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-light to-gold-dark">
-              Frequently Asked Questions
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-black text-white uppercase tracking-tight">
+            Frequently Asked <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold-dark">
+              Questions
             </span>
           </h2>
-          <p className="text-primary/70 text-sm sm:text-base">
-            Find quick answers to common questions about OjasEarth Stamina 69 combo below.
-          </p>
         </div>
 
         {/* Accordions */}
@@ -63,36 +61,26 @@ export default function Faq() {
             return (
               <div
                 key={idx}
-                className="bg-white/80 backdrop-blur-sm border border-cream-dark/50 rounded-2xl overflow-hidden shadow-sm transition-all duration-300"
+                className="bg-[#121212] border border-white/5 rounded-2xl overflow-hidden shadow-md transition-all duration-300"
               >
                 <button
                   onClick={() => toggle(idx)}
-                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-display font-bold text-primary hover:text-gold transition-colors"
+                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-sans font-black text-white hover:text-gold transition-colors uppercase tracking-wider"
                 >
-                  <span className="text-sm sm:text-base">{faq.q}</span>
-                  <div className="w-8 h-8 rounded-full bg-cream-dark/30 flex items-center justify-center shrink-0 text-primary">
+                  <span className="text-sm">{faq.q}</span>
+                  <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 text-white">
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-6 text-xs sm:text-sm text-primary/75 leading-relaxed border-t border-cream-dark/35 pt-4">
+                  <div className="px-6 pb-6 text-sm text-white/70 leading-relaxed border-t border-white/5 pt-4 font-medium">
                     {faq.a}
                   </div>
                 )}
               </div>
             );
           })}
-        </div>
-
-        {/* Section CTA */}
-        <div className="mt-16 text-center">
-          <a
-            href="#buy-now"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-black text-primary bg-gold hover:bg-gold-light shadow-lg shadow-gold/50 border border-gold/40 animate-blink-gold text-center cursor-pointer"
-          >
-            Ready to Buy? Order OjasEarth Combo Now
-          </a>
         </div>
       </div>
     </section>

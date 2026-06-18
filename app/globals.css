@@ -16,23 +16,42 @@
 
 @layer base {
   body {
-    @apply bg-cream text-primary antialiased;
+    background-color: #060606;
+    color: #FFFFFF;
+    @apply antialiased;
   }
 }
 
-@keyframes blink-glow {
+@keyframes blink-glow-gold {
   0%, 100% {
-    box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    border-color: rgba(212, 175, 55, 0.4);
     transform: scale(1);
   }
   50% {
     box-shadow: 0 0 25px rgba(212, 175, 55, 0.8), 0 0 12px rgba(212, 175, 55, 0.6);
-    transform: scale(1.04);
+    border-color: rgba(212, 175, 55, 0.9);
+    transform: scale(1.03);
   }
 }
 
-.animate-blink-gold {
-  animation: blink-glow 2.5s infinite ease-in-out;
+@keyframes blink-glow-red {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(220, 38, 38, 0.8), 0 0 12px rgba(220, 38, 38, 0.6);
+    transform: scale(1.03);
+  }
+}
+
+.animate-glow-gold {
+  animation: blink-glow-gold 2.5s infinite ease-in-out;
+}
+
+.animate-glow-red {
+  animation: blink-glow-red 2.5s infinite ease-in-out;
 }
 
 @keyframes fade-in-up {
