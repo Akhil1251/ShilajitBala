@@ -6,8 +6,8 @@ import { CreditCard, ShoppingBag, Flame } from "lucide-react";
 
 export default function Checkout() {
   const [qty, setQty] = useState(1);
-  const pricePerUnit = 1499; // in INR
-  const originalPrice = 2499;
+  const pricePerUnit = 1619; // in INR
+  const originalPrice = 1799;
 
   return (
     <section id="buy-now" className="py-24 bg-cream scroll-mt-20 relative overflow-hidden">
