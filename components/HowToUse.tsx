@@ -6,14 +6,16 @@ export default function HowToUse() {
       {/* Background radial highlight */}
       <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 scroll-reveal">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span className="text-xs font-bold text-gold uppercase tracking-widest flex items-center justify-center gap-1.5">
             <Sparkles className="w-4 h-4" /> Perfect Routine for Maximum Vigour
           </span>
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-cream">
-            How to Use Stamina 69 Combo
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cream via-gold-light to-cream">
+              How to Use Stamina 69 Combo
+            </span>
           </h2>
           <p className="text-cream/70 text-sm sm:text-base">
             For outstanding results, follow this daily routine consistently. The dual action of capsules (internal) and oil (external) provides comprehensive benefits.
@@ -95,7 +97,7 @@ export default function HowToUse() {
         <div className="mt-16 text-center">
           <a
             href="#buy-now"
-            className="inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-full text-base font-bold text-primary bg-gold hover:bg-gold-light hover:scale-105 active:scale-95 shadow-md shadow-gold/20 transition-all duration-300"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-black text-primary bg-gold hover:bg-gold-light shadow-lg shadow-gold/50 border border-gold/40 animate-blink-gold cursor-pointer"
           >
             Start Your Routine Today
           </a>

@@ -23,21 +23,22 @@ export default function Header() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#about" className="text-primary/80 hover:text-primary font-medium transition-colors text-sm hover:scale-105 transition-transform duration-200">About</a>
-            <a href="#ingredients" className="text-primary/80 hover:text-primary font-medium transition-colors text-sm hover:scale-105 transition-transform duration-200">Ingredients</a>
-            <a href="#how-to-use" className="text-primary/80 hover:text-primary font-medium transition-colors text-sm hover:scale-105 transition-transform duration-200">How to Use</a>
-            <a href="#benefits" className="text-primary/80 hover:text-primary font-medium transition-colors text-sm hover:scale-105 transition-transform duration-200">Benefits</a>
-            <a href="#why-choose-us" className="text-primary/80 hover:text-primary font-medium transition-colors text-sm hover:scale-105 transition-transform duration-200">Why Us</a>
-            <a href="#heritage" className="text-primary/80 hover:text-primary font-medium transition-colors text-sm hover:scale-105 transition-transform duration-200">Heritage</a>
-            <a href="#reviews" className="text-primary/80 hover:text-primary font-medium transition-colors text-sm hover:scale-105 transition-transform duration-200">Reviews</a>
-            <a href="#faq" className="text-primary/80 hover:text-primary font-medium transition-colors text-sm hover:scale-105 transition-transform duration-200">FAQs</a>
+            <a href="#about" className="text-primary/80 hover:text-primary font-semibold transition-colors text-sm hover:scale-105 transition-transform duration-200">About</a>
+            <a href="#ingredients" className="text-primary/80 hover:text-primary font-semibold transition-colors text-sm hover:scale-105 transition-transform duration-200">Ingredients</a>
+            <a href="#how-to-use" className="text-primary/80 hover:text-primary font-semibold transition-colors text-sm hover:scale-105 transition-transform duration-200">How to Use</a>
+            <a href="#benefits" className="text-primary/80 hover:text-primary font-semibold transition-colors text-sm hover:scale-105 transition-transform duration-200">Benefits</a>
+            <a href="#why-choose-us" className="text-primary/80 hover:text-primary font-semibold transition-colors text-sm hover:scale-105 transition-transform duration-200">Why Us</a>
+            <a href="#journey" className="text-primary/80 hover:text-primary font-semibold transition-colors text-sm hover:scale-105 transition-transform duration-200">Journey</a>
+            <a href="#heritage" className="text-primary/80 hover:text-primary font-semibold transition-colors text-sm hover:scale-105 transition-transform duration-200">Heritage</a>
+            <a href="#reviews" className="text-primary/80 hover:text-primary font-semibold transition-colors text-sm hover:scale-105 transition-transform duration-200">Reviews</a>
+            <a href="#faq" className="text-primary/80 hover:text-primary font-semibold transition-colors text-sm hover:scale-105 transition-transform duration-200">FAQs</a>
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:block">
             <a
               href="#buy-now"
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-full text-sm font-semibold text-white bg-primary hover:bg-primary-light hover:scale-105 active:scale-95 shadow-md shadow-primary/20 transition-all duration-300 border border-gold/10"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-bold text-primary bg-gold hover:bg-gold-light hover:scale-105 active:scale-95 shadow-md shadow-gold/20 transition-all duration-300 border border-gold/30"
             >
               Order Combo Now
             </a>
@@ -62,56 +63,63 @@ export default function Header() {
           <a
             href="#about"
             onClick={() => setIsOpen(false)}
-            className="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-cream-dark/50 transition-colors"
+            className="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-cream-dark/50 transition-colors"
           >
             About
           </a>
           <a
             href="#ingredients"
             onClick={() => setIsOpen(false)}
-            className="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-cream-dark/50 transition-colors"
+            className="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-cream-dark/50 transition-colors"
           >
             Ingredients
           </a>
           <a
             href="#how-to-use"
             onClick={() => setIsOpen(false)}
-            className="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-cream-dark/50 transition-colors"
+            className="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-cream-dark/50 transition-colors"
           >
             How to Use
           </a>
           <a
             href="#benefits"
             onClick={() => setIsOpen(false)}
-            className="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-cream-dark/50 transition-colors"
+            className="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-cream-dark/50 transition-colors"
           >
             Benefits
           </a>
           <a
             href="#why-choose-us"
             onClick={() => setIsOpen(false)}
-            className="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-cream-dark/50 transition-colors"
+            className="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-cream-dark/50 transition-colors"
           >
             Why Us
           </a>
           <a
+            href="#journey"
+            onClick={() => setIsOpen(false)}
+            className="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-cream-dark/50 transition-colors"
+          >
+            Journey
+          </a>
+          <a
             href="#heritage"
             onClick={() => setIsOpen(false)}
-            className="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-cream-dark/50 transition-colors"
+            className="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-cream-dark/50 transition-colors"
           >
             Heritage
           </a>
           <a
             href="#reviews"
             onClick={() => setIsOpen(false)}
-            className="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-cream-dark/50 transition-colors"
+            className="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-cream-dark/50 transition-colors"
           >
             Reviews
           </a>
           <a
             href="#faq"
             onClick={() => setIsOpen(false)}
-            className="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-cream-dark/50 transition-colors"
+            className="block px-3 py-2 rounded-md text-base font-semibold text-primary hover:bg-cream-dark/50 transition-colors"
           >
             FAQs
           </a>
@@ -119,7 +127,7 @@ export default function Header() {
             <a
               href="#buy-now"
               onClick={() => setIsOpen(false)}
-              className="w-full flex items-center justify-center px-6 py-3 border border-transparent rounded-full text-base font-semibold text-white bg-primary hover:bg-primary-light shadow-md transition-all"
+              className="w-full flex items-center justify-center px-6 py-3 rounded-full text-base font-bold text-primary bg-gold hover:bg-gold-light shadow-md transition-all border border-gold/30 text-center"
             >
               Order Combo Now
             </a>

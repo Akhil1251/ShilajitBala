@@ -16,7 +16,7 @@ export default function Benefits() {
     {
       title: "Enhanced Energy Levels",
       desc: "Provides clean, sustained release of natural energy without the jitters, spikes, or crashes associated with sugar and caffeine.",
-      icon: <Zap className="w-6 h-6 text-gold" />
+      icon: <Zap className="w-6 h-6 text-gold animate-pulse" />
     },
     {
       title: "Improved Recovery",
@@ -35,14 +35,16 @@ export default function Benefits() {
       {/* Background decoration blur */}
       <div className="absolute top-10 right-10 w-80 h-80 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 scroll-reveal">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span className="text-xs font-bold text-gold uppercase tracking-widest flex items-center justify-center gap-1.5">
             <ShieldCheck className="w-4 h-4" /> Clinically Inspired Ayurvedic Care
           </span>
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-primary">
-            Remarkable Health Benefits
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-light to-gold-dark">
+              Remarkable Health Benefits
+            </span>
           </h2>
           <p className="text-primary/70 text-sm sm:text-base">
             Feel the natural transformation. OjasEarth Stamina 69 works synergistically to elevate your physical, mental, and metabolic health.
@@ -75,9 +77,9 @@ export default function Benefits() {
         <div className="mt-16 text-center">
           <a
             href="#buy-now"
-            className="inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-full text-base font-bold text-white bg-primary hover:bg-primary-light hover:scale-105 active:scale-95 shadow-md shadow-primary/20 transition-all duration-300 border border-gold/10"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-black text-primary bg-gold hover:bg-gold-light shadow-lg shadow-gold/50 border border-gold/40 animate-blink-gold cursor-pointer"
           >
-            Claim Your Vitality Combo Pack
+            Claim Your Vitality Combo Pack Now
           </a>
         </div>
       </div>

@@ -40,14 +40,16 @@ export default function Faq() {
 
   return (
     <section id="faq" className="py-24 bg-cream scroll-mt-20 relative overflow-hidden">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 scroll-reveal">
         {/* Section Header */}
         <div className="text-center mb-16 space-y-3">
           <span className="text-xs font-bold text-gold uppercase tracking-widest flex items-center justify-center gap-1.5">
-            <HelpCircle className="w-4 h-4" /> Got Questions?
+            <HelpCircle className="w-4 h-4 text-gold animate-bounce" /> Got Questions?
           </span>
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-primary">
-            Frequently Asked Questions
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-light to-gold-dark">
+              Frequently Asked Questions
+            </span>
           </h2>
           <p className="text-primary/70 text-sm sm:text-base">
             Find quick answers to common questions about OjasEarth Stamina 69 combo below.
@@ -87,9 +89,9 @@ export default function Faq() {
         <div className="mt-16 text-center">
           <a
             href="#buy-now"
-            className="inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-full text-base font-bold text-white bg-primary hover:bg-primary-light hover:scale-105 active:scale-95 shadow-md shadow-primary/20 transition-all duration-300 border border-gold/10"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-black text-primary bg-gold hover:bg-gold-light shadow-lg shadow-gold/50 border border-gold/40 animate-blink-gold text-center cursor-pointer"
           >
-            Ready to Buy? Order Combo Now
+            Ready to Buy? Order OjasEarth Combo Now
           </a>
         </div>
       </div>

@@ -20,7 +20,7 @@ export default function WhyChooseUs() {
     {
       title: "Discreet Delivery",
       desc: "We value your privacy. All orders are packed securely and delivered in plain, unmarked packages to your doorstep.",
-      icon: <EyeOff className="w-6 h-6 text-gold" />
+      icon: <EyeOff className="w-6 h-6 text-gold animate-bounce" />
     }
   ];
 
@@ -29,13 +29,13 @@ export default function WhyChooseUs() {
       {/* Background graphic mesh */}
       <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 scroll-reveal">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Side: Visual Text Panel */}
           <div className="lg:col-span-5 bg-primary text-cream p-8 sm:p-12 rounded-3xl border border-primary-light/10 space-y-6 shadow-xl relative overflow-hidden group">
             {/* Top highlight line */}
             <div className="absolute top-0 left-0 right-0 h-1.5 bg-gold" />
-            <span className="text-xs text-gold font-bold uppercase tracking-widest">Trust & Quality</span>
+            <span className="text-xs text-gold font-bold uppercase tracking-widest block">Trust & Quality</span>
             <h2 className="text-3xl sm:text-4xl font-display font-bold text-cream">
               Why Choose OjasEarth?
             </h2>
@@ -50,7 +50,7 @@ export default function WhyChooseUs() {
             <div className="pt-4">
               <a
                 href="#buy-now"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-full text-xs font-bold text-primary bg-gold hover:bg-gold-light hover:scale-105 active:scale-95 shadow-md shadow-gold/15 transition-all duration-300"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 rounded-full text-xs font-black text-primary bg-gold hover:bg-gold-light shadow-lg shadow-gold/50 border border-gold/40 animate-blink-gold cursor-pointer"
               >
                 Choose Quality Now
               </a>

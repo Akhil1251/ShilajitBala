@@ -43,14 +43,16 @@ const testimonials: Testimonial[] = [
 export default function Reviews() {
   return (
     <section id="reviews" className="py-24 bg-cream-dark/20 scroll-mt-20 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 scroll-reveal">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span className="text-xs font-bold text-gold uppercase tracking-widest flex items-center justify-center gap-1.5">
             <Star className="w-4 h-4 fill-gold text-gold" /> Real Verified Experiences
           </span>
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-primary">
-            Customer Testimonials
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-light to-gold-dark">
+              Customer Testimonials
+            </span>
           </h2>
           <p className="text-primary/70 text-sm sm:text-base">
             See how OjasEarth Stamina 69 helps our clients maintain high vitality, focus, and energy.
@@ -103,9 +105,9 @@ export default function Reviews() {
         <div className="mt-16 text-center">
           <a
             href="#buy-now"
-            className="inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-full text-base font-bold text-white bg-primary hover:bg-primary-light hover:scale-105 active:scale-95 shadow-md shadow-primary/20 transition-all duration-300 border border-gold/10"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-black text-primary bg-gold hover:bg-gold-light shadow-lg shadow-gold/50 border border-gold/40 animate-blink-gold text-center cursor-pointer"
           >
-            Join the Satisfied Clients
+            Join the Satisfied Clients Now
           </a>
         </div>
       </div>

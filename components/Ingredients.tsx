@@ -67,14 +67,16 @@ export default function Ingredients() {
       {/* Subtle backdrop decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 scroll-reveal">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span className="text-xs font-bold text-gold uppercase tracking-widest flex items-center justify-center gap-1.5">
-            <Leaf className="w-4 h-4" /> Nature's Finest Formulation
+            <Leaf className="w-4 h-4 animate-pulse" /> Nature's Finest Formulation
           </span>
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-primary">
-            Key Ingredients of Stamina 69
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-light to-gold-dark">
+              Key Ingredients of Stamina 69
+            </span>
           </h2>
           <p className="text-primary/70 text-sm sm:text-base">
             OjasEarth sources only premium grade, certified organic ingredients processed under GMP standards to guarantee potencies.
@@ -130,9 +132,9 @@ export default function Ingredients() {
         <div className="mt-16 text-center">
           <a
             href="#buy-now"
-            className="inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-full text-base font-bold text-white bg-primary hover:bg-primary-light hover:scale-105 active:scale-95 shadow-md shadow-primary/20 transition-all duration-300 border border-gold/10"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-black text-primary bg-gold hover:bg-gold-light shadow-lg shadow-gold/50 border border-gold/40 animate-blink-gold cursor-pointer"
           >
-            Order OjasEarth Supplement Combo
+            Order OjasEarth Supplement Combo Now
           </a>
         </div>
       </div>
