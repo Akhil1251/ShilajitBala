@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { Leaf, Sparkles, Flame } from "lucide-react";
+import { Leaf } from "lucide-react";
 
 interface Ingredient {
   name: string;
   hindiName: string;
   desc: string;
   role: string;
-  image?: string;
+  image: string;
   tag?: string;
 }
 
@@ -40,25 +40,34 @@ const ingredients: Ingredient[] = [
     hindiName: "Safeed musli",
     desc: "Often referred to as white musli, this herb acts as a natural revitalizer, boosting physical performance, promoting lean muscle growth, and reducing daily fatigue.",
     role: "Revitalizer",
+    image: "/musli.png",
+    tag: "Vitality Support"
   },
   {
     name: "Kaunch Beej",
     hindiName: "Kanch beej",
     desc: "Supports nervous system health, elevates mood, and aids in maintaining optimal muscle coordination, building clean physical strength.",
     role: "Muscle & Nerve Support",
+    image: "/kaunch.png",
+    tag: "Nerve Tonic"
   },
   {
     name: "Nilgiri",
     hindiName: "Neel giri",
     desc: "Known for its refreshing, cooling properties. Nilgiri oil helps relieve muscle soreness when applied topically and boosts absorption.",
     role: "Absorption & Healing",
+    image: "/nilgiri.png",
+    tag: "Topical Reliever"
   }
 ];
 
 export default function Ingredients() {
   return (
-    <section id="ingredients" className="py-20 bg-cream scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="ingredients" className="py-24 bg-cream scroll-mt-20 relative overflow-hidden">
+      {/* Subtle backdrop decoration */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span className="text-xs font-bold text-gold uppercase tracking-widest flex items-center justify-center gap-1.5">
@@ -68,7 +77,7 @@ export default function Ingredients() {
             Key Ingredients of Stamina 69
           </h2>
           <p className="text-primary/70 text-sm sm:text-base">
-            Carefully selected, premium grade Ayurvedic herbs processed using traditional methods for maximum potency and safety.
+            OjasEarth sources only premium grade, certified organic ingredients processed under GMP standards to guarantee potencies.
           </p>
         </div>
 
@@ -77,32 +86,26 @@ export default function Ingredients() {
           {ingredients.map((ing, idx) => (
             <div
               key={idx}
-              className="group relative bg-cream-dark/20 hover:bg-primary hover:text-cream rounded-3xl p-6 border border-cream-dark/50 hover:border-primary transition-all duration-500 shadow-sm flex flex-col justify-between overflow-hidden"
+              className="group relative bg-white/60 backdrop-blur-md hover:bg-primary hover:text-cream rounded-3xl p-6 border border-cream-dark/50 hover:border-primary transition-all duration-500 shadow-sm hover:shadow-xl flex flex-col justify-between overflow-hidden"
             >
               {/* Background gradient decorative element */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-gold/5 group-hover:bg-white/5 rounded-bl-full transition-colors" />
 
               <div>
-                {/* Visual Image if exists, else icon */}
-                {ing.image ? (
-                  <div className="relative w-full h-48 rounded-2xl overflow-hidden mb-6 border border-cream-dark/30 group-hover:border-white/10 shadow-inner">
-                    <Image
-                      src={ing.image}
-                      alt={ing.name}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    {ing.tag && (
-                      <span className="absolute top-3 left-3 bg-primary group-hover:bg-gold text-gold group-hover:text-primary text-[10px] font-black uppercase tracking-wider px-2 py-1 rounded-md shadow-sm">
-                        {ing.tag}
-                      </span>
-                    )}
-                  </div>
-                ) : (
-                  <div className="w-12 h-12 rounded-2xl bg-primary/5 group-hover:bg-white/10 flex items-center justify-center mb-6 text-gold group-hover:text-gold-light border border-primary/10 group-hover:border-white/10 transition-colors">
-                    <Flame className="w-6 h-6" />
-                  </div>
-                )}
+                {/* Visual Image */}
+                <div className="relative w-full h-48 rounded-2xl overflow-hidden mb-6 border border-cream-dark/30 group-hover:border-white/10 shadow-inner">
+                  <Image
+                    src={ing.image}
+                    alt={ing.name}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  {ing.tag && (
+                    <span className="absolute top-3 left-3 bg-primary group-hover:bg-gold text-gold group-hover:text-primary text-[10px] font-black uppercase tracking-wider px-2 py-1 rounded-md shadow-sm">
+                      {ing.tag}
+                    </span>
+                  )}
+                </div>
 
                 <div className="flex items-baseline justify-between mb-2">
                   <h3 className="text-xl font-bold font-display">{ing.name}</h3>
@@ -121,6 +124,16 @@ export default function Ingredients() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Section CTA */}
+        <div className="mt-16 text-center">
+          <a
+            href="#buy-now"
+            className="inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-full text-base font-bold text-white bg-primary hover:bg-primary-light hover:scale-105 active:scale-95 shadow-md shadow-primary/20 transition-all duration-300 border border-gold/10"
+          >
+            Order OjasEarth Supplement Combo
+          </a>
         </div>
       </div>
     </section>

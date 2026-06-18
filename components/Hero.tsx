@@ -3,8 +3,12 @@ import { ShieldCheck, Flame, Star, Sparkles } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-cream py-12 lg:py-24 border-b border-cream-dark/30">
-      {/* Background Decorative Mountain Slopes (Inspired by Matcha Ren) */}
+    <section className="relative overflow-hidden bg-gradient-to-b from-cream via-[#FAF6F0] to-cream py-16 lg:py-28 border-b border-cream-dark/30">
+      {/* Premium background mesh lights */}
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Background Mountain Slopes decoration */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
         <svg
           className="absolute bottom-0 left-0 w-full"
@@ -24,8 +28,8 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Text Column */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10">
-              <Sparkles className="w-4 h-4 text-gold" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 backdrop-blur-sm">
+              <Sparkles className="w-4 h-4 text-gold animate-pulse" />
               <span className="text-xs font-bold uppercase tracking-wider text-primary">
                 Premium Ayurvedic Vitality Combo
               </span>
@@ -39,11 +43,11 @@ export default function Hero() {
             </h1>
 
             <p className="text-base sm:text-lg text-primary/80 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Experience the dual power of **JASEARTH Stamina 69**. An all-in-one supplement combo containing premium capsules and fast-absorbing oil, crafted to elevate physical performance and daily vitality.
+              Experience the dual power of **OjasEarth Stamina 69**. An all-in-one supplement combo containing premium capsules and fast-absorbing oil, crafted to elevate physical performance and lifetime vitality.
             </p>
 
             {/* Quick trust metrics */}
-            <div className="grid grid-cols-3 gap-4 py-4 max-w-md mx-auto lg:mx-0 border-y border-cream-dark/50">
+            <div className="grid grid-cols-3 gap-4 py-4 max-w-md mx-auto lg:mx-0 border-y border-cream-dark/50 bg-white/40 backdrop-blur-sm rounded-xl px-4">
               <div className="text-center lg:text-left">
                 <span className="block text-2xl font-bold font-display text-primary">100%</span>
                 <span className="text-xs text-primary/60 font-semibold uppercase">Organic Herbs</span>
@@ -64,9 +68,9 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <a
                 href="#buy-now"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-full text-base font-bold text-white bg-primary hover:bg-primary-light hover:scale-105 active:scale-95 shadow-lg shadow-primary/20 transition-all duration-300"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-full text-base font-bold text-white bg-primary hover:bg-primary-light hover:scale-105 active:scale-95 shadow-lg shadow-primary/20 transition-all duration-300 border border-gold/10"
               >
-                Buy Combo Now
+                Buy OjasEarth Combo
               </a>
               <a
                 href="#about"
@@ -89,7 +93,7 @@ export default function Hero() {
 
           {/* Right Visual Image Column */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-md aspect-square bg-gradient-to-b from-primary/5 to-primary/10 rounded-3xl p-6 border border-primary/15 flex items-center justify-center shadow-xl shadow-primary/5 hover:shadow-2xl transition-all duration-500 group">
+            <div className="relative w-full max-w-md aspect-square bg-white/40 backdrop-blur-md rounded-3xl p-6 border border-primary/10 flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-500 group">
               {/* Decorative elements */}
               <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center animate-bounce duration-1000">
                 <Flame className="w-6 h-6 text-gold" />

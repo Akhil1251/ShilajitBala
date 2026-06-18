@@ -1,4 +1,4 @@
-import { Zap, Heart, ShieldAlert, Sparkles, Smile, ShieldCheck, Flame, RefreshCw } from "lucide-react";
+import { Zap, ShieldCheck, Flame, RefreshCw, Sparkles } from "lucide-react";
 
 interface BenefitItem {
   title: string;
@@ -31,8 +31,11 @@ export default function Benefits() {
   ];
 
   return (
-    <section id="benefits" className="py-20 bg-cream-dark/20 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="benefits" className="py-24 bg-cream-dark/20 scroll-mt-20 relative overflow-hidden">
+      {/* Background decoration blur */}
+      <div className="absolute top-10 right-10 w-80 h-80 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span className="text-xs font-bold text-gold uppercase tracking-widest flex items-center justify-center gap-1.5">
@@ -42,7 +45,7 @@ export default function Benefits() {
             Remarkable Health Benefits
           </h2>
           <p className="text-primary/70 text-sm sm:text-base">
-            Feel the natural transformation. Stamina 69 works synergistically to elevate your physical, mental, and metabolic health.
+            Feel the natural transformation. OjasEarth Stamina 69 works synergistically to elevate your physical, mental, and metabolic health.
           </p>
         </div>
 
@@ -51,7 +54,7 @@ export default function Benefits() {
           {benefits.map((b, idx) => (
             <div
               key={idx}
-              className="group p-8 bg-white rounded-3xl border border-cream-dark/50 hover:border-gold/30 shadow-sm hover:shadow-md hover:translate-y-[-2px] transition-all duration-300 flex gap-6 items-start"
+              className="group p-8 bg-white/70 backdrop-blur-md rounded-3xl border border-cream-dark/50 hover:border-gold/30 shadow-sm hover:shadow-md hover:translate-y-[-2px] transition-all duration-300 flex gap-6 items-start"
             >
               <div className="w-14 h-14 rounded-2xl bg-primary/5 group-hover:bg-primary/10 flex items-center justify-center shrink-0 transition-colors">
                 {b.icon}
@@ -66,6 +69,16 @@ export default function Benefits() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Section CTA */}
+        <div className="mt-16 text-center">
+          <a
+            href="#buy-now"
+            className="inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-full text-base font-bold text-white bg-primary hover:bg-primary-light hover:scale-105 active:scale-95 shadow-md shadow-primary/20 transition-all duration-300 border border-gold/10"
+          >
+            Claim Your Vitality Combo Pack
+          </a>
         </div>
       </div>
     </section>

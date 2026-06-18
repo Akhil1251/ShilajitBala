@@ -16,7 +16,7 @@ const testimonials: Testimonial[] = [
     age: 34,
     rating: 5,
     title: "Unbelievable stamina improvement!",
-    comment: "I've tried different Shilajit capsules before, but the Jasearth Capsules + Oil combo is on a different level. The capsules give me clean energy during my morning gym sessions and workdays, and the oil has helped significantly with muscle recovery. Highly recommended!",
+    comment: "I've tried different Shilajit capsules before, but the OjasEarth Capsules + Oil combo is on a different level. The capsules give me clean energy during my morning gym sessions and workdays, and the oil has helped significantly with muscle recovery. Highly recommended!",
     date: "2 days ago",
     verified: true
   },
@@ -42,8 +42,8 @@ const testimonials: Testimonial[] = [
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="py-20 bg-cream-dark/20 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="reviews" className="py-24 bg-cream-dark/20 scroll-mt-20 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span className="text-xs font-bold text-gold uppercase tracking-widest flex items-center justify-center gap-1.5">
@@ -53,7 +53,7 @@ export default function Reviews() {
             Customer Testimonials
           </h2>
           <p className="text-primary/70 text-sm sm:text-base">
-            See how JASEARTH Stamina 69 helps our clients maintain high vitality, focus, and energy.
+            See how OjasEarth Stamina 69 helps our clients maintain high vitality, focus, and energy.
           </p>
         </div>
 
@@ -62,7 +62,7 @@ export default function Reviews() {
           {testimonials.map((t, idx) => (
             <div
               key={idx}
-              className="p-8 bg-white border border-cream-dark/50 rounded-3xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
+              className="p-8 bg-white/80 backdrop-blur-md border border-cream-dark/50 rounded-3xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
             >
               <div>
                 {/* Rating stars */}
@@ -97,6 +97,16 @@ export default function Reviews() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Section CTA */}
+        <div className="mt-16 text-center">
+          <a
+            href="#buy-now"
+            className="inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-full text-base font-bold text-white bg-primary hover:bg-primary-light hover:scale-105 active:scale-95 shadow-md shadow-primary/20 transition-all duration-300 border border-gold/10"
+          >
+            Join the Satisfied Clients
+          </a>
         </div>
       </div>
     </section>

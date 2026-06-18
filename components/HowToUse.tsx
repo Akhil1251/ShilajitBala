@@ -2,8 +2,11 @@ import { Info, Sparkles, CheckCircle2 } from "lucide-react";
 
 export default function HowToUse() {
   return (
-    <section id="how-to-use" className="py-20 bg-primary text-cream scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="how-to-use" className="py-24 bg-primary text-cream scroll-mt-20 relative overflow-hidden">
+      {/* Background radial highlight */}
+      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span className="text-xs font-bold text-gold uppercase tracking-widest flex items-center justify-center gap-1.5">
@@ -26,7 +29,7 @@ export default function HowToUse() {
                 Step 1: Capsules (Internal Care)
               </div>
               <h3 className="text-2xl font-bold font-display text-cream mb-4">
-                Ojasearth DesireXtract Capsules
+                OjasEarth DesireXtract Capsules
               </h3>
               <p className="text-cream/80 text-sm mb-6 leading-relaxed">
                 Formulated to boost stamina and vitality from within. The slow-release capsule design ensures consistent energy throughout the day.
@@ -60,7 +63,7 @@ export default function HowToUse() {
                 Step 2: Oil (External Care)
               </div>
               <h3 className="text-2xl font-bold font-display text-cream mb-4">
-                Ojasearth DesireXtract Massage Oil
+                OjasEarth DesireXtract Massage Oil
               </h3>
               <p className="text-cream/80 text-sm mb-6 leading-relaxed">
                 Applied topically to support localized cellular vitality, enhance absorption of active nutrients, and soothe muscle tension.
@@ -86,6 +89,16 @@ export default function HowToUse() {
               <span>For external application only. Perform a patch test before first use to ensure no sensitivity.</span>
             </div>
           </div>
+        </div>
+
+        {/* Section CTA */}
+        <div className="mt-16 text-center">
+          <a
+            href="#buy-now"
+            className="inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-full text-base font-bold text-primary bg-gold hover:bg-gold-light hover:scale-105 active:scale-95 shadow-md shadow-gold/20 transition-all duration-300"
+          >
+            Start Your Routine Today
+          </a>
         </div>
       </div>
     </section>

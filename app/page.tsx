@@ -5,7 +5,9 @@ import Ingredients from "@/components/Ingredients";
 import HowToUse from "@/components/HowToUse";
 import Benefits from "@/components/Benefits";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import Heritage from "@/components/Heritage";
 import Reviews from "@/components/Reviews";
+import Faq from "@/components/Faq";
 import Checkout from "@/components/Checkout";
 import Footer from "@/components/Footer";
 
@@ -20,7 +22,9 @@ export default function Home() {
         <HowToUse />
         <Benefits />
         <WhyChooseUs />
+        <Heritage />
         <Reviews />
+        <Faq />
         <Checkout />
       </main>
       <Footer />

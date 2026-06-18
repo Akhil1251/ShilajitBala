@@ -2,12 +2,15 @@ import { CheckCircle2, RefreshCw, Zap } from "lucide-react";
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-cream-dark/30 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-24 bg-cream-dark/30 scroll-mt-20 relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-10 right-10 w-72 h-72 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Side: Graphic Cards */}
+          {/* Left Side: Graphic Cards with Glassmorphism */}
           <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-            <div className="p-6 bg-white rounded-2xl border border-cream-dark/50 shadow-sm flex flex-col justify-between hover:translate-y-[-4px] transition-transform duration-300">
+            <div className="p-6 bg-white/70 backdrop-blur-md rounded-2xl border border-white/40 shadow-sm flex flex-col justify-between hover:translate-y-[-4px] transition-transform duration-300">
               <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center mb-6">
                 <Zap className="w-6 h-6 text-gold" />
               </div>
@@ -31,7 +34,7 @@ export default function About() {
               </div>
             </div>
 
-            <div className="col-span-2 p-8 bg-white rounded-2xl border border-cream-dark/50 shadow-sm flex items-center gap-6 hover:translate-y-[-4px] transition-transform duration-300 mt-6 lg:mt-0">
+            <div className="col-span-2 p-8 bg-white/70 backdrop-blur-md rounded-2xl border border-white/40 shadow-sm flex items-center gap-6 hover:translate-y-[-4px] transition-transform duration-300 mt-6 lg:mt-0">
               <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
                 <span className="text-2xl font-black text-gold font-display">100%</span>
               </div>
@@ -54,7 +57,7 @@ export default function About() {
             </div>
 
             <p className="text-base text-primary/80 leading-relaxed">
-              Unlock your energy, endurance, and overall wellness with the **JASEARTH Stamina 69 DesireXtract Capsules + Oil Combo**. This comprehensive, all-in-one supplement duo is expertly designed to support your active lifestyle by enhancing vitality, improving stamina, and promoting peak physical performance.
+              Unlock your energy, endurance, and overall wellness with the **OjasEarth Stamina 69 DesireXtract Capsules + Oil Combo**. This comprehensive, all-in-one supplement duo is expertly designed to support your active lifestyle by enhancing vitality, improving stamina, and promoting peak physical performance.
             </p>
             <p className="text-base text-primary/80 leading-relaxed">
               Whether you're tackling an intense workout at the gym, managing a demanding workday, or simply striving to maintain balanced energy levels throughout the day, this combo has you covered.
@@ -75,12 +78,18 @@ export default function About() {
               ))}
             </ul>
 
-            <div className="pt-4">
+            <div className="pt-6 flex flex-col sm:flex-row gap-4">
               <a
                 href="#buy-now"
-                className="inline-flex items-center justify-center px-8 py-3.5 border border-primary text-sm font-bold rounded-full text-white bg-primary hover:bg-primary-light hover:scale-105 active:scale-95 transition-all duration-300"
+                className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-sm font-bold rounded-full text-white bg-primary hover:bg-primary-light hover:scale-105 active:scale-95 shadow-md shadow-primary/20 transition-all duration-300 border border-gold/10 text-center"
               >
-                Experience Peak Performance
+                Get OjasEarth Stamina 69
+              </a>
+              <a
+                href="#ingredients"
+                className="inline-flex items-center justify-center px-8 py-4 border border-primary/20 text-sm font-semibold rounded-full text-primary hover:bg-primary/5 transition-all text-center"
+              >
+                View Key Ingredients
               </a>
             </div>
           </div>

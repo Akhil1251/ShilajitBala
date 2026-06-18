@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ShieldAlert, CreditCard, ShoppingBag, Flame, Sparkles } from "lucide-react";
+import { CreditCard, ShoppingBag, Flame } from "lucide-react";
 
 export default function Checkout() {
   const [qty, setQty] = useState(1);
@@ -10,8 +10,11 @@ export default function Checkout() {
   const originalPrice = 2499;
 
   return (
-    <section id="buy-now" className="py-20 bg-cream scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="buy-now" className="py-24 bg-cream scroll-mt-20 relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="bg-white border border-cream-dark/50 rounded-3xl p-8 sm:p-12 shadow-md relative overflow-hidden">
           {/* Top highlight bar */}
           <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary via-gold to-primary-light" />
@@ -20,21 +23,21 @@ export default function Checkout() {
             {/* Left Image & Deal info */}
             <div className="lg:col-span-5 space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs font-bold uppercase tracking-wider">
-                <Flame className="w-3.5 h-3.5" /> Best Seller Deal
+                <Flame className="w-3.5 h-3.5 animate-pulse" /> Best Seller Deal
               </div>
               <h3 className="text-3xl font-display font-bold text-primary">
                 Stamina 69 Combo Pack
               </h3>
-              <p className="text-sm text-primary/75">
-                Get both the JASEARTH DesireXtract Capsules (30 Capsules) and the targeted Massage Oil for complete internal & external health enhancement.
+              <p className="text-sm text-primary/75 leading-relaxed">
+                Get both the **OjasEarth DesireXtract Capsules** (30 Capsules) and the targeted **Massage Oil** for complete internal & external health enhancement.
               </p>
 
-              <div className="relative w-full max-w-sm aspect-square mx-auto lg:mx-0 rounded-2xl overflow-hidden border border-cream-dark shadow-inner">
+              <div className="relative w-full max-w-sm aspect-square mx-auto lg:mx-0 rounded-2xl overflow-hidden border border-cream-dark shadow-inner group">
                 <Image
                   src="/product.png"
                   alt="Stamina 69 Combo Pack"
                   fill
-                  className="object-cover"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
@@ -65,17 +68,17 @@ export default function Checkout() {
               {/* Quantity selector */}
               <div className="flex items-center justify-between">
                 <span className="text-sm font-bold text-primary">Select Quantity:</span>
-                <div className="flex items-center border border-cream-dark bg-white rounded-full overflow-hidden">
+                <div className="flex items-center border border-cream-dark bg-white rounded-full overflow-hidden shadow-sm">
                   <button
                     onClick={() => qty > 1 && setQty(qty - 1)}
-                    className="px-4 py-2 hover:bg-cream-dark/50 font-bold text-primary transition-colors"
+                    className="px-4 py-2 hover:bg-cream-dark/50 font-bold text-primary transition-colors cursor-pointer"
                   >
                     -
                   </button>
-                  <span className="px-4 py-2 font-bold text-primary text-sm">{qty}</span>
+                  <span className="px-4 py-2 font-bold text-primary text-sm bg-cream/10">{qty}</span>
                   <button
                     onClick={() => setQty(qty + 1)}
-                    className="px-4 py-2 hover:bg-cream-dark/50 font-bold text-primary transition-colors"
+                    className="px-4 py-2 hover:bg-cream-dark/50 font-bold text-primary transition-colors cursor-pointer"
                   >
                     +
                   </button>
