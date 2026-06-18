@@ -90,15 +90,6 @@ export default function Hero() {
               <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center animate-bounce duration-1000">
                 <Flame className="w-6 h-6 text-gold" />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-primary/5 border border-primary/10 flex items-center justify-center">
-                <Image
-                  src="/shilajit.png"
-                  alt="Gold Shilajit Rock decoration"
-                  width={60}
-                  height={60}
-                  className="object-contain opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-                />
-              </div>
 
               {/* Main Product Image */}
               <div className="relative w-full h-full overflow-hidden rounded-2xl">
