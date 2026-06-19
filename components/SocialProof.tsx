@@ -121,7 +121,7 @@ export default function SocialProof() {
 
           {/* Bottom CTA */}
           <div className="mt-16 text-center flex items-center justify-center">
-            <a href="tel:+918269979897" className="btn-fire animate-glow-red w-full sm:w-auto text-center">
+            <a href="tel:+916269696232" className="btn-fire animate-glow-red w-full sm:w-auto text-center">
               <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
             </a>
           </div>

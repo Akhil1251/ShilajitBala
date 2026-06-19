@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${playfair.variable} h-full antialiased scroll-smooth`}
+      className={`${outfit.variable} ${playfair.variable} h-full antialiased scroll-smooth light`}
     >
       <body className="min-h-full bg-[#060606] text-white font-sans">{children}</body>
     </html>

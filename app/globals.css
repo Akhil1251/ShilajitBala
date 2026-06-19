@@ -223,3 +223,97 @@
   border: 2px solid rgba(212, 175, 55, 0.4);
   animation: pulse-ring 2s ease-out infinite;
 }
+
+/* ── Light Mode Override Styles ── */
+.light,
+.light body {
+  background-color: #ffffff !important;
+  color: #111111 !important;
+}
+
+/* Background resets for sections to be white and white only */
+.light .fire-bg,
+.light .fire-bg-subtle,
+.light .ember-bg,
+.light [class*="bg-[#050505]"],
+.light [class*="bg-[#060606]"] {
+  background: #ffffff !important;
+}
+
+/* Light mode text color overrides for text directly on page background */
+.light .text-white:not(.card-glow *):not([class*="bg-black"] *):not([class*="bg-[#0"] *):not([class*="bg-[#1"] *):not(.btn-fire *):not(.btn-gold *):not(.price-tag *):not(.price-save *),
+.light h1:not(.card-glow *):not([class*="bg-black"] *):not([class*="bg-[#0"] *):not([class*="bg-[#1"] *):not(.btn-fire *):not(.btn-gold *),
+.light h2:not(.card-glow *):not([class*="bg-black"] *):not([class*="bg-[#0"] *):not([class*="bg-[#1"] *):not(.btn-fire *):not(.btn-gold *),
+.light h3:not(.card-glow *):not([class*="bg-black"] *):not([class*="bg-[#0"] *):not([class*="bg-[#1"] *):not(.btn-fire *):not(.btn-gold *),
+.light p:not(.card-glow *):not([class*="bg-black"] *):not([class*="bg-[#0"] *):not([class*="bg-[#1"] *):not(.btn-fire *):not(.btn-gold *):not(.price-tag *):not(.price-save *),
+.light span:not(.card-glow *):not([class*="bg-black"] *):not([class*="bg-[#0"] *):not([class*="bg-[#1"] *):not(.btn-fire *):not(.btn-gold *):not(.price-tag *):not(.price-save *),
+.light td,
+.light th {
+  color: #111111 !important;
+}
+
+.light .text-white\/90:not(.card-glow *):not([class*="bg-black"] *):not([class*="bg-[#0"] *):not([class*="bg-[#1"] *),
+.light .text-white\/80:not(.card-glow *):not([class*="bg-black"] *):not([class*="bg-[#0"] *):not([class*="bg-[#1"] *) {
+  color: #1f2937 !important;
+}
+
+.light .text-white\/70:not(.card-glow *):not([class*="bg-black"] *):not([class*="bg-[#0"] *):not([class*="bg-[#1"] *),
+.light .text-white\/60:not(.card-glow *):not([class*="bg-black"] *):not([class*="bg-[#0"] *):not([class*="bg-[#1"] *),
+.light .text-white\/50:not(.card-glow *):not([class*="bg-black"] *):not([class*="bg-[#0"] *):not([class*="bg-[#1"] *),
+.light .text-white\/45:not(.card-glow *):not([class*="bg-black"] *):not([class*="bg-[#0"] *):not([class*="bg-[#1"] *),
+.light .text-white\/40:not(.card-glow *):not([class*="bg-black"] *):not([class*="bg-[#0"] *):not([class*="bg-[#1"] *) {
+  color: #4b5563 !important;
+}
+
+.light .text-white\/30:not(.card-glow *):not([class*="bg-black"] *):not([class*="bg-[#0"] *):not([class*="bg-[#1"] *) {
+  color: #888888 !important;
+}
+
+/* Header link hovers & mobile menus */
+.light header {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.light header nav a:hover {
+  color: #111111 !important;
+}
+
+.light header [class*="bg-[#080808]"] {
+  background-color: #ffffff !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.light header [class*="bg-[#080808]"] a {
+  color: #4b5563 !important;
+}
+
+.light header [class*="bg-[#080808]"] a:hover {
+  color: #111111 !important;
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Hide background glows */
+.light .pointer-events-none.blur-\[100px\],
+.light .pointer-events-none.blur-\[120px\] {
+  display: none !important;
+}
+
+/* Hide screen image blending layers like fire horse */
+.light .mix-blend-screen {
+  display: none !important;
+}
+
+/* Soft borders */
+.light .border-white\/5,
+.light .border-b.border-white\/5,
+.light .border-t.border-white\/5,
+.light .border-y.border-white\/5,
+.light .border-x.border-white\/5 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Hover adjustments */
+.light .hover\:bg-white\/5:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}

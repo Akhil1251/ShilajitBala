@@ -101,8 +101,8 @@ export default function Checkout() {
                   </p>
                 </div>
 
-                <a href="tel:+918269979897" className="btn-fire animate-glow-red w-full text-center py-5 flex items-center justify-center gap-3">
-                  <ShoppingCart className="w-5 h-5" /> Buy Now — Call +91 8269979897
+                <a href="tel:+916269696232" className="btn-fire animate-glow-red w-full text-center py-5 flex items-center justify-center gap-3">
+                  <ShoppingCart className="w-5 h-5" /> Buy Now — Call +91 6269696232
                 </a>
 
                 {/* Micro trust */}

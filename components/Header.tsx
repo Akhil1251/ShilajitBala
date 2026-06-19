@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X, ShoppingCart, Sun, Moon } from "lucide-react";
 
 const navLinks = [
   { label: "Product", href: "#product" },
@@ -11,7 +11,12 @@ const navLinks = [
   { label: "Order", href: "#checkout" },
 ];
 
-export default function Header() {
+interface HeaderProps {
+  theme: "light" | "dark";
+  toggleTheme: () => void;
+}
+
+export default function Header({ theme, toggleTheme }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -45,23 +50,39 @@ export default function Header() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+            </button>
             <a
-              href="tel:+918269979897"
+              href="tel:+916269696232"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-[11px] font-black text-black bg-gold hover:bg-gold-light uppercase tracking-wider transition-all shadow-md shadow-gold/20 border border-gold/30"
             >
               <ShoppingCart className="w-3.5 h-3.5" /> Buy Now
             </a>
           </div>
 
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-md text-white/70 hover:bg-white/5 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          {/* Mobile Right Controls (Theme Toggle + Menu Toggle) */}
+          <div className="flex lg:hidden items-center gap-1.5">
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? <Moon className="w-4.5 h-4.5" /> : <Sun className="w-4.5 h-4.5" />}
+            </button>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-md text-white/70 hover:bg-white/5 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -80,7 +101,7 @@ export default function Header() {
           ))}
           <div className="pt-3 px-3">
             <a
-              href="tel:+918269979897"
+              href="tel:+916269696232"
               onClick={() => setIsOpen(false)}
               className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-black text-black bg-gold uppercase tracking-wider border border-gold/30"
             >

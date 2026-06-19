@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Sparkles, ShoppingCart, Play } from "lucide-react";
+import { Sparkles, ShoppingCart, Play, ChevronLeft, ChevronRight } from "lucide-react";
 
 const clientTestimonials = [
   { image: "/thumb-1.png", videoUrl: "/videos/Neha.mp4" },
@@ -21,6 +21,17 @@ const ingredients = [
 
 export default function ProductShowcase() {
   const [playingIdx, setPlayingIdx] = useState<number | null>(null);
+  const [activeVideoIdx, setActiveVideoIdx] = useState(0);
+
+  const prevVideo = () => {
+    setPlayingIdx(null);
+    setActiveVideoIdx((prev) => (prev === 0 ? clientTestimonials.length - 1 : prev - 1));
+  };
+
+  const nextVideo = () => {
+    setPlayingIdx(null);
+    setActiveVideoIdx((prev) => (prev === clientTestimonials.length - 1 ? 0 : prev + 1));
+  };
 
   return (
     <section id="product" className="relative overflow-hidden">
@@ -42,46 +53,90 @@ export default function ProductShowcase() {
             </h2>
           </div>
 
-          {/* Testimonial Videos Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {clientTestimonials.map((exp, i) => {
-              const isPlaying = playingIdx === i;
-              return (
-                <div key={i} className="card-glow bg-[#0c0c0c] rounded-2xl p-4 group">
-                  <div className="relative w-full aspect-[3/4] bg-black rounded-xl overflow-hidden mb-4 border border-white/5">
-                    {isPlaying && exp.videoUrl ? (
-                      <video className="w-full h-full object-cover" controls autoPlay src={exp.videoUrl}>
-                        Your browser does not support the video tag.
-                      </video>
-                    ) : (
-                      <>
-                        <Image
-                          src={exp.image}
-                          alt="Verified Client Review"
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
-                        />
-                        <button
-                          onClick={() => setPlayingIdx(i)}
-                          className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-gold/90 text-black flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 active:scale-95 transition-transform animate-glow-gold z-20"
-                          aria-label="Play client review"
-                        >
-                          <Play className="w-5 h-5 fill-black stroke-none ml-0.5" />
-                        </button>
-                      </>
-                    )}
-                  </div>
-                  <div className="text-center">
-                    <span className="text-[10px] text-gold font-bold uppercase tracking-widest">Verified Client</span>
-                  </div>
-                </div>
-              );
-            })}
+          {/* Testimonial Videos Slider */}
+          <div className="relative max-w-md mx-auto px-4">
+            {/* Slider Container */}
+            <div className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden card-glow bg-[#0c0c0c] border border-white/10 flex flex-col p-4 select-none">
+              
+              {/* Image / Video Wrapper */}
+              <div className="relative flex-1 bg-black rounded-xl overflow-hidden border border-white/5 group">
+                {playingIdx === activeVideoIdx ? (
+                  <video 
+                    className="w-full h-full object-cover" 
+                    controls 
+                    autoPlay 
+                    src={clientTestimonials[activeVideoIdx].videoUrl}
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <>
+                    <Image
+                      src={clientTestimonials[activeVideoIdx].image}
+                      alt="Verified Client Review"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
+                    />
+                    
+                    {/* Navigation Arrows inside the Card */}
+                    <button
+                      onClick={prevVideo}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/75 border border-white/15 text-white/80 hover:text-white hover:bg-black/90 flex items-center justify-center cursor-pointer transition-all active:scale-95 z-20"
+                      aria-label="Previous testimonial"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    
+                    <button
+                      onClick={nextVideo}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/75 border border-white/15 text-white/80 hover:text-white hover:bg-black/90 flex items-center justify-center cursor-pointer transition-all active:scale-95 z-20"
+                      aria-label="Next testimonial"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+
+                    <button
+                      onClick={() => setPlayingIdx(activeVideoIdx)}
+                      className="absolute inset-0 m-auto w-14 h-14 rounded-full bg-gold/90 text-black flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 active:scale-95 transition-transform animate-glow-gold z-20"
+                      aria-label="Play client review"
+                    >
+                      <Play className="w-5 h-5 fill-black stroke-none ml-0.5" />
+                    </button>
+                  </>
+                )}
+              </div>
+
+              {/* Slider Footer */}
+              <div className="pt-3 text-center">
+                <span className="text-[10px] text-gold font-bold uppercase tracking-widest">
+                  Verified Client
+                </span>
+              </div>
+            </div>
+
+            {/* Slider Dots */}
+            <div className="flex justify-center gap-2 mt-4">
+              {clientTestimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    setPlayingIdx(null);
+                    setActiveVideoIdx(idx);
+                  }}
+                  className={`w-2 h-2 rounded-full transition-all duration-200 cursor-pointer ${
+                    activeVideoIdx === idx 
+                      ? "bg-gold w-6" 
+                      : "bg-white/20 hover:bg-white/40"
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
 
           {/* CTA */}
           <div className="mt-12 text-center">
-            <a href="tel:+918269979897" className="btn-fire animate-glow-red">
+            <a href="tel:+916269696232" className="btn-fire animate-glow-red">
               <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
             </a>
           </div>
@@ -166,7 +221,7 @@ export default function ProductShowcase() {
               <div className="flex justify-center relative py-4">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-gold/10 animate-pulse pointer-events-none" />
                 <div className="relative w-52 h-52 z-10 animate-float">
-                  <Image src="/product.png" alt="OjasEarth Wellness Kit" fill className="object-contain" />
+                  <Image src="/Carousel%20Hero/2.jpeg" alt="OjasEarth Wellness Kit" fill className="object-contain" />
                 </div>
               </div>
 
@@ -185,7 +240,7 @@ export default function ProductShowcase() {
 
             {/* Bottom CTA row */}
             <div className="mt-10 pt-8 border-t border-white/5 flex items-center justify-center">
-              <a href="tel:+918269979897" className="btn-fire animate-glow-red w-full sm:w-auto text-center">
+              <a href="tel:+916269696232" className="btn-fire animate-glow-red w-full sm:w-auto text-center">
                 <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
               </a>
             </div>

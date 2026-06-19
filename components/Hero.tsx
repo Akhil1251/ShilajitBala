@@ -149,7 +149,7 @@ export default function Hero() {
 
               {/* Dual CTAs */}
               <div className="flex justify-center lg:justify-start max-w-md mx-auto lg:mx-0 w-full pt-2">
-                <a href="tel:+918269979897" className="btn-fire animate-glow-red w-full text-center">
+                <a href="tel:+916269696232" className="btn-fire animate-glow-red w-full text-center">
                   <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
                 </a>
               </div>

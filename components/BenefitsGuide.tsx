@@ -77,7 +77,7 @@ export default function BenefitsGuide() {
                   </div>
                 ))}
               </div>
-              <a href="tel:+918269979897" className="btn-fire animate-glow-red inline-flex">
+              <a href="tel:+916269696232" className="btn-fire animate-glow-red inline-flex">
                 <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
               </a>
             </div>
@@ -153,7 +153,7 @@ export default function BenefitsGuide() {
 
           {/* Bottom CTA */}
           <div className="mt-14 text-center flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+918269979897" className="btn-fire animate-glow-red">
+            <a href="tel:+916269696232" className="btn-fire animate-glow-red">
               <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
             </a>
           </div>
