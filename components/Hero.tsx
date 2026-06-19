@@ -5,12 +5,14 @@ import Image from "next/image";
 import { ShoppingCart, Award, Shield, Sparkles, Gem, ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const carouselImages = [
-  { src: "/product.png", alt: "OjasEarth Stamina 69 Premium Combo" },
-  { src: "/carousel-2.png", alt: "Premium Raw Ayurvedic Ingredients" },
-  { src: "/carousel-3.png", alt: "Key Wellness Benefits & Power" },
-  { src: "/carousel-4.png", alt: "Step-by-Step Usage Guide" },
-  { src: "/carousel-5.png", alt: "Trust Seals & Safety Certifications" },
-  { src: "/carousel-6.png", alt: "Pure Himalayan Shilajit & Gold" },
+  { src: "/Carousel%20Hero/1.jpeg", alt: "OjasEarth Stamina 69 Premium Combo" },
+  { src: "/Carousel%20Hero/2.jpeg", alt: "Premium Raw Ayurvedic Ingredients" },
+  { src: "/Carousel%20Hero/3.jpeg", alt: "Key Wellness Benefits & Power" },
+  { src: "/Carousel%20Hero/4.jpeg", alt: "Step-by-Step Usage Guide" },
+  { src: "/Carousel%20Hero/5.jpeg", alt: "Trust Seals & Safety Certifications" },
+  { src: "/Carousel%20Hero/6.jpeg", alt: "Pure Himalayan Shilajit & Gold" },
+  { src: "/Carousel%20Hero/7.jpeg", alt: "Quality Tested & Certified Pure" },
+  { src: "/Carousel%20Hero/8.jpeg", alt: "Ayurvedic Health & Wellness Care" },
 ];
 
 export default function Hero() {
