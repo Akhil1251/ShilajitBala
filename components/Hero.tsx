@@ -36,34 +36,34 @@ export default function Hero() {
 
       {/* ── Main Hero Content ── */}
       <div className="relative z-10 flex-1 flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 lg:py-0">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-6 sm:py-8 lg:py-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center relative min-h-[calc(100vh-140px)] lg:min-h-0">
 
             {/* Left: Copy */}
-            <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
+            <div className="space-y-5 lg:space-y-8 text-center lg:text-left z-10 relative py-2 lg:py-0">
               <div className="space-y-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-gold/10 border border-gold/20 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-gold">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-gold/10 border border-gold/20 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.25em] text-gold">
                   <Sparkles className="w-3 h-3" /> OjasEarth Stamina 69
                 </span>
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-black uppercase leading-[0.85] tracking-[-0.03em]">
+                <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-black uppercase leading-[0.9] tracking-[-0.03em]">
                   <span className="block text-white">Unleash</span>
                   <span className="block text-white/90">Your Inner</span>
                   <span className="block text-metallic">Strength</span>
                 </h1>
               </div>
 
-              <p className="text-base sm:text-lg text-white/60 font-semibold max-w-lg mx-auto lg:mx-0 leading-relaxed">
+              <p className="text-xs sm:text-base lg:text-lg text-white/60 font-semibold max-w-lg mx-auto lg:mx-0 leading-relaxed">
                 Premium Ayurvedic Formula powered by{" "}
                 <span className="text-gold font-bold">Gold, Shilajit</span> &amp; Herbal Extracts.
                 Designed for men who demand excellence.
               </p>
 
               {/* Benefit Checklist */}
-              <div className="grid grid-cols-2 gap-x-6 gap-y-3 max-w-md mx-auto lg:mx-0">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 lg:gap-y-3 max-w-sm sm:max-w-md mx-auto lg:mx-0 text-xs sm:text-sm font-bold">
                 {["Supports Daily Energy", "Boosts Confidence", "Enhances Vitality", "Builds Strength"].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2.5 text-sm font-bold text-white/80">
-                    <div className="w-5 h-5 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center shrink-0">
-                      <Check className="w-3 h-3 text-gold" />
+                  <div key={i} className="flex items-center gap-2.5 text-white/80">
+                    <div className="w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center shrink-0">
+                      <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-gold" />
                     </div>
                     <span>{item}</span>
                   </div>
@@ -71,7 +71,7 @@ export default function Hero() {
               </div>
 
               {/* Dual CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start w-full max-w-md mx-auto lg:mx-0">
                 <a href="#checkout" className="btn-fire animate-glow-red">
                   <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
                 </a>
@@ -86,24 +86,24 @@ export default function Hero() {
               </div>
 
               {/* Price highlight */}
-              <div className="price-tag rounded-2xl px-6 py-4 flex items-center gap-4 justify-center lg:justify-start max-w-md mx-auto lg:mx-0">
+              <div className="price-tag rounded-2xl px-4 py-2.5 lg:px-6 lg:py-4 flex items-center gap-3 lg:gap-4 justify-center lg:justify-start max-w-xs sm:max-w-md mx-auto lg:mx-0">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-white/30 line-through text-base font-semibold">₹1,799</span>
-                  <span className="font-black text-3xl text-metallic">₹1,619</span>
+                  <span className="text-white/30 line-through text-xs lg:text-base font-semibold">₹1,799</span>
+                  <span className="font-black text-xl sm:text-2xl lg:text-3xl text-metallic">₹1,619</span>
                 </div>
-                <span className="price-save px-3 py-1.5 text-red-400 text-[11px] font-black rounded-full uppercase tracking-wider animate-pulse">
+                <span className="price-save px-2.5 py-1 lg:px-3 lg:py-1.5 text-red-400 text-[9px] lg:text-[11px] font-black rounded-full uppercase tracking-wider animate-pulse">
                   Save 10%
                 </span>
               </div>
             </div>
 
-            {/* Right: Product Image */}
-            <div className="flex justify-center relative order-1 lg:order-2">
+            {/* Right: Product Image (blended into bg on mobile, side column on desktop) */}
+            <div className="absolute lg:relative inset-y-0 right-0 w-full lg:w-auto flex items-center justify-center lg:justify-end pointer-events-none z-0 lg:z-10 lg:order-2">
               {/* Glowing ring */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-orange-500/8 blur-3xl pointer-events-none" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 sm:w-72 sm:h-72 rounded-full border border-gold/10 pointer-events-none animate-pulse" />
+              <div className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-orange-500/8 blur-3xl pointer-events-none" />
+              <div className="absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full border border-gold/10 pointer-events-none animate-pulse" />
 
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px] animate-float z-10">
+              <div className="relative w-[70vw] h-[70vw] max-w-[260px] max-h-[260px] sm:max-w-[340px] sm:max-h-[340px] lg:w-[420px] lg:h-[420px] lg:max-w-none lg:max-h-none animate-float opacity-15 lg:opacity-100 mix-blend-lighten lg:mix-blend-normal">
                 <Image
                   src="/product.png"
                   alt="OjasEarth Stamina 69 Premium Combo"

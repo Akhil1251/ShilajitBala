@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Star, ShieldCheck, Play, Plus, Minus, HelpCircle, ShoppingCart, MessageCircle } from "lucide-react";
+import { Star, ShieldCheck, Plus, Minus, HelpCircle, ShoppingCart, MessageCircle } from "lucide-react";
 
 /* ── Data ── */
 const testimonials = [
@@ -11,12 +11,6 @@ const testimonials = [
   { name: "Amit V.", rating: 5, comment: "Great combination of capsules and oil. Highly recommended." },
   { name: "Sandeep Y.", rating: 5, comment: "Natural ingredients that actually work! Very satisfied." },
   { name: "Karan S.", rating: 5, comment: "Improved strength and recovery. Worth every penny." },
-];
-
-const experts = [
-  { name: "Dr. Neha Sharma", title: "Ayurvedic Expert", image: "/neha.png", videoUrl: "" },
-  { name: "Dr. Rajiv Mehta", title: "Wellness Consultant", image: "/rajiv.png", videoUrl: "" },
-  { name: "Dr. Ankit Patel", title: "Herbal Specialist", image: "/ankit.png", videoUrl: "" },
 ];
 
 const faqs = [
@@ -28,7 +22,6 @@ const faqs = [
 ];
 
 export default function SocialProof() {
-  const [playingIdx, setPlayingIdx] = useState<number | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
@@ -87,97 +80,43 @@ export default function SocialProof() {
       </div>
 
       {/* ═══════════════════════════════════════════════════════
-          BLOCK 2: Expert Videos + FAQ — Side by Side on Desktop
+          BLOCK 2: FAQ Accordion
           ═══════════════════════════════════════════════════════ */}
       <div className="fire-bg-subtle py-20 lg:py-28 relative">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gold/3 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 scroll-reveal">
+          <div className="space-y-2 mb-10 text-center">
+            <span className="inline-flex items-center gap-1 text-[10px] font-bold text-gold uppercase tracking-[0.25em]">
+              <HelpCircle className="w-3.5 h-3.5" /> FAQ
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight">
+              Questions<span className="text-metallic">?</span>
+            </h2>
+          </div>
 
-            {/* Left: Expert Videos */}
-            <div className="lg:col-span-7 scroll-reveal">
-              <div className="space-y-2 mb-10">
-                <span className="text-[10px] font-bold text-gold uppercase tracking-[0.25em]">Verified Science</span>
-                <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight">
-                  What Experts <span className="text-metallic">Say</span>
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {experts.map((exp, i) => {
-                  const isPlaying = playingIdx === i;
-                  return (
-                    <div key={i} className="card-glow bg-[#0c0c0c] rounded-2xl p-3 group">
-                      <div className="relative w-full aspect-[3/4] bg-black rounded-xl overflow-hidden mb-3 border border-white/5">
-                        {isPlaying && exp.videoUrl ? (
-                          <video className="w-full h-full object-cover" controls autoPlay src={exp.videoUrl}>
-                            Your browser does not support the video tag.
-                          </video>
-                        ) : (
-                          <>
-                            <Image
-                              src={exp.image}
-                              alt={exp.name}
-                              fill
-                              className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
-                            />
-                            <button
-                              onClick={() => setPlayingIdx(i)}
-                              className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-gold/90 text-black flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 active:scale-95 transition-transform animate-glow-gold"
-                              aria-label={`Play review by ${exp.name}`}
-                            >
-                              <Play className="w-5 h-5 fill-black stroke-none ml-0.5" />
-                            </button>
-                          </>
-                        )}
-                      </div>
-                      <div className="text-center">
-                        <h4 className="text-xs font-black uppercase text-white tracking-wider">{exp.name}</h4>
-                        <span className="text-[9px] text-gold font-bold uppercase tracking-wider">{exp.title}</span>
-                      </div>
+          <div className="space-y-3">
+            {faqs.map((faq, i) => {
+              const isOpen = openFaq === i;
+              return (
+                <div key={i} className="card-glow bg-[#0c0c0c] rounded-xl overflow-hidden">
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : i)}
+                    className="w-full text-left px-5 py-4 flex items-center justify-between gap-3 font-black text-white hover:text-gold transition-colors uppercase tracking-wider cursor-pointer"
+                  >
+                    <span className="text-[11px] leading-snug">{faq.q}</span>
+                    <div className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center shrink-0">
+                      {isOpen ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
                     </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Right: FAQ Accordion */}
-            <div className="lg:col-span-5 scroll-reveal">
-              <div className="space-y-2 mb-10">
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-gold uppercase tracking-[0.25em]">
-                  <HelpCircle className="w-3.5 h-3.5" /> FAQ
-                </span>
-                <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight">
-                  Questions<span className="text-metallic">?</span>
-                </h2>
-              </div>
-
-              <div className="space-y-3">
-                {faqs.map((faq, i) => {
-                  const isOpen = openFaq === i;
-                  return (
-                    <div key={i} className="card-glow bg-[#0c0c0c] rounded-xl overflow-hidden">
-                      <button
-                        onClick={() => setOpenFaq(isOpen ? null : i)}
-                        className="w-full text-left px-5 py-4 flex items-center justify-between gap-3 font-black text-white hover:text-gold transition-colors uppercase tracking-wider cursor-pointer"
-                      >
-                        <span className="text-[11px] leading-snug">{faq.q}</span>
-                        <div className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                          {isOpen ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
-                        </div>
-                      </button>
-                      {isOpen && (
-                        <div className="px-5 pb-5 text-[11px] text-white/60 leading-relaxed border-t border-white/5 pt-3">
-                          {faq.a}
-                        </div>
-                      )}
+                  </button>
+                  {isOpen && (
+                    <div className="px-5 pb-5 text-[11px] text-white/60 leading-relaxed border-t border-white/5 pt-3">
+                      {faq.a}
                     </div>
-                  );
-                })}
-              </div>
-            </div>
-
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           {/* Bottom CTA */}

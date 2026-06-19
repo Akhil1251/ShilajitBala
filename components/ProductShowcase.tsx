@@ -1,11 +1,13 @@
-import Image from "next/image";
-import { Zap, Shield, Flame, Activity, Sparkles, ShoppingCart, MessageCircle } from "lucide-react";
+"use client";
 
-const features = [
-  { title: "Energy & Endurance", desc: "Helps improve stamina and daily performance.", icon: <Activity className="w-7 h-7 text-gold" /> },
-  { title: "Daily Vitality", desc: "Promotes natural drive and active lifestyle.", icon: <Zap className="w-7 h-7 text-gold" /> },
-  { title: "Premium Herbs", desc: "Crafted with powerful Ayurvedic ingredients.", icon: <Shield className="w-7 h-7 text-gold" /> },
-  { title: "Active Lifestyle", desc: "Supports strength, recovery and overall wellness.", icon: <Flame className="w-7 h-7 text-gold" /> },
+import { useState } from "react";
+import Image from "next/image";
+import { Sparkles, ShoppingCart, MessageCircle, Play } from "lucide-react";
+
+const experts = [
+  { name: "Dr. Neha Sharma", title: "Ayurvedic Expert", image: "/neha.png", videoUrl: "" },
+  { name: "Dr. Rajiv Mehta", title: "Wellness Consultant", image: "/rajiv.png", videoUrl: "" },
+  { name: "Dr. Ankit Patel", title: "Herbal Specialist", image: "/ankit.png", videoUrl: "" },
 ];
 
 const ingredients = [
@@ -18,43 +20,70 @@ const ingredients = [
 ];
 
 export default function ProductShowcase() {
+  const [playingIdx, setPlayingIdx] = useState<number | null>(null);
+
   return (
     <section id="product" className="relative overflow-hidden">
       {/* ═══════════════════════════════════════════════════════
-          BLOCK 1: Why Thousands Choose Stamina 69
+          BLOCK 1: What Experts Say (Video Placeholders)
           ═══════════════════════════════════════════════════════ */}
-      <div className="fire-bg-subtle py-20 lg:py-28 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-reveal">
+      <div className="fire-bg-subtle py-20 lg:py-28 border-b border-white/5 relative">
+        {/* Subtle background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 scroll-reveal">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-            <span className="text-[10px] font-bold text-gold uppercase tracking-[0.25em]">
-              Core Strengths
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-gold uppercase tracking-[0.25em]">
+              Verified Science
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight leading-tight">
-              Why Thousands Choose{" "}
-              <span className="text-metallic">Stamina 69</span>
+              What Experts <span className="text-metallic">Say</span>
             </h2>
           </div>
 
-          {/* Feature cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {features.map((f, i) => (
-              <div key={i} className="card-glow bg-[#0c0c0c] rounded-2xl p-7 flex flex-col gap-5">
-                <div className="w-14 h-14 rounded-xl bg-gold/5 border border-gold/10 flex items-center justify-center">
-                  {f.icon}
+          {/* Expert Videos Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {experts.map((exp, i) => {
+              const isPlaying = playingIdx === i;
+              return (
+                <div key={i} className="card-glow bg-[#0c0c0c] rounded-2xl p-4 group">
+                  <div className="relative w-full aspect-[3/4] bg-black rounded-xl overflow-hidden mb-4 border border-white/5">
+                    {isPlaying && exp.videoUrl ? (
+                      <video className="w-full h-full object-cover" controls autoPlay src={exp.videoUrl}>
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : (
+                      <>
+                        <Image
+                          src={exp.image}
+                          alt={exp.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
+                        />
+                        <button
+                          onClick={() => setPlayingIdx(i)}
+                          className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-gold/90 text-black flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 active:scale-95 transition-transform animate-glow-gold z-20"
+                          aria-label={`Play review by ${exp.name}`}
+                        >
+                          <Play className="w-5 h-5 fill-black stroke-none ml-0.5" />
+                        </button>
+                      </>
+                    )}
+                  </div>
+                  <div className="text-center">
+                    <h4 className="text-xs font-black uppercase text-white tracking-wider">{exp.name}</h4>
+                    <span className="text-[9px] text-gold font-bold uppercase tracking-wider">{exp.title}</span>
+                  </div>
                 </div>
-                <div className="space-y-1.5">
-                  <h3 className="text-sm font-black uppercase tracking-wider text-white">{f.title}</h3>
-                  <p className="text-xs text-white/50 leading-relaxed">{f.desc}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* CTA */}
           <div className="mt-12 text-center">
             <a href="#checkout" className="btn-fire animate-glow-red">
-              <ShoppingCart className="w-5 h-5" /> Order Now — ₹1,619
+              <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
             </a>
           </div>
         </div>
