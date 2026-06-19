@@ -4,10 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 import { Sparkles, ShoppingCart, Play } from "lucide-react";
 
-const experts = [
-  { name: "Dr. Neha Sharma", title: "Ayurvedic Expert", image: "/neha.png", videoUrl: "" },
-  { name: "Dr. Rajiv Mehta", title: "Wellness Consultant", image: "/rajiv.png", videoUrl: "" },
-  { name: "Dr. Ankit Patel", title: "Herbal Specialist", image: "/ankit.png", videoUrl: "" },
+const clientTestimonials = [
+  { name: "Neha Sharma", title: "Verified Client", image: "/neha.png", videoUrl: "/videos/Neha.mp4" },
+  { name: "Rajiv Mehta", title: "Verified Client", image: "/rajiv.png", videoUrl: "/videos/Rajiv.mp4" },
+  { name: "Ankit Patel", title: "Verified Client", image: "/ankit.png", videoUrl: "/videos/Ankit.mp4" },
 ];
 
 const ingredients = [
@@ -25,7 +25,7 @@ export default function ProductShowcase() {
   return (
     <section id="product" className="relative overflow-hidden">
       {/* ═══════════════════════════════════════════════════════
-          BLOCK 1: What Experts Say (Video Placeholders)
+          BLOCK 1: Suno pareshaani, client ki zubaani (Testimonials)
           ═══════════════════════════════════════════════════════ */}
       <div className="fire-bg-subtle py-10 lg:py-16 border-b border-white/5 relative">
         {/* Subtle background glow */}
@@ -35,16 +35,16 @@ export default function ProductShowcase() {
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
             <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-gold uppercase tracking-[0.25em]">
-              Verified Science
+              Client Testimonials
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight leading-tight">
-              What Experts <span className="text-metallic">Say</span>
+              Suno pareshaani, <span className="text-metallic">client ki zubaani</span>
             </h2>
           </div>
 
-          {/* Expert Videos Grid */}
+          {/* Testimonial Videos Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {experts.map((exp, i) => {
+            {clientTestimonials.map((exp, i) => {
               const isPlaying = playingIdx === i;
               return (
                 <div key={i} className="card-glow bg-[#0c0c0c] rounded-2xl p-4 group">
