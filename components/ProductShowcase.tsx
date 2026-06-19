@@ -5,9 +5,9 @@ import Image from "next/image";
 import { Sparkles, ShoppingCart, Play } from "lucide-react";
 
 const clientTestimonials = [
-  { name: "Neha Sharma", title: "Verified Client", image: "/neha.png", videoUrl: "/videos/Neha.mp4" },
-  { name: "Rajiv Mehta", title: "Verified Client", image: "/rajiv.png", videoUrl: "/videos/Rajiv.mp4" },
-  { name: "Ankit Patel", title: "Verified Client", image: "/ankit.png", videoUrl: "/videos/Ankit.mp4" },
+  { image: "/thumb-1.png", videoUrl: "/videos/Neha.mp4" },
+  { image: "/thumb-2.png", videoUrl: "/videos/Rajiv.mp4" },
+  { image: "/thumb-3.png", videoUrl: "/videos/Ankit.mp4" },
 ];
 
 const ingredients = [
@@ -57,14 +57,14 @@ export default function ProductShowcase() {
                       <>
                         <Image
                           src={exp.image}
-                          alt={exp.name}
+                          alt="Verified Client Review"
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
                         />
                         <button
                           onClick={() => setPlayingIdx(i)}
                           className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-gold/90 text-black flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 active:scale-95 transition-transform animate-glow-gold z-20"
-                          aria-label={`Play review by ${exp.name}`}
+                          aria-label="Play client review"
                         >
                           <Play className="w-5 h-5 fill-black stroke-none ml-0.5" />
                         </button>
@@ -72,8 +72,7 @@ export default function ProductShowcase() {
                     )}
                   </div>
                   <div className="text-center">
-                    <h4 className="text-xs font-black uppercase text-white tracking-wider">{exp.name}</h4>
-                    <span className="text-[9px] text-gold font-bold uppercase tracking-wider">{exp.title}</span>
+                    <span className="text-[10px] text-gold font-bold uppercase tracking-widest">Verified Client</span>
                   </div>
                 </div>
               );
