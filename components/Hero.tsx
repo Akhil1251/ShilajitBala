@@ -6,12 +6,11 @@ import { ShoppingCart, MessageCircle, Award, Shield, Sparkles, Gem, ChevronLeft,
 
 const carouselImages = [
   { src: "/product.png", alt: "OjasEarth Stamina 69 Premium Combo" },
-  { src: "/man.png", alt: "Peak Physical Performance and Vitality" },
-  { src: "/sourcing.png", alt: "100% Pure Himalayan Sourcing" },
-  { src: "/mixing.png", alt: "Authentic Ayurvedic Preparation" },
-  { src: "/testing.png", alt: "Rigorous Lab Testing and Quality Standards" },
-  { src: "/shilajit.png", alt: "Premium Purified Himalayan Shilajit" },
-  { src: "/kesar.png", alt: "Pure Saffron (Kesar) Extract" },
+  { src: "/carousel-2.png", alt: "Premium Raw Ayurvedic Ingredients" },
+  { src: "/carousel-3.png", alt: "Key Wellness Benefits & Power" },
+  { src: "/carousel-4.png", alt: "Step-by-Step Usage Guide" },
+  { src: "/carousel-5.png", alt: "Trust Seals & Safety Certifications" },
+  { src: "/carousel-6.png", alt: "Pure Himalayan Shilajit & Gold" },
 ];
 
 export default function Hero() {
@@ -127,11 +126,6 @@ export default function Hero() {
             {/* Right: Flipkart/Amazon Style Product Details (Order 2) */}
             <div className="lg:col-span-6 space-y-6 text-center lg:text-left order-2">
               <div className="space-y-3">
-                {/* Brand / Cert Badge */}
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-gold/10 border border-gold/20 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-gold">
-                  🌿 100% Premium Ayurvedic Formula
-                </span>
-                
                 {/* Product Title */}
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-tight">
                   OjasEarth Stamina 69 <br className="hidden lg:block"/>
@@ -149,20 +143,6 @@ export default function Hero() {
                     4.8 (1,248+ Reviews)
                   </span>
                 </div>
-              </div>
-
-              {/* Price Row */}
-              <div className="price-tag rounded-2xl p-5 flex flex-col sm:flex-row items-center gap-4 justify-between max-w-md mx-auto lg:mx-0">
-                <div className="text-center sm:text-left">
-                  <span className="text-[10px] text-white/40 font-bold block uppercase tracking-wider mb-1">Exclusive Combo Offer</span>
-                  <div className="flex items-baseline gap-2.5 justify-center sm:justify-start">
-                    <span className="text-white/30 line-through text-sm font-semibold">₹1,799</span>
-                    <span className="font-black text-2xl sm:text-3xl text-metallic">₹1,619</span>
-                  </div>
-                </div>
-                <span className="price-save px-3 py-1.5 text-red-400 text-[10px] sm:text-xs font-black rounded-full uppercase tracking-wider animate-pulse whitespace-nowrap">
-                  Save 10% OFF
-                </span>
               </div>
 
               {/* Dual CTAs */}
