@@ -39,12 +39,12 @@ export default function Checkout() {
               </p>
 
               {/* Product image */}
-              <div className="relative w-full max-w-xs aspect-square mx-auto lg:mx-0 rounded-2xl overflow-hidden border border-white/5 group">
+              <div className="relative w-full max-w-xs aspect-square mx-auto lg:mx-0 rounded-2xl overflow-hidden border border-white/5 bg-black/25 group">
                 <Image
-                  src="/product.png"
+                  src="/Carousel%20Hero/1.jpeg"
                   alt="Stamina 69 Combo Pack"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
