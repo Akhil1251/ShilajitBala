@@ -16,48 +16,119 @@
 
 @layer base {
   body {
-    background-color: #060606;
+    background-color: #050505;
     color: #FFFFFF;
     @apply antialiased;
   }
-}
 
-@keyframes blink-glow-gold {
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
-    border-color: rgba(212, 175, 55, 0.4);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.8), 0 0 12px rgba(212, 175, 55, 0.6);
-    border-color: rgba(212, 175, 55, 0.9);
-    transform: scale(1.03);
+  ::selection {
+    background: rgba(212, 175, 55, 0.3);
+    color: #fff;
   }
 }
 
-@keyframes blink-glow-red {
+/* ── Fire / Ember Gradient Backgrounds ── */
+.fire-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 65% 40%, rgba(234, 88, 12, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 30% 70%, rgba(220, 38, 38, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
+    #050505;
+}
+
+.fire-bg-subtle {
+  background:
+    radial-gradient(ellipse at 75% 30%, rgba(234, 88, 12, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 25% 70%, rgba(212, 175, 55, 0.04) 0%, transparent 40%),
+    #080808;
+}
+
+.ember-bg {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+    #0a0a0a;
+}
+
+/* ── Metallic Gold Text ── */
+.text-metallic {
+  background: linear-gradient(135deg, #AA8C2C 0%, #D4AF37 25%, #E5C158 50%, #D4AF37 75%, #AA8C2C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-fire {
+  background: linear-gradient(135deg, #D4AF37 0%, #EA580C 50%, #DC2626 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Gold Divider ── */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.4) 50%, transparent 100%);
+}
+
+/* ── Glowing Card Border ── */
+.card-glow {
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 0 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+}
+
+.card-glow:hover {
+  border-color: rgba(212, 175, 55, 0.2);
+  box-shadow: inset 0 1px 0 rgba(212, 175, 55, 0.05), 0 0 30px rgba(212, 175, 55, 0.08);
+  transform: translateY(-3px);
+}
+
+/* ── Button Glow Animations ── */
+@keyframes glow-gold {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(220, 38, 38, 0.4);
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.3), 0 4px 15px rgba(212, 175, 55, 0.15);
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 25px rgba(220, 38, 38, 0.8), 0 0 12px rgba(220, 38, 38, 0.6);
-    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 4px 30px rgba(212, 175, 55, 0.3), 0 0 60px rgba(212, 175, 55, 0.1);
+    transform: scale(1.025);
+  }
+}
+
+@keyframes glow-red {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(220, 38, 38, 0.3), 0 4px 15px rgba(220, 38, 38, 0.15);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.6), 0 4px 30px rgba(220, 38, 38, 0.3), 0 0 60px rgba(220, 38, 38, 0.1);
+    transform: scale(1.025);
   }
 }
 
 .animate-glow-gold {
-  animation: blink-glow-gold 2.5s infinite ease-in-out;
+  animation: glow-gold 2.5s infinite ease-in-out;
 }
 
 .animate-glow-red {
-  animation: blink-glow-red 2.5s infinite ease-in-out;
+  animation: glow-red 2.5s infinite ease-in-out;
 }
 
+/* ── Float Animation ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* ── Scroll Reveal (CSS native) ── */
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -71,5 +142,43 @@
   animation-name: fade-in-up;
   animation-fill-mode: both;
   animation-timeline: --revealer;
-  animation-range: entry 10% cover 30%;
+  animation-range: entry 5% cover 22%;
+}
+
+/* ── CTA Button Styles ── */
+.btn-fire {
+  @apply inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg font-black text-white bg-red-600 uppercase tracking-wider text-sm cursor-pointer transition-all;
+}
+
+.btn-fire:hover {
+  @apply bg-red-700;
+}
+
+.btn-gold {
+  @apply inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg font-bold text-gold border border-gold/30 uppercase tracking-wider text-sm cursor-pointer transition-all;
+}
+
+.btn-gold:hover {
+  @apply border-gold bg-white/5;
+}
+
+/* ── Pulse ring ── */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  animation: pulse-ring 2s ease-out infinite;
 }

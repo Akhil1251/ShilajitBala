@@ -1,127 +1,135 @@
 import Image from "next/image";
-import { Check, Flame, MessageCircle, ShoppingCart, Award, ShieldAlert, Sparkles } from "lucide-react";
+import { Check, ShoppingCart, MessageCircle, Award, Shield, Sparkles, Gem } from "lucide-react";
 
 export default function Hero() {
-  const trustBadges = [
-    { label: "100% Ayurvedic", icon: <Award className="w-5 h-5 text-gold" /> },
-    { label: "Made in India", icon: <Award className="w-5 h-5 text-gold" /> },
-    { label: "Premium Ingredients", icon: <Sparkles className="w-5 h-5 text-gold" /> },
-    { label: "Secure Checkout", icon: <Award className="w-5 h-5 text-gold" /> },
-  ];
-
   return (
-    <section className="relative overflow-hidden bg-[#060606] py-16 lg:py-24 border-b border-white/5">
-      {/* Background decorations: Fiery orange mesh blur */}
-      <div className="absolute top-1/3 right-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-600/10 rounded-full blur-3xl pointer-events-none z-0" />
-      <div className="absolute top-1/2 right-10 w-[400px] h-[400px] bg-gold/5 rounded-full blur-3xl pointer-events-none z-0" />
+    <section className="relative min-h-[100dvh] overflow-hidden bg-[#050505] flex flex-col">
+      {/* ── Layered Fire Background ── */}
+      <div className="absolute inset-0 fire-bg" />
 
-      {/* Trust badges bar at the very top of Hero */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-white/5 pb-6 mb-12 hidden lg:flex justify-between items-center text-xs text-white/50 font-semibold tracking-wider uppercase z-10 relative">
-        <div className="flex items-center gap-1.5">
-          <Award className="w-4 h-4 text-gold" /> Premium Ingredients
-        </div>
-        <div className="flex items-center gap-1.5">
-          <Award className="w-4 h-4 text-gold" /> Ayurvedic Formula
-        </div>
-        <div className="flex items-center gap-1.5">
-          <Award className="w-4 h-4 text-gold" /> Made in India
-        </div>
-        <div className="flex items-center gap-1.5">
-          <Award className="w-4 h-4 text-gold" /> Customer Reviews
-        </div>
-        <div className="flex items-center gap-1.5">
-          <Award className="w-4 h-4 text-gold" /> Expert Approved
+      {/* Fire horse background image */}
+      <div className="absolute inset-0 opacity-25 mix-blend-screen pointer-events-none">
+        <Image
+          src="/fire-horse.png"
+          alt=""
+          fill
+          className="object-cover object-center"
+          priority
+        />
+      </div>
+
+      {/* Extra fire glow blobs */}
+      <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-orange-600/12 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] bg-red-600/8 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 right-0 w-[300px] h-[300px] bg-gold/6 rounded-full blur-[80px] pointer-events-none" />
+
+      {/* ── Trust Badge Top Bar ── */}
+      <div className="relative z-20 border-b border-white/5 bg-black/40 backdrop-blur-sm shrink-0">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-center lg:justify-between items-center gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 overflow-x-auto">
+          <span className="flex items-center gap-1.5 whitespace-nowrap"><Award className="w-3.5 h-3.5 text-gold" /> Premium Ingredients</span>
+          <span className="hidden sm:flex items-center gap-1.5 whitespace-nowrap"><Sparkles className="w-3.5 h-3.5 text-gold" /> Ayurvedic Formula</span>
+          <span className="hidden md:flex items-center gap-1.5 whitespace-nowrap"><Shield className="w-3.5 h-3.5 text-gold" /> Made in India</span>
+          <span className="hidden lg:flex items-center gap-1.5 whitespace-nowrap"><Award className="w-3.5 h-3.5 text-gold" /> 1,248+ Reviews</span>
+          <span className="hidden xl:flex items-center gap-1.5 whitespace-nowrap"><Gem className="w-3.5 h-3.5 text-gold" /> Expert Approved</span>
         </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
-          {/* Left Text Column */}
-          <div className="lg:col-span-7 space-y-8 text-center lg:text-left">
-            <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-sans font-black tracking-tight leading-none text-white uppercase">
-                <span className="block text-gold-light">Unleash</span>
-                <span className="block text-white">Your Inner</span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-orange-500 to-red-600 block shadow-sm">
-                  Strength
+      {/* ── Main Hero Content ── */}
+      <div className="relative z-10 flex-1 flex items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 lg:py-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center">
+
+            {/* Left: Copy */}
+            <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
+              <div className="space-y-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-gold/10 border border-gold/20 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-gold">
+                  <Sparkles className="w-3 h-3" /> OjasEarth Stamina 69
                 </span>
-              </h1>
-              <p className="text-base sm:text-lg text-white/80 font-bold max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                Premium Ayurvedic Formula powered by <span className="text-gold">Gold, Shilajit</span> & Herbal Extracts.
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-black uppercase leading-[0.85] tracking-[-0.03em]">
+                  <span className="block text-white">Unleash</span>
+                  <span className="block text-white/90">Your Inner</span>
+                  <span className="block text-metallic">Strength</span>
+                </h1>
+              </div>
+
+              <p className="text-base sm:text-lg text-white/60 font-semibold max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                Premium Ayurvedic Formula powered by{" "}
+                <span className="text-gold font-bold">Gold, Shilajit</span> &amp; Herbal Extracts.
+                Designed for men who demand excellence.
               </p>
-            </div>
 
-            {/* Checklist */}
-            <div className="grid grid-cols-2 gap-4 max-w-md mx-auto lg:mx-0">
-              {[
-                "Supports Daily Energy",
-                "Supports Confidence",
-                "Supports Vitality",
-                "Supports Strength"
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2.5 text-sm font-bold text-white/90">
-                  <div className="w-5 h-5 rounded-full bg-gold/10 border border-gold/40 flex items-center justify-center shrink-0">
-                    <Check className="w-3.5 h-3.5 text-gold" />
+              {/* Benefit Checklist */}
+              <div className="grid grid-cols-2 gap-x-6 gap-y-3 max-w-md mx-auto lg:mx-0">
+                {["Supports Daily Energy", "Boosts Confidence", "Enhances Vitality", "Builds Strength"].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2.5 text-sm font-bold text-white/80">
+                    <div className="w-5 h-5 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center shrink-0">
+                      <Check className="w-3 h-3 text-gold" />
+                    </div>
+                    <span>{item}</span>
                   </div>
-                  <span>{item}</span>
-                </div>
-              ))}
+                ))}
+              </div>
+
+              {/* Dual CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a href="#checkout" className="btn-fire animate-glow-red">
+                  <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
+                </a>
+                <a
+                  href="https://wa.me/911234567890?text=Hi,%20I'm%20interested%20in%20OjasEarth%20Stamina%2069%20Combo"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-gold animate-glow-gold"
+                >
+                  <MessageCircle className="w-5 h-5" /> Order on WhatsApp
+                </a>
+              </div>
+
+              {/* Price badge */}
+              <div className="flex items-center gap-3 justify-center lg:justify-start text-sm">
+                <span className="text-white/40 line-through">₹1,799</span>
+                <span className="font-black text-white text-lg">₹1,619</span>
+                <span className="px-2 py-0.5 bg-red-600/20 border border-red-600/30 text-red-400 text-[10px] font-bold rounded-full uppercase tracking-wider">Save 10%</span>
+              </div>
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <a
-                href="#buy-now"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4.5 rounded-lg text-base font-black text-white bg-red-600 hover:bg-red-700 shadow-xl shadow-red-600/30 transition-all uppercase tracking-wider animate-glow-red cursor-pointer"
-              >
-                <ShoppingCart className="w-5 h-5" /> Buy Now
-              </a>
-              <a
-                href="https://wa.me/911234567890?text=Hi,%20I'm%20interested%20in%20OjasEarth%20Stamina%2069%20Combo"
-                target="_blank"
-                rel="noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4.5 rounded-lg text-base font-bold text-gold bg-transparent border border-gold/40 hover:border-gold hover:bg-white/5 transition-all uppercase tracking-wider animate-glow-gold"
-              >
-                <MessageCircle className="w-5 h-5" /> Order on Whatsapp
-              </a>
-            </div>
-          </div>
+            {/* Right: Product Image */}
+            <div className="flex justify-center relative order-1 lg:order-2">
+              {/* Glowing ring */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-orange-500/8 blur-3xl pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 sm:w-72 sm:h-72 rounded-full border border-gold/10 pointer-events-none animate-pulse" />
 
-          {/* Right Visual Image Column */}
-          <div className="lg:col-span-5 flex justify-center relative">
-            {/* Fiery Horse Graphic backdrop (represented as stylized glowing circle) */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full border border-orange-500/20 bg-orange-600/5 animate-pulse z-0" />
-
-            <div className="relative w-full max-w-sm aspect-square bg-[#121212]/90 rounded-3xl p-6 border border-white/10 flex items-center justify-center shadow-2xl z-10 group overflow-hidden">
-              {/* Product Image */}
-              <div className="relative w-full h-full overflow-hidden rounded-2xl">
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px] animate-float z-10">
                 <Image
                   src="/product.png"
-                  alt="OjasEarth Stamina 69 Product Pack"
+                  alt="OjasEarth Stamina 69 Premium Combo"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="object-contain drop-shadow-[0_20px_60px_rgba(212,175,55,0.15)]"
                   priority
                 />
               </div>
             </div>
+
           </div>
-
         </div>
+      </div>
 
-        {/* Bottom Trust Badges Bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-16 border-t border-white/5 mt-16 text-center">
-          {trustBadges.map((badge, idx) => (
-            <div 
-              key={idx}
-              className="p-4 bg-[#121212]/50 border border-white/5 rounded-2xl flex items-center justify-center gap-3 shadow-inner"
-            >
-              {badge.icon}
-              <span className="text-xs font-bold uppercase tracking-wider text-white/80">
-                {badge.label}
-              </span>
-            </div>
-          ))}
+      {/* ── Bottom Trust Bar ── */}
+      <div className="relative z-10 border-t border-white/5 bg-black/30 backdrop-blur-sm shrink-0">
+        <div className="max-w-7xl mx-auto px-4 py-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { icon: <Award className="w-4 h-4" />, label: "100% Ayurvedic" },
+              { icon: <Shield className="w-4 h-4" />, label: "Made in India" },
+              { icon: <Sparkles className="w-4 h-4" />, label: "Premium Herbs" },
+              { icon: <Gem className="w-4 h-4" />, label: "Secure Checkout" }
+            ].map((b, i) => (
+              <div key={i} className="flex items-center justify-center gap-2.5 py-2.5 px-3 bg-white/[0.02] border border-white/5 rounded-xl">
+                <span className="text-gold">{b.icon}</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/50">{b.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
