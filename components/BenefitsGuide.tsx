@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Check, X, Layers, Flame, Calendar, Zap, ShieldCheck, Sun, RefreshCw, Trophy, ShoppingCart, MessageCircle } from "lucide-react";
+import { Check, X, Layers, Flame, Calendar, Zap, ShieldCheck, Sun, RefreshCw, Trophy, ShoppingCart } from "lucide-react";
 
 const benefits = [
   { label: "Supports Energy", icon: <Zap className="w-4 h-4 text-gold" /> },
@@ -27,14 +27,14 @@ const comparison = [
 
 export default function BenefitsGuide() {
   return (
-    <section id="benefits" className="fire-bg-subtle py-20 lg:py-28 relative overflow-hidden border-y border-white/5">
+    <section id="benefits" className="fire-bg-subtle py-10 lg:py-16 relative overflow-hidden border-y border-white/5">
       {/* Background glows */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-orange-600/4 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-gold/3 rounded-full blur-[80px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* ═══ Top: "Designed for Modern Men" with image + benefits ═══ */}
-        <div className="scroll-reveal mb-20">
+        <div className="scroll-reveal mb-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             {/* Left: Man image */}
             <div className="flex justify-center">
@@ -77,15 +77,15 @@ export default function BenefitsGuide() {
                   </div>
                 ))}
               </div>
-              <a href="#checkout" className="btn-fire animate-glow-red inline-flex">
-                <ShoppingCart className="w-5 h-5" /> Boost Your Vitality
+              <a href="tel:+918269979897" className="btn-fire animate-glow-red inline-flex">
+                <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
               </a>
             </div>
           </div>
         </div>
 
         {/* Gold divider */}
-        <div className="gold-divider mb-20" />
+        <div className="gold-divider mb-10" />
 
         {/* ═══ Bottom: How to Use + Comparison side by side ═══ */}
         <div className="scroll-reveal">
@@ -153,16 +153,8 @@ export default function BenefitsGuide() {
 
           {/* Bottom CTA */}
           <div className="mt-14 text-center flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#checkout" className="btn-fire animate-glow-red">
-              <ShoppingCart className="w-5 h-5" /> Start Your Routine — ₹1,619
-            </a>
-            <a
-              href="https://wa.me/911234567890?text=Hi,%20I'm%20interested%20in%20OjasEarth%20Stamina%2069%20Combo"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-gold animate-glow-gold"
-            >
-              <MessageCircle className="w-5 h-5" /> Order on WhatsApp
+            <a href="tel:+918269979897" className="btn-fire animate-glow-red">
+              <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
             </a>
           </div>
         </div>

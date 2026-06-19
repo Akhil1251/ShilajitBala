@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ShoppingCart, MessageCircle, Award, Shield, Sparkles, Gem, ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { ShoppingCart, Award, Shield, Sparkles, Gem, ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const carouselImages = [
   { src: "/product.png", alt: "OjasEarth Stamina 69 Premium Combo" },
@@ -146,17 +146,9 @@ export default function Hero() {
               </div>
 
               {/* Dual CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3.5 justify-center lg:justify-start max-w-md mx-auto lg:mx-0 w-full pt-2">
-                <a href="#checkout" className="btn-fire animate-glow-red w-full sm:w-auto">
+              <div className="flex justify-center lg:justify-start max-w-md mx-auto lg:mx-0 w-full pt-2">
+                <a href="tel:+918269979897" className="btn-fire animate-glow-red w-full text-center">
                   <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
-                </a>
-                <a
-                  href="https://wa.me/911234567890?text=Hi,%20I'm%20interested%20in%20OjasEarth%20Stamina%2069%20Combo"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-gold animate-glow-gold w-full sm:w-auto"
-                >
-                  <MessageCircle className="w-5 h-5" /> Order on WhatsApp
                 </a>
               </div>
             </div>

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Sparkles, ShoppingCart, MessageCircle, Play } from "lucide-react";
+import { Sparkles, ShoppingCart, Play } from "lucide-react";
 
 const experts = [
   { name: "Dr. Neha Sharma", title: "Ayurvedic Expert", image: "/neha.png", videoUrl: "" },
@@ -27,7 +27,7 @@ export default function ProductShowcase() {
       {/* ═══════════════════════════════════════════════════════
           BLOCK 1: What Experts Say (Video Placeholders)
           ═══════════════════════════════════════════════════════ */}
-      <div className="fire-bg-subtle py-20 lg:py-28 border-b border-white/5 relative">
+      <div className="fire-bg-subtle py-10 lg:py-16 border-b border-white/5 relative">
         {/* Subtle background glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
 
@@ -82,7 +82,7 @@ export default function ProductShowcase() {
 
           {/* CTA */}
           <div className="mt-12 text-center">
-            <a href="#checkout" className="btn-fire animate-glow-red">
+            <a href="tel:+918269979897" className="btn-fire animate-glow-red">
               <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
             </a>
           </div>
@@ -92,7 +92,7 @@ export default function ProductShowcase() {
       {/* ═══════════════════════════════════════════════════════
           BLOCK 2: Ancient Ayurvedic Wisdom + Ingredients
           ═══════════════════════════════════════════════════════ */}
-      <div className="ember-bg py-20 lg:py-28 border-b border-white/5 relative">
+      <div className="ember-bg py-10 lg:py-16 border-b border-white/5 relative">
         {/* Subtle background glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-gold/3 rounded-full blur-[120px] pointer-events-none" />
 
@@ -133,7 +133,7 @@ export default function ProductShowcase() {
       {/* ═══════════════════════════════════════════════════════
           BLOCK 3: Premium Wellness Kit — Product Detail
           ═══════════════════════════════════════════════════════ */}
-      <div className="fire-bg-subtle py-20 lg:py-28 relative">
+      <div className="fire-bg-subtle py-10 lg:py-16 relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gold/4 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 scroll-reveal">
@@ -185,17 +185,9 @@ export default function ProductShowcase() {
             </div>
 
             {/* Bottom CTA row */}
-            <div className="mt-10 pt-8 border-t border-white/5 flex flex-col sm:flex-row gap-4 items-center justify-center">
-              <a href="#checkout" className="btn-fire animate-glow-red">
-                <ShoppingCart className="w-5 h-5" /> Order Wellness Kit — ₹1,619
-              </a>
-              <a
-                href="https://wa.me/911234567890?text=Hi,%20I'm%20interested%20in%20OjasEarth%20Stamina%2069%20Combo"
-                target="_blank"
-                rel="noreferrer"
-                className="btn-gold animate-glow-gold"
-              >
-                <MessageCircle className="w-5 h-5" /> Order on WhatsApp
+            <div className="mt-10 pt-8 border-t border-white/5 flex items-center justify-center">
+              <a href="tel:+918269979897" className="btn-fire animate-glow-red w-full sm:w-auto text-center">
+                <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
               </a>
             </div>
           </div>

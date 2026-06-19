@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { CreditCard, ShoppingBag, Flame, MessageCircle, ShoppingCart, Shield, Sparkles } from "lucide-react";
+import { CreditCard, ShoppingBag, Flame, ShoppingCart, Shield, Sparkles } from "lucide-react";
 
 export default function Checkout() {
   const [qty, setQty] = useState(1);
@@ -11,7 +11,7 @@ export default function Checkout() {
   const discount = Math.round(((originalPrice - pricePerUnit) / originalPrice) * 100);
 
   return (
-    <section id="checkout" className="fire-bg py-20 lg:py-28 relative overflow-hidden border-t border-white/5">
+    <section id="checkout" className="fire-bg py-10 lg:py-16 relative overflow-hidden border-t border-white/5">
       {/* Background glows */}
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute top-0 left-1/4 w-72 h-72 bg-orange-600/5 rounded-full blur-[100px] pointer-events-none" />
@@ -56,7 +56,7 @@ export default function Checkout() {
               </div>
             </div>
 
-            {/* ── Right: Order Form ── */}
+            {/* ── Right: Call to Order Summary Card ── */}
             <div className="lg:col-span-7 bg-[#111111] border border-white/5 rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl">
               {/* Price row */}
               <div className="price-tag rounded-2xl p-5 flex flex-wrap justify-between items-center gap-3">
@@ -92,74 +92,25 @@ export default function Checkout() {
                 </div>
               </div>
 
-              {/* Form */}
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  alert("Order placed successfully! (Demo)");
-                }}
-                className="space-y-4"
-              >
-                <div>
-                  <label className="block text-[10px] font-bold text-white/50 uppercase mb-1.5 tracking-wider">Full Name</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Enter your name"
-                    className="w-full px-4 py-3 rounded-xl border border-white/8 bg-black/50 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-gold/40 transition-colors"
-                  />
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-[10px] font-bold text-white/50 uppercase mb-1.5 tracking-wider">Phone</label>
-                    <input
-                      type="tel"
-                      required
-                      placeholder="Phone number"
-                      className="w-full px-4 py-3 rounded-xl border border-white/8 bg-black/50 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-gold/40 transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[10px] font-bold text-white/50 uppercase mb-1.5 tracking-wider">Pincode</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="6-digit PIN"
-                      className="w-full px-4 py-3 rounded-xl border border-white/8 bg-black/50 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-gold/40 transition-colors"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-[10px] font-bold text-white/50 uppercase mb-1.5 tracking-wider">Address</label>
-                  <textarea
-                    required
-                    rows={2}
-                    placeholder="Full delivery address"
-                    className="w-full px-4 py-3 rounded-xl border border-white/8 bg-black/50 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-gold/40 transition-colors resize-none"
-                  />
+              {/* Call Details and CTA */}
+              <div className="space-y-4 pt-4 border-t border-white/5">
+                <div className="text-center sm:text-left space-y-2">
+                  <h4 className="text-xs font-black text-white uppercase tracking-wider">How to Order:</h4>
+                  <p className="text-[11px] text-white/50 leading-relaxed">
+                    Click the button below to connect directly with our Ayurvedic support specialist. We will finalize your delivery address over the call and ship your package with Cash on Delivery (COD).
+                  </p>
                 </div>
 
-                {/* Dual CTA buttons */}
-                <div className="pt-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <button type="submit" className="btn-fire animate-glow-red w-full">
-                    <ShoppingCart className="w-5 h-5" /> Order Now
-                  </button>
-                  <a
-                    href="https://wa.me/911234567890?text=Hi,%20I'm%20interested%20in%20OjasEarth%20Stamina%2069%20Combo"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-gold animate-glow-gold w-full text-center"
-                  >
-                    <MessageCircle className="w-5 h-5" /> WhatsApp Order
-                  </a>
-                </div>
+                <a href="tel:+918269979897" className="btn-fire animate-glow-red w-full text-center py-5 flex items-center justify-center gap-3">
+                  <ShoppingCart className="w-5 h-5" /> Buy Now — Call +91 8269979897
+                </a>
 
                 {/* Micro trust */}
                 <div className="flex items-center justify-center gap-2 pt-2 text-[9px] text-white/30 font-semibold uppercase tracking-wider">
                   <Sparkles className="w-3 h-3 text-gold/50" />
-                  Cash on Delivery Available • Free Shipping
+                  Free Shipping • Cash on Delivery (COD) Available
                 </div>
-              </form>
+              </div>
             </div>
 
           </div>
