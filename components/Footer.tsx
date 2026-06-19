@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Shield, CreditCard, Award, Sparkles, Gem } from "lucide-react";
 
 const badges = [
@@ -28,10 +29,14 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-[10px] text-white/20 font-semibold uppercase tracking-wider">
             <div className="flex items-center gap-2">
-              <div className="w-5 h-5 rounded-full bg-gold/10 border border-gold/15 flex items-center justify-center">
-                <span className="text-gold text-[8px] font-black">O</span>
+              <div className="relative w-24 h-6">
+                <Image
+                  src="/logo.png"
+                  alt="JASEARTH"
+                  fill
+                  className="object-contain object-left opacity-60 hover:opacity-100 transition-opacity"
+                />
               </div>
-              <span>OjasEarth</span>
             </div>
             <p>© {new Date().getFullYear()} OjasEarth. All rights reserved.</p>
             <a
