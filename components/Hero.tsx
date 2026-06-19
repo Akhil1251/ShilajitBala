@@ -85,11 +85,15 @@ export default function Hero() {
                 </a>
               </div>
 
-              {/* Price badge */}
-              <div className="flex items-center gap-3 justify-center lg:justify-start text-sm">
-                <span className="text-white/40 line-through">₹1,799</span>
-                <span className="font-black text-white text-lg">₹1,619</span>
-                <span className="px-2 py-0.5 bg-red-600/20 border border-red-600/30 text-red-400 text-[10px] font-bold rounded-full uppercase tracking-wider">Save 10%</span>
+              {/* Price highlight */}
+              <div className="price-tag rounded-2xl px-6 py-4 flex items-center gap-4 justify-center lg:justify-start max-w-md mx-auto lg:mx-0">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-white/30 line-through text-base font-semibold">₹1,799</span>
+                  <span className="font-black text-3xl text-metallic">₹1,619</span>
+                </div>
+                <span className="price-save px-3 py-1.5 text-red-400 text-[11px] font-black rounded-full uppercase tracking-wider animate-pulse">
+                  Save 10%
+                </span>
               </div>
             </div>
 

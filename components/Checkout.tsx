@@ -59,15 +59,17 @@ export default function Checkout() {
             {/* ── Right: Order Form ── */}
             <div className="lg:col-span-7 bg-[#111111] border border-white/5 rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl">
               {/* Price row */}
-              <div className="flex flex-wrap justify-between items-baseline gap-3 pb-5 border-b border-white/5">
+              <div className="price-tag rounded-2xl p-5 flex flex-wrap justify-between items-center gap-3">
                 <div>
-                  <span className="text-[10px] text-white/40 font-bold block uppercase tracking-[0.2em]">Special Combo Price</span>
-                  <span className="text-3xl font-black text-white">₹{pricePerUnit * qty}</span>
-                  <span className="text-xs text-white/30 line-through ml-2">₹{originalPrice * qty}</span>
+                  <span className="text-[10px] text-white/40 font-bold block uppercase tracking-[0.2em] mb-1">Special Combo Price</span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl font-black text-metallic">₹{pricePerUnit * qty}</span>
+                    <span className="text-sm text-white/30 line-through">₹{originalPrice * qty}</span>
+                  </div>
                 </div>
-                <div className="bg-red-600/15 border border-red-600/20 text-red-400 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                <span className="price-save px-4 py-2 text-red-400 text-[11px] font-black rounded-full uppercase tracking-wider animate-pulse">
                   Save {discount}% Today
-                </div>
+                </span>
               </div>
 
               {/* Quantity */}

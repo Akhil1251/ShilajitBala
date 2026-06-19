@@ -86,32 +86,50 @@
 /* ── Button Glow Animations ── */
 @keyframes glow-gold {
   0%, 100% {
-    box-shadow: 0 0 8px rgba(212, 175, 55, 0.3), 0 4px 15px rgba(212, 175, 55, 0.15);
+    box-shadow:
+      0 0 12px rgba(212, 175, 55, 0.5),
+      0 0 30px rgba(212, 175, 55, 0.2),
+      0 6px 20px rgba(212, 175, 55, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 4px 30px rgba(212, 175, 55, 0.3), 0 0 60px rgba(212, 175, 55, 0.1);
-    transform: scale(1.025);
+    box-shadow:
+      0 0 25px rgba(212, 175, 55, 0.8),
+      0 0 50px rgba(212, 175, 55, 0.4),
+      0 0 80px rgba(212, 175, 55, 0.2),
+      0 8px 32px rgba(212, 175, 55, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transform: scale(1.04);
   }
 }
 
 @keyframes glow-red {
   0%, 100% {
-    box-shadow: 0 0 8px rgba(220, 38, 38, 0.3), 0 4px 15px rgba(220, 38, 38, 0.15);
+    box-shadow:
+      0 0 12px rgba(239, 68, 68, 0.5),
+      0 0 30px rgba(239, 68, 68, 0.2),
+      0 6px 20px rgba(239, 68, 68, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 20px rgba(220, 38, 38, 0.6), 0 4px 30px rgba(220, 38, 38, 0.3), 0 0 60px rgba(220, 38, 38, 0.1);
-    transform: scale(1.025);
+    box-shadow:
+      0 0 25px rgba(239, 68, 68, 0.8),
+      0 0 50px rgba(239, 68, 68, 0.4),
+      0 0 80px rgba(239, 68, 68, 0.2),
+      0 8px 32px rgba(239, 68, 68, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transform: scale(1.04);
   }
 }
 
 .animate-glow-gold {
-  animation: glow-gold 2.5s infinite ease-in-out;
+  animation: glow-gold 2s infinite ease-in-out;
 }
 
 .animate-glow-red {
-  animation: glow-red 2.5s infinite ease-in-out;
+  animation: glow-red 2s infinite ease-in-out;
 }
 
 /* ── Float Animation ── */
@@ -147,19 +165,42 @@
 
 /* ── CTA Button Styles ── */
 .btn-fire {
-  @apply inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg font-black text-white bg-red-600 uppercase tracking-wider text-sm cursor-pointer transition-all;
+  @apply inline-flex items-center justify-center gap-3 px-10 py-5 rounded-xl font-black text-white uppercase tracking-wider text-base cursor-pointer transition-all;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .btn-fire:hover {
-  @apply bg-red-700;
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 50%, #dc2626 100%);
+  border-color: rgba(239, 68, 68, 0.6);
 }
 
 .btn-gold {
-  @apply inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg font-bold text-gold border border-gold/30 uppercase tracking-wider text-sm cursor-pointer transition-all;
+  @apply inline-flex items-center justify-center gap-3 px-10 py-5 rounded-xl font-black uppercase tracking-wider text-base cursor-pointer transition-all;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%);
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  color: #E5C158;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
 
 .btn-gold:hover {
-  @apply border-gold bg-white/5;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%);
+  border-color: rgba(212, 175, 55, 0.8);
+  color: #fff;
+}
+
+/* ── Price Highlight ── */
+.price-tag {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.03) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.price-save {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.1) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.15);
 }
 
 /* ── Pulse ring ── */
