@@ -1,480 +1,428 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-outfit), sans-serif;
-  --font-display: var(--font-playfair), serif;
+  --font-sans: var(--font-inter), sans-serif;
+  --font-heading: var(--font-poppins), sans-serif;
+  --font-montserrat: var(--font-montserrat), sans-serif;
 
-  --color-primary: #0A3622;
-  --color-primary-light: #0C422A;
-  --color-primary-dark: #072517;
   --color-gold: #D4AF37;
   --color-gold-light: #E5C158;
   --color-gold-dark: #AA8C2C;
-  --color-cream: #FAF8F5;
-  --color-cream-dark: #F3EFE9;
+  --color-cta: #E53935;
+  --color-cta-dark: #C62828;
+  --color-cta-light: #EF5350;
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    background-color: #050505;
-    color: #FFFFFF;
+    background-color: #FFFFFF;
+    color: #111111;
     @apply antialiased;
+    -webkit-tap-highlight-color: transparent;
   }
 
   ::selection {
-    background: rgba(212, 175, 55, 0.3);
-    color: #fff;
+    background: rgba(212, 175, 55, 0.25);
+    color: #111;
+  }
+  
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* ── Fire / Ember Gradient Backgrounds ── */
-.fire-bg {
-  background:
-    radial-gradient(ellipse 80% 60% at 65% 40%, rgba(234, 88, 12, 0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 30% 70%, rgba(220, 38, 38, 0.10) 0%, transparent 50%),
-    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
-    #050505;
-}
-
-.fire-bg-subtle {
-  background:
-    radial-gradient(ellipse at 75% 30%, rgba(234, 88, 12, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 25% 70%, rgba(212, 175, 55, 0.04) 0%, transparent 40%),
-    #080808;
-}
-
-.ember-bg {
-  background:
-    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
-    #0a0a0a;
-}
-
-/* ── Metallic Gold Text ── */
+/* ── Metallic Gold ── */
 .text-metallic {
-  background: linear-gradient(135deg, #AA8C2C 0%, #D4AF37 25%, #E5C158 50%, #D4AF37 75%, #AA8C2C 100%);
+  background: linear-gradient(135deg, #AA8C2C 0%, #D4AF37 25%, #F0D060 50%, #D4AF37 75%, #AA8C2C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% 200%;
+  animation: shimmer-gold 3s ease-in-out infinite;
 }
 
-.text-fire {
-  background: linear-gradient(135deg, #D4AF37 0%, #EA580C 50%, #DC2626 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+@keyframes shimmer-gold {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 /* ── Gold Divider ── */
 .gold-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.4) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.3) 50%, transparent 100%);
 }
 
-/* ── Glowing Card Border ── */
-.card-glow {
-  border: 1px solid rgba(255, 255, 255, 0.04) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 0 20px rgba(0, 0, 0, 0.5);
-  transition: all 0.4s ease;
+/* ── Cards ── */
+.card-premium {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.card-glow:hover {
-  border-color: rgba(212, 175, 55, 0.2) !important;
-  box-shadow: inset 0 1px 0 rgba(212, 175, 55, 0.05), 0 0 30px rgba(212, 175, 55, 0.08);
-  transform: translateY(-3px);
+.card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-/* ── Button Glow Animations ── */
-@keyframes glow-gold {
-  0%, 100% {
-    box-shadow:
-      0 0 12px rgba(212, 175, 55, 0.5),
-      0 0 30px rgba(212, 175, 55, 0.2),
-      0 6px 20px rgba(212, 175, 55, 0.25),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow:
-      0 0 25px rgba(212, 175, 55, 0.8),
-      0 0 50px rgba(212, 175, 55, 0.4),
-      0 0 80px rgba(212, 175, 55, 0.2),
-      0 8px 32px rgba(212, 175, 55, 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    transform: scale(1.04);
-  }
+.card-premium:hover {
+  border-color: rgba(212, 175, 55, 0.2);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  transform: translateY(-4px);
 }
 
-@keyframes glow-red {
-  0%, 100% {
-    box-shadow:
-      0 0 12px rgba(239, 68, 68, 0.5),
-      0 0 30px rgba(239, 68, 68, 0.2),
-      0 6px 20px rgba(239, 68, 68, 0.25),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow:
-      0 0 25px rgba(239, 68, 68, 0.8),
-      0 0 50px rgba(239, 68, 68, 0.4),
-      0 0 80px rgba(239, 68, 68, 0.2),
-      0 8px 32px rgba(239, 68, 68, 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    transform: scale(1.04);
-  }
+.card-premium:hover::before {
+  opacity: 1;
 }
 
-.animate-glow-gold {
-  animation: glow-gold 2s infinite ease-in-out;
+/* ── CTA Button ── */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 36px;
+  border-radius: 14px;
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #FFFFFF !important;
+  background: linear-gradient(135deg, #E53935 0%, #C62828 50%, #B71C1C 100%);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 15px rgba(229, 57, 53, 0.3), 0 2px 4px rgba(229, 57, 53, 0.1);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
 }
 
-.animate-glow-red {
-  animation: glow-red 2s infinite ease-in-out;
+.btn-cta::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
-/* ── Float Animation ── */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.btn-cta:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(229, 57, 53, 0.4), 0 4px 8px rgba(229, 57, 53, 0.15);
 }
 
-.animate-float {
-  animation: float 5s ease-in-out infinite;
+.btn-cta:hover::after {
+  opacity: 1;
 }
 
-/* ── Scroll Reveal (CSS native) ── */
-@keyframes fade-in-up {
+.btn-cta:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ── CTA Pulse Variant ── */
+.btn-cta-pulse {
+  animation: cta-pulse 2s ease-in-out infinite;
+}
+
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 4px 15px rgba(229, 57, 53, 0.3); }
+  50% { box-shadow: 0 4px 25px rgba(229, 57, 53, 0.5), 0 0 40px rgba(229, 57, 53, 0.15); }
+}
+
+/* ── Gold Outline Button ── */
+.btn-gold-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 36px;
+  border-radius: 14px;
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #D4AF37 !important;
+  background: transparent;
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold-outline:hover {
+  background: rgba(212, 175, 55, 0.06);
+  border-color: #D4AF37;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.12);
+}
+
+/* ── Offer Strip ── */
+.offer-strip {
+  background: linear-gradient(145deg, #0a0a0a 0%, #1a1a1a 50%, #0d0d0d 100%);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 80px rgba(212, 175, 55, 0.04);
+  position: relative;
+}
+
+/* ── Floating Animation ── */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(1deg); }
+  66% { transform: translateY(4px) rotate(-1deg); }
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+/* ── Fade In Up ── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Scale In ── */
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.scale-in {
+  animation: scale-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ── Scroll Reveal ── */
+@keyframes reveal-up {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(40px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 .scroll-reveal {
   view-timeline-name: --revealer;
   view-timeline-axis: block;
-  animation-name: fade-in-up;
+  animation-name: reveal-up;
   animation-fill-mode: both;
   animation-timeline: --revealer;
-  animation-range: entry 5% cover 22%;
+  animation-range: entry 8% cover 25%;
 }
 
-/* ── CTA Button Styles ── */
-.btn-fire {
-  @apply inline-flex items-center justify-center gap-2.5 px-6 py-3.5 sm:px-8 sm:py-4 lg:px-10 lg:py-5 rounded-xl font-black text-white uppercase tracking-wider text-xs sm:text-sm lg:text-base cursor-pointer transition-all;
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%) !important;
-  border: 1px solid rgba(239, 68, 68, 0.4) !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+/* ── Section Padding (Mobile First) ── */
+.section-padding {
+  padding: 48px 0;
 }
 
-.btn-fire:hover {
-  background: linear-gradient(135deg, #f87171 0%, #ef4444 50%, #dc2626 100%) !important;
-  border-color: rgba(239, 68, 68, 0.6) !important;
+@media (min-width: 640px) { .section-padding { padding: 64px 0; } }
+@media (min-width: 768px) { .section-padding { padding: 80px 0; } }
+@media (min-width: 1024px) { .section-padding { padding: 100px 0; } }
+
+/* ── Hide scrollbar ── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Glassmorphism ── */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.btn-gold {
-  @apply inline-flex items-center justify-center gap-2.5 px-6 py-3.5 sm:px-8 sm:py-4 lg:px-10 lg:py-5 rounded-xl font-black uppercase tracking-wider text-xs sm:text-sm lg:text-base cursor-pointer transition-all;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%) !important;
-  border: 2px solid rgba(212, 175, 55, 0.5) !important;
-  color: #E5C158;
-  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+/* ── Ring Pulse ── */
+@keyframes ring-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.3); }
+  100% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
 }
 
-.btn-gold:hover {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%) !important;
-  border-color: rgba(212, 175, 55, 0.8) !important;
-  color: #fff;
+.ring-pulse {
+  animation: ring-pulse 2s ease-out infinite;
 }
 
-/* ── Price Highlight ── */
-.price-tag {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.03) 100%) !important;
-  border: 1px solid rgba(212, 175, 55, 0.2) !important;
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+/* ── Shimmer Loading ── */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
-.price-save {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.1) 100%) !important;
-  border: 1px solid rgba(239, 68, 68, 0.3) !important;
-  box-shadow: 0 0 12px rgba(239, 68, 68, 0.15);
+/* ── Gradient Border ── */
+.gradient-border {
+  position: relative;
+  border-radius: 20px;
 }
 
-/* ── Pulse ring ── */
-@keyframes pulse-ring {
-  0% {
-    transform: scale(1);
-    opacity: 0.3;
-  }
-  100% {
-    transform: scale(1.4);
-    opacity: 0;
-  }
-}
-
-.pulse-ring::before {
+.gradient-border::before {
   content: '';
   position: absolute;
-  inset: -8px;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ── Hero Glow ── */
+.hero-glow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
-  border: 2px solid rgba(212, 175, 55, 0.4);
-  animation: pulse-ring 2s ease-out infinite;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.5;
 }
 
-/* ── Light Mode Override Styles ── */
-.light,
-.light body {
-  background-color: #ffffff !important;
-  color: #111111 !important;
+@media (min-width: 768px) {
+  .hero-glow {
+    width: 500px;
+    height: 500px;
+    filter: blur(120px);
+  }
 }
 
-/* Background resets for sections to be white and white only */
-.light .fire-bg,
-.light .fire-bg-subtle,
-.light .ember-bg,
-.light [class*="bg-[#050505]"],
-.light [class*="bg-[#060606]"] {
-  background: #ffffff !important;
+/* ── Count Up Animation ── */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Light mode text color overrides for text directly on page background */
-.light .text-white {
-  color: #111111 !important;
-}
-.light .text-white\/90 {
-  color: #1f2937 !important;
-}
-.light .text-white\/80 {
-  color: #374151 !important;
-}
-.light .text-white\/70 {
-  color: #4b5563 !important;
-}
-.light .text-white\/60 {
-  color: #4b5563 !important;
-}
-.light .text-white\/50 {
-  color: #4b5563 !important;
-}
-.light .text-white\/45 {
-  color: #4b5563 !important;
-}
-.light .text-white\/40 {
-  color: #6b7280 !important;
-}
-.light .text-white\/30 {
-  color: #888888 !important;
+/* ── Mobile Bottom CTA ── */
+.mobile-sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 12px 16px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
 }
 
-.light h1,
-.light h2,
-.light h3,
-.light h4,
-.light p,
-.light span {
-  color: #111111 !important;
+@media (min-width: 768px) {
+  .mobile-sticky-cta {
+    display: none;
+  }
 }
 
-/* Explicitly restore white text colors inside dark containers in light mode */
-.light .card-glow .text-white,
-.light [class*="bg-[#0c"] .text-white,
-.light [class*="bg-[#0a"] .text-white,
-.light [class*="bg-[#0b"] .text-white,
-.light [class*="bg-[#11"] .text-white,
-.light [class*="bg-black/"] .text-white,
-.light .btn-fire .text-white,
-.light .btn-gold .text-white,
-.light .price-tag .text-white,
-.light .price-save .text-white,
-.light .card-glow h1,
-.light .card-glow h2,
-.light .card-glow h3,
-.light .card-glow h4,
-.light .card-glow p,
-.light .card-glow span,
-.light [class*="bg-[#0c"] h1,
-.light [class*="bg-[#0c"] h2,
-.light [class*="bg-[#0c"] h3,
-.light [class*="bg-[#0c"] h4,
-.light [class*="bg-[#0c"] p,
-.light [class*="bg-[#0c"] span,
-.light [class*="bg-[#0a"] h1,
-.light [class*="bg-[#0a"] h2,
-.light [class*="bg-[#0a"] h3,
-.light [class*="bg-[#0a"] h4,
-.light [class*="bg-[#0a"] p,
-.light [class*="bg-[#0a"] span,
-.light [class*="bg-[#0b"] h1,
-.light [class*="bg-[#0b"] h2,
-.light [class*="bg-[#0b"] h3,
-.light [class*="bg-[#0b"] h4,
-.light [class*="bg-[#0b"] p,
-.light [class*="bg-[#0b"] span,
-.light [class*="bg-[#11"] h1,
-.light [class*="bg-[#11"] h2,
-.light [class*="bg-[#11"] h3,
-.light [class*="bg-[#11"] h4,
-.light [class*="bg-[#11"] p,
-.light [class*="bg-[#11"] span,
-.light [class*="bg-black/"] h1,
-.light [class*="bg-black/"] h2,
-.light [class*="bg-black/"] h3,
-.light [class*="bg-black/"] h4,
-.light [class*="bg-black/"] p,
-.light [class*="bg-black/"] span,
-.light .btn-fire span,
-.light .btn-fire p,
-.light .btn-gold span,
-.light .btn-gold p,
-.light .price-tag span,
-.light .price-tag p,
-.light .price-save span,
-.light .price-save p {
-  color: #ffffff !important;
+/* ── Typography helpers ── */
+.text-balance {
+  text-wrap: balance;
 }
 
-.light .card-glow .text-white\/90,
-.light [class*="bg-[#0c"] .text-white\/90,
-.light [class*="bg-[#0a"] .text-white\/90,
-.light [class*="bg-[#0b"] .text-white\/90,
-.light [class*="bg-[#11"] .text-white\/90,
-.light [class*="bg-black/"] .text-white\/90 {
-  color: rgba(255, 255, 255, 0.9) !important;
+/* ── Soft Shadow ── */
+.soft-shadow {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.02);
 }
 
-.light .card-glow .text-white\/80,
-.light [class*="bg-[#0c"] .text-white\/80,
-.light [class*="bg-[#0a"] .text-white\/80,
-.light [class*="bg-[#0b"] .text-white\/80,
-.light [class*="bg-[#11"] .text-white\/80,
-.light [class*="bg-black/"] .text-white\/80 {
-  color: rgba(255, 255, 255, 0.8) !important;
+/* ── Step Glow Animation ── */
+@keyframes step-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    transform: scale(1);
+  }
+  25% {
+    box-shadow: 0 0 20px 6px rgba(212, 175, 55, 0.4);
+    transform: scale(1.08);
+  }
+  50% {
+    box-shadow: 0 0 30px 10px rgba(212, 175, 55, 0.2);
+    transform: scale(1.04);
+  }
+  75% {
+    box-shadow: 0 0 15px 4px rgba(212, 175, 55, 0.3);
+    transform: scale(1.02);
+  }
 }
 
-.light .card-glow .text-white\/70,
-.light [class*="bg-[#0c"] .text-white\/70,
-.light [class*="bg-[#0a"] .text-white\/70,
-.light [class*="bg-[#0b"] .text-white\/70,
-.light [class*="bg-[#11"] .text-white\/70,
-.light [class*="bg-black/"] .text-white\/70 {
-  color: rgba(255, 255, 255, 0.7) !important;
+.animate-step-glow {
+  animation: step-glow 3s ease-in-out infinite;
 }
 
-.light .card-glow .text-white\/60,
-.light [class*="bg-[#0c"] .text-white\/60,
-.light [class*="bg-[#0a"] .text-white\/60,
-.light [class*="bg-[#0b"] .text-white\/60,
-.light [class*="bg-[#11"] .text-white\/60,
-.light [class*="bg-black/"] .text-white\/60 {
-  color: rgba(255, 255, 255, 0.6) !important;
+/* ── Gradient Text ── */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #AA8C2C, #D4AF37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.light .card-glow .text-white\/50,
-.light [class*="bg-[#0c"] .text-white\/50,
-.light [class*="bg-[#0a"] .text-white\/50,
-.light [class*="bg-[#0b"] .text-white\/50,
-.light [class*="bg-[#11"] .text-white\/50,
-.light [class*="bg-black/"] .text-white\/50 {
-  color: rgba(255, 255, 255, 0.5) !important;
+/* ── Trust Badge Pill ── */
+.trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #AA8C2C;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.light .card-glow .text-white\/45,
-.light [class*="bg-[#0c"] .text-white\/45,
-.light [class*="bg-[#0a"] .text-white\/45,
-.light [class*="bg-[#0b"] .text-white\/45,
-.light [class*="bg-[#11"] .text-white\/45,
-.light [class*="bg-black/"] .text-white\/45 {
-  color: rgba(255, 255, 255, 0.45) !important;
+/* ── Step Connector ── */
+.step-connector {
+  width: 2px;
+  height: 24px;
+  background: linear-gradient(to bottom, rgba(212, 175, 55, 0.3), transparent);
+  margin: 0 auto;
 }
 
-.light .card-glow .text-white\/40,
-.light [class*="bg-[#0c"] .text-white\/40,
-.light [class*="bg-[#0a"] .text-white\/40,
-.light [class*="bg-[#0b"] .text-white\/40,
-.light [class*="bg-[#11"] .text-white\/40,
-.light [class*="bg-black/"] .text-white\/40 {
-  color: rgba(255, 255, 255, 0.4) !important;
+@media (min-width: 768px) {
+  .step-connector {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(to right, rgba(212, 175, 55, 0.3), transparent);
+  }
 }
 
-.light .card-glow .text-white\/30,
-.light [class*="bg-[#0c"] .text-white\/30,
-.light [class*="bg-[#0a"] .text-white\/30,
-.light [class*="bg-[#0b"] .text-white\/30,
-.light [class*="bg-[#11"] .text-white\/30,
-.light [class*="bg-black/"] .text-white\/30 {
-  color: rgba(255, 255, 255, 0.3) !important;
+/* ── Rating Stars ── */
+.star-rating {
+  display: inline-flex;
+  gap: 2px;
 }
 
-/* Header link hovers & mobile menus */
-.light header {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
-}
-
-.light header nav a {
-  color: #4b5563 !important;
-}
-
-.light header nav a:hover {
-  color: #111111 !important;
-}
-
-.light header button {
-  color: #4b5563 !important;
-}
-
-.light header button:hover {
-  color: #111111 !important;
-  background-color: rgba(0, 0, 0, 0.05) !important;
-}
-
-.light header [class*="bg-[#080808]"] {
-  background-color: #ffffff !important;
-  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
-}
-
-.light header [class*="bg-[#080808]"] a {
-  color: #4b5563 !important;
-}
-
-.light header [class*="bg-[#080808]"] a:hover {
-  color: #111111 !important;
-  background-color: rgba(0, 0, 0, 0.03) !important;
-}
-
-/* Hide background glows */
-.light .pointer-events-none.blur-\[100px\],
-.light .pointer-events-none.blur-\[120px\] {
-  display: none !important;
-}
-
-/* Hide screen image blending layers like fire horse */
-.light .mix-blend-screen {
-  display: none !important;
-}
-
-/* Soft borders */
-.light .border-white\/5,
-.light .border-b.border-white\/5,
-.light .border-t.border-white\/5,
-.light .border-y.border-white\/5,
-.light .border-x.border-white\/5 {
-  border-color: rgba(0, 0, 0, 0.08) !important;
-}
-
-/* Hover adjustments */
-.light .hover\:bg-white\/5:hover {
-  background-color: rgba(0, 0, 0, 0.05) !important;
-}
-
-/* Hide scrollbars utility */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none !important;
-}
-.scrollbar-hide {
-  -ms-overflow-style: none !important;  /* IE and Edge */
-  scrollbar-width: none !important;  /* Firefox */
+.star-rating svg {
+  color: #D4AF37;
 }
