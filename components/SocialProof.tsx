@@ -1,129 +1,166 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import { Star, ShieldCheck, Plus, Minus, HelpCircle, ShoppingCart } from "lucide-react";
+import { Star, Plus, Minus, ShoppingCart, Quote, ChevronDown, MessageCircle, Shield } from "lucide-react";
 
-/* ── Data ── */
 const testimonials = [
-  { name: "Rohit S.", rating: 5, comment: "Game changer! More energy, better stamina and amazing results." },
-  { name: "Vikram P.", rating: 5, comment: "I feel more confident and active throughout the day." },
-  { name: "Amit V.", rating: 5, comment: "Great combination of capsules and oil. Highly recommended." },
-  { name: "Sandeep Y.", rating: 5, comment: "Natural ingredients that actually work! Very satisfied." },
-  { name: "Karan S.", rating: 5, comment: "Improved strength and recovery. Worth every penny." },
+  {
+    name: "Rohit S.",
+    rating: 5,
+    comment: "I was skeptical at first, but after 30 days I feel like a new man. More energy, better stamina, and my confidence is back!",
+    tag: "Verified Buyer",
+    initials: "RS"
+  },
+  {
+    name: "Vikram P.",
+    rating: 5,
+    comment: "Game changer! The combo really works. I feel more active throughout the day and my performance has improved significantly.",
+    tag: "Verified Buyer",
+    initials: "VP"
+  },
+  {
+    name: "Amit V.",
+    rating: 5,
+    comment: "Great combination of capsules and oil. Noticed the difference within 2 weeks. Highly recommended for anyone looking to boost vitality.",
+    tag: "Verified Buyer",
+    initials: "AV"
+  },
+  {
+    name: "Sandeep Y.",
+    rating: 5,
+    comment: "Natural ingredients that actually work! Very satisfied with the results. My energy levels have never been better.",
+    tag: "Verified Buyer",
+    initials: "SY"
+  },
+  {
+    name: "Karan S.",
+    rating: 5,
+    comment: "Improved strength and recovery. Worth every penny. The oil + capsule combo is perfect for complete results.",
+    tag: "Verified Buyer",
+    initials: "KS"
+  }
 ];
 
 const faqs = [
-  { q: "What is Stamina 69?", a: "Stamina 69 by OjasEarth is a premium wellness kit containing 60 capsules and 30ml applicator oil. It is designed synergistically to support male vitality, endurance, daily energy, and muscle recovery." },
-  { q: "How should it be used?", a: "Take 2 capsules daily after meals with water or milk. For the oil, apply 5-10 drops externally onto the targeted area daily, preferably morning and night, and massage in upward strokes." },
-  { q: "Who can use it?", a: "It is designed specifically for adult men who want to support active lifestyles, speed up post-workout recovery, build lean physical strength, and maintain high vitality levels." },
-  { q: "How long does one bottle last?", a: "One combo pack contains 60 capsules (30-day supply) and 30ml oil, which will easily last for a full 30 days under the recommended daily application guidelines." },
-  { q: "What ingredients are included?", a: "It is packed with wild-harvested Himalayan Shilajit, organic Ashwagandha, pure Saffron/Kesar, Safed Musli, Kaunch Beej, and Gokshura." },
+  {
+    q: "Is it safe?",
+    a: "Yes, Stamina 69 is 100% safe. It is made with natural Ayurvedic ingredients including Gold, Shilajit, Ashwagandha, and premium herbs. All ingredients are lab-tested and certified. No artificial chemicals or preservatives are used."
+  },
+  {
+    q: "Any side effects?",
+    a: "No side effects have been reported. Our formula uses only natural ingredients that are gentle on the body. However, if you have any pre-existing medical conditions or are on medication, we recommend consulting your doctor before use."
+  },
+  {
+    q: "When will results show?",
+    a: "Most users start noticing improvements within 7-14 days of consistent use. For optimal and long-lasting results, we recommend completing the full 30-day cycle. Results may vary based on individual body composition and lifestyle."
+  },
+  {
+    q: "How to use?",
+    a: "Take 2 capsules daily after meals with water or warm milk. Apply 5-10 drops of oil externally on the targeted area, massaging gently in upward strokes. Use morning and night for best results. Stay consistent for 30+ days."
+  }
 ];
 
 export default function SocialProof() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <section id="reviews" className="relative overflow-hidden">
-      {/* ═══════════════════════════════════════════════════════
-          BLOCK 1: Customer Reviews
-          ═══════════════════════════════════════════════════════ */}
-      <div className="ember-bg py-10 lg:py-16 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-reveal">
-          {/* Header row */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 pb-8 border-b border-white/5">
-            <div className="space-y-2">
-              <span className="text-[10px] font-bold text-gold uppercase tracking-[0.25em]">Reviews</span>
-              <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight">
-                Customer <span className="text-metallic">Reviews</span>
-              </h2>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="text-right">
-                <span className="block text-2xl font-black text-white leading-none">4.8/5</span>
-                <span className="text-[10px] text-white/40 font-bold uppercase tracking-wider">1,248+ reviews</span>
-              </div>
-              <div className="flex gap-0.5">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-gold text-gold" />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Testimonial cards — horizontal scroll on mobile */}
-          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide lg:grid lg:grid-cols-5 lg:overflow-visible lg:pb-0">
-            {testimonials.map((t, i) => (
-              <div
-                key={i}
-                className="card-glow bg-[#0c0c0c] rounded-2xl p-5 flex flex-col justify-between min-w-[240px] snap-start lg:min-w-0"
-              >
-                <div className="space-y-3">
-                  <div className="flex gap-0.5">
-                    {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star key={j} className="w-3 h-3 fill-gold text-gold" />
-                    ))}
-                  </div>
-                  <p className="text-[11px] text-white/70 leading-relaxed font-medium">&quot;{t.comment}&quot;</p>
-                </div>
-                <div className="pt-4 border-t border-white/5 mt-5 flex items-center justify-between">
-                  <span className="text-[11px] font-black uppercase text-white">{t.name}</span>
-                  <span className="inline-flex items-center gap-1 text-[8px] font-bold text-gold bg-gold/5 px-1.5 py-0.5 rounded-full border border-gold/10">
-                    <ShieldCheck className="w-2.5 h-2.5" /> Verified
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+    <section className="relative overflow-hidden">
 
       {/* ═══════════════════════════════════════════════════════
-          BLOCK 2: FAQ Accordion
+          FAQ
           ═══════════════════════════════════════════════════════ */}
-      <div className="fire-bg-subtle py-10 lg:py-16 relative">
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gold/3 rounded-full blur-[100px] pointer-events-none" />
+      <div id="faq" className="section-padding bg-[#faf8f5] relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gold/[0.03] rounded-full blur-[120px]" />
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 scroll-reveal">
-          <div className="space-y-2 mb-10 text-center">
-            <span className="inline-flex items-center gap-1 text-[10px] font-bold text-gold uppercase tracking-[0.25em]">
-              <HelpCircle className="w-3.5 h-3.5" /> FAQ
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="scroll-reveal text-center max-w-2xl mx-auto mb-10 lg:mb-14 space-y-3">
+            <span 
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold-dark text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              <MessageCircle className="w-3 h-3" /> FAQ
             </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight">
-              Questions<span className="text-metallic">?</span>
+            <h2 
+              className="text-[clamp(1.75rem,5vw,3.5rem)] font-black text-[#111] leading-[1.1] text-balance"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              Frequently Asked{" "}
+              <span className="text-metallic">Questions</span>
             </h2>
+            <p className="text-sm sm:text-base text-[#555] max-w-lg mx-auto" style={{ fontFamily: "var(--font-inter)" }}>
+              Everything you need to know about Stamina 69
+            </p>
           </div>
 
-          <div className="space-y-3">
+          {/* FAQ Accordion */}
+          <div className="scroll-reveal space-y-3">
             {faqs.map((faq, i) => {
               const isOpen = openFaq === i;
               return (
-                <div key={i} className="card-glow bg-[#0c0c0c] rounded-xl overflow-hidden">
+                <div 
+                  key={i} 
+                  className={`bg-white rounded-2xl sm:rounded-3xl border transition-all duration-300 ${
+                    isOpen 
+                      ? "border-gold/30 shadow-[0_4px_20px_rgba(212,175,55,0.08)]" 
+                      : "border-black/5 hover:border-black/10"
+                  }`}
+                >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : i)}
-                    className="w-full text-left px-5 py-4 flex items-center justify-between gap-3 font-black text-white hover:text-gold transition-colors uppercase tracking-wider cursor-pointer"
+                    className="w-full text-left px-5 sm:px-7 py-4 sm:py-5 flex items-center justify-between gap-3 cursor-pointer transition-colors"
                   >
-                    <span className="text-[11px] leading-snug">{faq.q}</span>
-                    <div className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                      {isOpen ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
+                    <div className="flex items-center gap-3">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
+                        isOpen ? "bg-gold/10" : "bg-black/[0.03]"
+                      }`}>
+                        <span className={`text-xs font-black transition-colors ${
+                          isOpen ? "text-gold" : "text-[#888]"
+                        }`}>
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                      </div>
+                      <span 
+                        className={`text-sm sm:text-base font-bold transition-colors ${
+                          isOpen ? "text-[#111]" : "text-[#333]"
+                        }`}
+                        style={{ fontFamily: "var(--font-poppins)" }}
+                      >
+                        {faq.q}
+                      </span>
+                    </div>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                      isOpen ? "bg-gold/10 rotate-180" : "bg-black/[0.03]"
+                    }`}>
+                      <ChevronDown className={`w-4 h-4 transition-colors ${
+                        isOpen ? "text-gold" : "text-[#888]"
+                      }`} />
                     </div>
                   </button>
-                  {isOpen && (
-                    <div className="px-5 pb-5 text-[11px] text-white/60 leading-relaxed border-t border-white/5 pt-3">
-                      {faq.a}
+                  <div className={`overflow-hidden transition-all duration-300 ${
+                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                  }`}>
+                    <div className="px-5 sm:px-7 pb-5 sm:pb-6 pt-0">
+                      <div className="pl-11 border-l-2 border-gold/20 pl-4 sm:pl-11">
+                        <p className="text-sm sm:text-base text-[#555] leading-relaxed" style={{ fontFamily: "var(--font-inter)" }}>
+                          {faq.a}
+                        </p>
+                      </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}
           </div>
 
-          {/* Bottom CTA */}
-          <div className="mt-16 text-center flex items-center justify-center">
-            <a href="tel:+916269696232" className="btn-fire animate-glow-red w-full sm:w-auto text-center">
-              <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
-            </a>
+          {/* Still have questions */}
+          <div className="scroll-reveal mt-8 sm:mt-10 text-center">
+            <div className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-gold/20 shadow-sm">
+              <MessageCircle className="w-4 h-4 text-gold" />
+              <span className="text-xs sm:text-sm font-bold text-[#555]" style={{ fontFamily: "var(--font-poppins)" }}>
+                Still have questions?{" "}
+                <a href="tel:+916269696232" className="text-gold-dark hover:text-gold underline">Call +91 6269696232</a>
+              </span>
+            </div>
           </div>
         </div>
       </div>

@@ -1,40 +1,31 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import ProductShowcase from "@/components/ProductShowcase";
 import BenefitsGuide from "@/components/BenefitsGuide";
+import ProductShowcase from "@/components/ProductShowcase";
 import SocialProof from "@/components/SocialProof";
 import Checkout from "@/components/Checkout";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
-  useEffect(() => {
-    const root = window.document.documentElement;
-    if (theme === "light") {
-      root.classList.add("light");
-      root.classList.remove("dark");
-    } else {
-      root.classList.add("dark");
-      root.classList.remove("light");
-    }
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
-
   return (
-    <div className="flex flex-col min-h-screen transition-colors duration-300">
-      <Header theme={theme} toggleTheme={toggleTheme} />
+    <div className="flex flex-col min-h-screen">
+      <Header />
       <main className="flex-grow">
+        {/* Section 1: Hero */}
         <Hero />
-        <ProductShowcase />
+        
+        {/* Section 2: Benefits */}
         <BenefitsGuide />
+        
+        {/* Section 3: Product Showcase + Section 4: Ingredients + Section 6: How To Use */}
+        <ProductShowcase />
+        
+        {/* Section 5: Social Proof (Reviews) + Section 8: FAQ */}
         <SocialProof />
+        
+        {/* Section 7: Offer */}
         <Checkout />
       </main>
       <Footer />

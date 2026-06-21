@@ -1,20 +1,27 @@
 import type { Metadata } from "next";
-import { Outfit, Playfair_Display } from "next/font/google";
+import { Inter, Poppins, Montserrat } from "next/font/google";
 import "./globals.css";
 
-const outfit = Outfit({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-inter",
 });
 
-const playfair = Playfair_Display({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-montserrat",
 });
 
 export const metadata: Metadata = {
-  title: "Stamina 69 - Power, Vigour & Vitality Supplement Combo | OjasEarth",
-  description: "Unlock your energy, endurance, and overall wellness with the OjasEarth Stamina 69 DesireXtract Capsules + Oil Combo. 100% natural Ayurvedic formula featuring Gold Shilajit, Ashwagandha, and Kesar.",
+  title: "Stamina 69 - Feel Stronger. Last Longer. Live Better. | Premium Herbal Formula",
+  description: "Premium Herbal Formula with Gold, Shilajit & African Herbs. 100% Natural, No Side Effects, Fast Delivery. Improve stamina, energy and performance naturally.",
 };
 
 export default function RootLayout({
@@ -25,9 +32,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${playfair.variable} h-full antialiased scroll-smooth light`}
+      className={`${inter.variable} ${poppins.variable} ${montserrat.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full bg-[#060606] text-white font-sans">{children}</body>
+      <body className="min-h-full font-sans">{children}</body>
     </html>
   );
 }

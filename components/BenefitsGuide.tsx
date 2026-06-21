@@ -1,162 +1,236 @@
-import Image from "next/image";
-import { Check, X, Layers, Flame, Calendar, Zap, ShieldCheck, Sun, RefreshCw, Trophy, ShoppingCart } from "lucide-react";
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import { Zap, Heart, Flame, Leaf, ArrowRight } from "lucide-react";
 
 const benefits = [
-  { label: "Supports Energy", icon: <Zap className="w-4 h-4 text-gold" /> },
-  { label: "Supports Strength", icon: <ShieldCheck className="w-4 h-4 text-gold" /> },
-  { label: "Supports Wellness", icon: <Sun className="w-4 h-4 text-gold" /> },
-  { label: "Active Lifestyle", icon: <Flame className="w-4 h-4 text-gold" /> },
-  { label: "Supports Recovery", icon: <RefreshCw className="w-4 h-4 text-gold" /> },
-  { label: "Boosts Confidence", icon: <Trophy className="w-4 h-4 text-gold" /> },
-];
-
-const steps = [
-  { num: "1", title: "Take Capsules", desc: "2 capsules daily after meals with water or warm milk.", icon: <Layers className="w-4 h-4 text-gold" /> },
-  { num: "2", title: "Apply Oil", desc: "5-10 drops externally. Massage in upward strokes, morning & night.", icon: <Flame className="w-4 h-4 text-gold" /> },
-  { num: "3", title: "Stay Consistent", desc: "Follow for 30+ days for optimal results. Pair with exercise.", icon: <Calendar className="w-4 h-4 text-gold" /> },
-];
-
-const comparison = [
-  { feature: "Premium Ingredients", ours: true, theirs: false },
-  { feature: "Gold Enriched Formula", ours: true, theirs: false },
-  { feature: "Complete Kit (Capsules + Oil)", ours: true, theirs: false },
-  { feature: "Ayurvedic Certified Blend", ours: true, theirs: false },
-  { feature: "Lab Quality Tested", ours: true, theirs: false },
-  { feature: "Trusted by 1,248+ Men", ours: true, theirs: false },
+  {
+    icon: <Zap className="w-6 h-6 sm:w-7 sm:h-7" />,
+    title: "All Day Energy",
+    desc: "Feel energized from morning to night. Our natural formula supports sustained vitality without crashes or jitters.",
+    color: "from-amber-50 to-amber-100/50",
+    border: "border-amber-200/30",
+    iconBg: "bg-amber-50",
+    iconBorder: "border-amber-200/40"
+  },
+  {
+    icon: <Heart className="w-6 h-6 sm:w-7 sm:h-7" />,
+    title: "Improved Stamina",
+    desc: "Boost your physical endurance and performance. Experience longer-lasting energy for workouts and daily activities.",
+    color: "from-rose-50 to-rose-100/50",
+    border: "border-rose-200/30",
+    iconBg: "bg-rose-50",
+    iconBorder: "border-rose-200/40"
+  },
+  {
+    icon: <Flame className="w-6 h-6 sm:w-7 sm:h-7" />,
+    title: "Better Performance",
+    desc: "Enhance your overall vitality and confidence. Support healthy hormone levels and natural strength.",
+    color: "from-orange-50 to-orange-100/50",
+    border: "border-orange-200/30",
+    iconBg: "bg-orange-50",
+    iconBorder: "border-orange-200/40"
+  },
+  {
+    icon: <Leaf className="w-6 h-6 sm:w-7 sm:h-7" />,
+    title: "Herbal Formula",
+    desc: "100% natural Ayurvedic blend with Gold, Shilajit, Ashwagandha and premium herbs. No chemicals, no additives.",
+    color: "from-emerald-50 to-emerald-100/50",
+    border: "border-emerald-200/30",
+    iconBg: "bg-emerald-50",
+    iconBorder: "border-emerald-200/40"
+  }
 ];
 
 export default function BenefitsGuide() {
+  const [benefitIndex, setBenefitIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Auto-swap every 4 seconds on mobile
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setBenefitIndex((prev) => (prev + 1) % benefits.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Handle touch swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.changedTouches[0].screenX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    touchEndX.current = e.changedTouches[0].screenX;
+    handleSwipe();
+  };
+
+  const handleSwipe = () => {
+    const difference = touchStartX.current - touchEndX.current;
+    if (Math.abs(difference) > 50) {
+      if (difference > 0) {
+        // Swiped left, go to next
+        setBenefitIndex((prev) => (prev + 1) % benefits.length);
+      } else {
+        // Swiped right, go to previous
+        setBenefitIndex((prev) => (prev - 1 + benefits.length) % benefits.length);
+      }
+    }
+  };
+
   return (
-    <section id="benefits" className="fire-bg-subtle py-10 lg:py-16 relative overflow-hidden border-y border-white/5">
-      {/* Background glows */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-orange-600/4 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-gold/3 rounded-full blur-[80px] pointer-events-none" />
+    <section id="benefits" className="section-padding bg-gradient-to-b from-white via-gold/[0.01] to-white relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-40 left-0 w-64 h-64 bg-gold/[0.02] rounded-full blur-[80px]" />
+      <div className="absolute bottom-40 right-0 w-80 h-80 bg-gold/[0.02] rounded-full blur-[100px]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* ═══ Top: "Designed for Modern Men" with image + benefits ═══ */}
-        <div className="scroll-reveal mb-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* Left: Man image */}
-            <div className="flex justify-center">
-              <div className="relative w-full max-w-sm aspect-[3/4] card-glow bg-[#0c0c0c] rounded-3xl p-3 overflow-hidden group">
-                <div className="relative w-full h-full rounded-2xl overflow-hidden">
-                  <Image
-                    src="/man.png"
-                    alt="Designed for Modern Men"
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute bottom-5 left-5 right-5">
-                    <span className="text-[9px] text-gold font-bold uppercase tracking-[0.2em]">High Vitality</span>
-                    <h4 className="text-lg font-black text-white uppercase mt-0.5">Physical Excellence</h4>
-                  </div>
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-10 lg:mb-14 space-y-3">
+          <span 
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold-dark text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]"
+            style={{ fontFamily: "var(--font-poppins)" }}
+          >
+            <Zap className="w-3 h-3" /> Why Men Choose Stamina 69
+          </span>
+          <h2 
+            className="text-[clamp(1.75rem,5vw,3.5rem)] font-black text-[#111] leading-[1.1] text-balance"
+            style={{ fontFamily: "var(--font-poppins)" }}
+          >
+            Designed for{" "}
+            <span className="text-metallic">Peak Performance</span>
+          </h2>
+          <p className="text-sm sm:text-base text-[#555] max-w-lg mx-auto" style={{ fontFamily: "var(--font-inter)" }}>
+            Thousands of men trust our premium herbal formula for their daily vitality needs.
+          </p>
+        </div>
+
+        {/* Benefits Grid - Desktop / Mobile Carousel */}
+        <div 
+          ref={carouselRef}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6"
+        >
+          {benefits.map((benefit, i) => (
+            <div 
+              key={i} 
+              className="group relative bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 border border-black/5 hover:border-gold/20 transition-all duration-500 hover:shadow-[0_8px_40px_rgba(212,175,55,0.08)] hover:-translate-y-1 scroll-reveal"
+            >
+              {/* Subtle gradient overlay on hover */}
+              <div className={`absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-b ${benefit.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              
+              <div className="relative z-10">
+                {/* Icon */}
+                <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl ${benefit.iconBg} border ${benefit.iconBorder} flex items-center justify-center mb-4 sm:mb-5 group-hover:scale-110 transition-transform duration-500`}>
+                  <span className="text-gold-dark">{benefit.icon}</span>
+                </div>
+                
+                {/* Content */}
+                <h3 
+                  className="text-base sm:text-lg font-bold text-[#111] mb-2 sm:mb-3"
+                  style={{ fontFamily: "var(--font-poppins)" }}
+                >
+                  {benefit.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-[#555] leading-relaxed" style={{ fontFamily: "var(--font-inter)" }}>
+                  {benefit.desc}
+                </p>
+                
+                {/* Hover indicator */}
+                <div className="mt-4 flex items-center gap-1 text-gold/0 group-hover:text-gold transition-all duration-500">
+                  <span className="text-[10px] font-bold uppercase tracking-wider">Learn more</span>
+                  <ArrowRight className="w-3 h-3" />
                 </div>
               </div>
             </div>
+          ))}
+        </div>
 
-            {/* Right: Benefits + description */}
-            <div className="space-y-6 text-center lg:text-left">
-              <div className="space-y-2">
-                <span className="text-[10px] font-bold text-gold uppercase tracking-[0.25em]">Designed For Modern Men</span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight leading-tight">
-                  Enhance Every{" "}
-                  <span className="text-metallic">Capability</span>
-                </h2>
-              </div>
-              <p className="text-sm text-white/50 leading-relaxed max-w-lg mx-auto lg:mx-0">
-                Stamina 69&apos;s synergistic formula delivers targeted Ayurvedic extracts directly to where your body needs it most — supporting hormones, cardiovascular flow, and muscle cell energy.
-              </p>
-              <div className="grid grid-cols-2 gap-3">
-                {benefits.map((b, i) => (
-                  <div key={i} className="card-glow bg-[#0c0c0c] rounded-xl p-3 flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-gold/5 border border-gold/10 flex items-center justify-center shrink-0">
-                      {b.icon}
+        {/* Mobile Carousel - Show one card at a time */}
+        <div className="sm:hidden">
+          <div
+            className="overflow-hidden"
+          >
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${benefitIndex * 100}%)` }}
+            >
+              {benefits.map((benefit, i) => (
+                <div
+                  key={i}
+                  className="min-w-full px-2"
+                >
+                  <div 
+                    className="group relative bg-white rounded-2xl p-5 border border-black/5 hover:border-gold/20 transition-all duration-500 hover:shadow-[0_8px_40px_rgba(212,175,55,0.08)]"
+                  >
+                    {/* Subtle gradient overlay on hover */}
+                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-b ${benefit.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                    
+                    <div className="relative z-10">
+                      {/* Icon */}
+                      <div className={`w-14 h-14 rounded-2xl ${benefit.iconBg} border ${benefit.iconBorder} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500`}>
+                        <span className="text-gold-dark">{benefit.icon}</span>
+                      </div>
+                      
+                      {/* Content */}
+                      <h3 
+                        className="text-base font-bold text-[#111] mb-2"
+                        style={{ fontFamily: "var(--font-poppins)" }}
+                      >
+                        {benefit.title}
+                      </h3>
+                      <p className="text-sm text-[#555] leading-relaxed" style={{ fontFamily: "var(--font-inter)" }}>
+                        {benefit.desc}
+                      </p>
+                      
+                      {/* Hover indicator */}
+                      <div className="mt-4 flex items-center gap-1 text-gold/0 group-hover:text-gold transition-all duration-500">
+                        <span className="text-[10px] font-bold uppercase tracking-wider">Learn more</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </div>
                     </div>
-                    <span className="text-xs font-bold text-white/80">{b.label}</span>
                   </div>
-                ))}
-              </div>
-              <a href="tel:+916269696232" className="btn-fire animate-glow-red inline-flex">
-                <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
-              </a>
+                </div>
+              ))}
             </div>
+          </div>
+
+          {/* Dot indicators for mobile carousel */}
+          <div className="flex justify-center gap-2 mt-5">
+            {benefits.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setBenefitIndex(i)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  i === benefitIndex
+                    ? 'bg-gold w-6'
+                    : 'bg-gold/30 hover:bg-gold/50'
+                }`}
+                aria-label={`Go to benefit ${i + 1}`}
+              />
+            ))}
           </div>
         </div>
 
-        {/* Gold divider */}
-        <div className="gold-divider mb-10" />
-
-        {/* ═══ Bottom: How to Use + Comparison side by side ═══ */}
-        <div className="scroll-reveal">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
-
-            {/* Left: How to Use */}
-            <div className="lg:col-span-5 space-y-6">
-              <div className="space-y-2">
-                <span className="text-[10px] font-bold text-gold uppercase tracking-[0.25em]">Guide</span>
-                <h3 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">How to Use</h3>
+        {/* Stats Bar */}
+        <div className="mt-10 sm:mt-14 lg:mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 scroll-reveal">
+          {[
+            { number: "10,000+", label: "Happy Men" },
+            { number: "4.8/5", label: "Average Rating" },
+            { number: "100%", label: "Natural Formula" },
+            { number: "30 Day", label: "Money Back" },
+          ].map((stat, i) => (
+            <div key={i} className="text-center p-4 sm:p-5 rounded-2xl bg-gold/[0.03] border border-gold/10">
+              <div className="text-xl sm:text-2xl lg:text-3xl font-black text-gold-dark" style={{ fontFamily: "var(--font-poppins)" }}>
+                {stat.number}
               </div>
-              <div className="space-y-4">
-                {steps.map((s, i) => (
-                  <div key={i} className="card-glow bg-[#0c0c0c] rounded-2xl p-5 flex items-center gap-5">
-                    <div className="w-11 h-11 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center font-black text-gold shrink-0 text-sm">
-                      {s.num}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-xs font-black text-white uppercase tracking-wider">{s.title}</h4>
-                      <p className="text-[11px] text-white/50 mt-0.5 leading-snug">{s.desc}</p>
-                    </div>
-                    <div className="text-gold/30 shrink-0">{s.icon}</div>
-                  </div>
-                ))}
+              <div className="text-[10px] sm:text-xs font-bold text-[#555] uppercase tracking-wider mt-1" style={{ fontFamily: "var(--font-montserrat)" }}>
+                {stat.label}
               </div>
             </div>
-
-            {/* Right: What Makes Us Different */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="space-y-2">
-                <span className="text-[10px] font-bold text-gold uppercase tracking-[0.25em]">Comparison</span>
-                <h3 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">What Makes Us Different</h3>
-              </div>
-              <div className="card-glow bg-[#0c0c0c] rounded-2xl p-5 sm:p-6 overflow-x-auto">
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr className="border-b border-white/5">
-                      <th className="py-3 text-[10px] font-black uppercase text-white/40 tracking-wider">Features</th>
-                      <th className="py-3 text-[10px] font-black uppercase text-gold tracking-wider text-center">Stamina 69</th>
-                      <th className="py-3 text-[10px] font-black uppercase text-white/30 tracking-wider text-center">Others</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-white/5">
-                    {comparison.map((c, i) => (
-                      <tr key={i} className="hover:bg-white/[0.02] transition-colors">
-                        <td className="py-3.5 text-xs font-bold text-white/70">{c.feature}</td>
-                        <td className="py-3.5 text-center">
-                          <div className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gold/10 border border-gold/20">
-                            <Check className="w-3 h-3 text-gold" />
-                          </div>
-                        </td>
-                        <td className="py-3.5 text-center">
-                          <div className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-600/10 border border-red-600/20">
-                            <X className="w-3 h-3 text-red-500" />
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Bottom CTA */}
-          <div className="mt-14 text-center flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+916269696232" className="btn-fire animate-glow-red">
-              <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
-            </a>
-          </div>
+          ))}
         </div>
       </div>
     </section>

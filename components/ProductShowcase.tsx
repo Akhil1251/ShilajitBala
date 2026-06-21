@@ -1,129 +1,355 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import { Sparkles, ShoppingCart, Play } from "lucide-react";
-
-const clientTestimonials = [
-  { image: "/thumb-1.png", videoUrl: "/videos/Neha.mp4" },
-  { image: "/thumb-2.png", videoUrl: "/videos/Rajiv.mp4" },
-  { image: "/thumb-3.png", videoUrl: "/videos/Ankit.mp4" },
-];
+import { useState, useEffect, useRef } from "react";
+import { ShoppingCart, CheckCircle, Sparkles, Droplets, Pill, Star, Shield, Truck } from "lucide-react";
 
 const ingredients = [
-  { name: "Gold", desc: "Rejuvenates and builds absolute physical strength.", image: "/kesar.png" },
-  { name: "Shilajit", desc: "Boosts cellular energy, power and stamina.", image: "/shilajit.png" },
-  { name: "Ashwagandha", desc: "Reduces stress hormones and improves muscle strength.", image: "/ashwagandha.png" },
-  { name: "Safed Musli", desc: "Enhances vitality, active stamina and performance.", image: "/musli.png" },
-  { name: "Kaunch Beej", desc: "Supports natural hormonal balance and nervous system.", image: "/kaunch.png" },
-  { name: "Gokshura", desc: "Supports cellular vitality, flow, and physical endurance.", image: "/nilgiri.png" },
+  {
+    name: "Shilajit",
+    desc: "Boosts cellular energy, power and stamina naturally.",
+    image: "/shilajit.png",
+    color: "from-amber-900/5 to-amber-900/10"
+  },
+  {
+    name: "Gold Extract",
+    desc: "Rejuvenates and builds absolute physical strength.",
+    image: "/hero-img/gold.jpeg",
+    color: "from-yellow-900/5 to-yellow-900/10"
+  },
+  {
+    name: "African Herbs",
+    desc: "Potent herbal extracts for enhanced vitality and endurance.",
+    image: "/ashwagandha.png",
+    color: "from-green-900/5 to-green-900/10"
+  },
+  {
+    name: "Ashwagandha",
+    desc: "Reduces stress hormones and improves muscle strength.",
+    image: "/musli.png",
+    color: "from-emerald-900/5 to-emerald-900/10"
+  }
+];
+
+const howToSteps = [
+  {
+    step: "01",
+    title: "Take Capsules",
+    desc: "Take 2 capsules daily after meals with water or warm milk. Consistent use builds results.",
+    icon: <Pill className="w-5 h-5 sm:w-6 sm:h-6" />
+  },
+  {
+    step: "02",
+    title: "Use Oil",
+    desc: "Apply 5-10 drops externally. Massage in upward strokes for 2-3 minutes, morning & night.",
+    icon: <Droplets className="w-5 h-5 sm:w-6 sm:h-6" />
+  },
+  {
+    step: "03",
+    title: "Feel The Difference",
+    desc: "Stay consistent for 30+ days. Experience improved energy, stamina, and confidence daily.",
+    icon: <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" />
+  }
+];
+
+const reviews = [
+  {
+    name: "Rahul Sharma",
+    location: "Mumbai, Maharashtra",
+    rating: 5,
+    text: "Amazing results! Within 2 weeks I felt more energetic and confident. The combo really works. Highly recommend to all men looking for natural vitality boost.",
+    image: "/review/img-1.jpeg",
+    tag: "Verified Buyer"
+  },
+  {
+    name: "Amit Verma",
+    location: "Delhi",
+    rating: 5,
+    text: "I was struggling with low energy for years. This product changed my life. Natural ingredients, no side effects. Best decision I ever made for my health.",
+    image: "/review/img-2.jpeg",
+    tag: "Verified Buyer"
+  },
+  {
+    name: "Vikram Singh",
+    location: "Jaipur, Rajasthan",
+    rating: 5,
+    text: "Game changer! My stamina has improved dramatically. The oil + capsule combination is perfect. My wife has also noticed the difference. Thank you!",
+    image: "/review/img-3.jpeg",
+    tag: "Verified Buyer"
+  },
+  {
+    name: "Sandeep Patel",
+    location: "Ahmedabad, Gujarat",
+    rating: 5,
+    text: "100% natural and effective. I've tried many products but this is the only one that gave real results. Feeling stronger and more active every day.",
+    image: "/review/img-4.jpeg",
+    tag: "Verified Buyer"
+  },
+  {
+    name: "Rajesh Kumar",
+    location: "Lucknow, UP",
+    rating: 5,
+    text: "Outstanding quality! The gold and shilajit combination is powerful. Noticed improvement in strength and recovery within 3 weeks. Worth every rupee.",
+    image: "/review/img-5.jpeg",
+    tag: "Verified Buyer"
+  },
+  {
+    name: "Deepak Joshi",
+    location: "Dehradun, Uttarakhand",
+    rating: 5,
+    text: "Best ayurvedic product I've used. Complete package for men's health. The results speak for themselves. Already recommended to 5 of my friends!",
+    image: "/review/img-6.jpeg",
+    tag: "Verified Buyer"
+  },
 ];
 
 export default function ProductShowcase() {
-  const [playingIdx, setPlayingIdx] = useState<number | null>(null);
+  const [reviewIndex, setReviewIndex] = useState(0);
+  const [videoIndex, setVideoIndex] = useState(0);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoTouchStartX = useRef(0);
+  const videoTouchEndX = useRef(0);
+  const videoIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setReviewIndex((prev) => (prev + 1) % reviews.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Auto-swap videos every 5 seconds, but only when not playing
+  useEffect(() => {
+    if (!isVideoPlaying) {
+      videoIntervalRef.current = setInterval(() => {
+        setVideoIndex((prev) => (prev + 1) % 3);
+      }, 5000);
+    } else {
+      // Clear interval when video is playing
+      if (videoIntervalRef.current) {
+        clearInterval(videoIntervalRef.current);
+      }
+    }
+
+    return () => {
+      if (videoIntervalRef.current) {
+        clearInterval(videoIntervalRef.current);
+      }
+    };
+  }, [isVideoPlaying]);
+
+  // Handle video play
+  const handleVideoPlay = () => {
+    setIsVideoPlaying(true);
+  };
+
+  // Handle video pause/stop
+  const handleVideoPause = () => {
+    setIsVideoPlaying(false);
+  };
+
+  // Handle video end
+  const handleVideoEnded = () => {
+    setIsVideoPlaying(false);
+    // Auto-advance to next video when current ends
+    setVideoIndex((prev) => (prev + 1) % 3);
+  };
+
+  // Handle video touch swipe
+  const handleVideoTouchStart = (e: React.TouchEvent) => {
+    videoTouchStartX.current = e.changedTouches[0].screenX;
+  };
+
+  const handleVideoTouchEnd = (e: React.TouchEvent) => {
+    videoTouchEndX.current = e.changedTouches[0].screenX;
+    handleVideoSwipe();
+  };
+
+  const handleVideoSwipe = () => {
+    const videos = [
+      "/videos/Ankit.mp4",
+      "/videos/Neha.mp4",
+      "/videos/Rajiv.mp4",
+    ];
+    const difference = videoTouchStartX.current - videoTouchEndX.current;
+    if (Math.abs(difference) > 50) {
+      if (difference > 0) {
+        // Swiped left, go to next
+        setVideoIndex((prev) => (prev + 1) % videos.length);
+      } else {
+        // Swiped right, go to previous
+        setVideoIndex((prev) => (prev - 1 + videos.length) % videos.length);
+      }
+      // Reset video playing state when user manually swipes
+      setIsVideoPlaying(false);
+    }
+  };
   return (
     <section id="product" className="relative overflow-hidden">
-      {/* ─── BLOCK 1: Suno pareshaani, client ki zubaani (Testimonials) ─── */}
-      <div className="fire-bg-subtle py-10 lg:py-16 border-b border-white/5 relative">
-        {/* Subtle background glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
+      {/* ═══════════════════════════════════════════════════════
+          PRODUCT SHOWCASE
+          ═══════════════════════════════════════════════════════ */}
+      <div className="pt-8 sm:pt-12 lg:pt-16 pb-6 sm:pb-8 lg:pb-10 bg-gradient-to-b from-white via-gold/[0.01] to-[#faf8f5] relative">
+        {/* Decorative */}
+        <div className="absolute top-20 right-0 w-80 h-80 bg-gold/[0.03] rounded-full blur-[120px]" />
+        <div className="absolute bottom-20 left-0 w-60 h-60 bg-gold/[0.02] rounded-full blur-[80px]" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 scroll-reveal">
-          {/* Header */}
-          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-            <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-gold uppercase tracking-[0.25em]">
-              Client Testimonials
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="scroll-reveal text-center max-w-2xl mx-auto mb-6 sm:mb-8 lg:mb-10 space-y-3">
+            <span 
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold-dark text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              <Sparkles className="w-3 h-3" /> Complete Wellness System
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight leading-tight">
-              Suno pareshaani, <span className="text-metallic">client ki zubaani</span>
+            <h2 
+              className="text-[clamp(1.75rem,5vw,3.5rem)] font-black text-[#111] leading-[1.1] text-balance"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              One Powerful{" "}
+              <span className="text-metallic">Daily Ritual</span>
             </h2>
+            <p className="text-sm sm:text-base text-[#555] max-w-lg mx-auto" style={{ fontFamily: "var(--font-inter)" }}>
+              Oil + Capsules working together for complete results.
+            </p>
           </div>
 
-          {/* Testimonial Videos Scroll Row */}
-          <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide max-w-5xl mx-auto px-4 select-none justify-start md:justify-center">
-            {clientTestimonials.map((exp, i) => {
-              const isPlaying = playingIdx === i;
-              return (
-                <div 
-                  key={i} 
-                  className="snap-center shrink-0 w-[80vw] sm:w-[300px] md:w-[320px] card-glow bg-[#0c0c0c] rounded-2xl p-4 flex flex-col border border-white/5"
-                >
-                  <div className="relative w-full aspect-[3/4] bg-black rounded-xl overflow-hidden mb-4 border border-white/5 group">
-                    {isPlaying && exp.videoUrl ? (
-                      <video className="w-full h-full object-cover" controls autoPlay src={exp.videoUrl}>
-                        Your browser does not support the video tag.
-                      </video>
-                    ) : (
-                      <>
-                        <Image
-                          src={exp.image}
-                          alt="Verified Client Review"
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
-                        />
-                        <button
-                          onClick={() => setPlayingIdx(i)}
-                          className="absolute inset-0 m-auto w-14 h-14 rounded-full bg-gold/90 text-black flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 active:scale-95 transition-transform animate-glow-gold z-20"
-                          aria-label="Play client review"
-                        >
-                          <Play className="w-5 h-5 fill-black stroke-none ml-0.5" />
-                        </button>
-                      </>
-                    )}
+          {/* Product Display - Centered Banner Layout */}
+          <div className="scroll-reveal flex flex-col items-center mb-12 lg:mb-16">
+            {/* Animated golden glow behind image */}
+            <div className="absolute w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] bg-gradient-to-br from-gold/20 via-gold/10 to-transparent rounded-full blur-[120px] pointer-events-none animate-float-slow" />
+            <div className="absolute w-[400px] h-[400px] sm:w-[500px] sm:h-[500px] bg-gradient-to-tl from-gold/10 via-gold/5 to-transparent rounded-full blur-[100px] pointer-events-none animate-float-slow" style={{ animationDelay: '-4s', top: '10%', right: '5%' }} />
+
+            {/* Banner Image - full image view, no cropping */}
+            <div className="relative w-[85%] sm:w-[75%] max-w-4xl aspect-auto rounded-[32px] overflow-hidden bg-gradient-to-br from-white via-gold/[0.02] to-white border border-gold/10 shadow-[0_20px_60px_rgba(212,175,55,0.12),0_8px_24px_rgba(0,0,0,0.04)] p-4 sm:p-6">
+              <div className="relative w-full min-h-[300px] sm:min-h-[400px] md:min-h-[500px]">
+                <Image
+                  src="/hero-img/4.jpeg"
+                  alt="Stamina 69 Oil + Capsules Combo"
+                  fill
+                  className="object-contain hover:scale-105 transition-transform duration-700"
+                  priority
+                />
+              </div>
+
+              {/* Discount Banner Overlay */}
+              <div className="absolute top-0 left-0 right-0 z-20">
+                {/* Red discount ribbon */}
+                <div className="relative">
+                  <div className="bg-gradient-to-r from-red-600 to-red-500 text-white px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-center gap-2 sm:gap-3 shadow-lg">
+                    <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] bg-white/20 px-2.5 py-0.5 rounded-full animate-pulse">
+                      ⚡ Limited
+                    </span>
+                    <span className="text-xs sm:text-sm font-black text-white" style={{ fontFamily: "var(--font-poppins)" }}>
+                      40% OFF
+                    </span>
+                    <span className="hidden sm:inline text-[10px] sm:text-xs text-red-200 line-through">
+                      ₹2,999
+                    </span>
+                    <span className="text-xs sm:text-sm font-black text-white" style={{ fontFamily: "var(--font-poppins)" }}>
+                      ₹1,499
+                    </span>
+                    <span className="text-[9px] sm:text-[10px] font-bold text-yellow-300 uppercase">
+                      Today Only!
+                    </span>
                   </div>
-                  <div className="text-center mt-auto">
-                    <span className="text-[10px] text-gold font-bold uppercase tracking-widest">Verified Client</span>
+                  {/* Bottom message */}
+                  <div className="bg-black/80 backdrop-blur-sm text-center py-1.5 sm:py-2">
+                    <span className="text-[9px] sm:text-[11px] font-bold text-white/90 tracking-[0.05em]" style={{ fontFamily: "var(--font-montserrat)" }}>
+                      🔥 Don't Miss This Chance — Get Yours Now!
+                    </span>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            </div>
 
-          {/* CTA */}
-          <div className="mt-12 text-center">
-            <a href="tel:+916269696232" className="btn-fire animate-glow-red">
-              <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
-            </a>
+            {/* Feature badges below image - 2x2 grid */}
+            <div className="w-[70%] max-w-3xl mt-6 grid grid-cols-2 gap-3">
+              {[
+                { icon: <Pill className="w-3.5 h-3.5" />, text: "60 Premium Herbal Capsules" },
+                { icon: <Droplets className="w-3.5 h-3.5" />, text: "30ml Therapeutic Oil" },
+                { icon: <Star className="w-3.5 h-3.5" />, text: "Gold & Shilajit Enriched" },
+                { icon: <Shield className="w-3.5 h-3.5" />, text: "100% Natural Ayurvedic Formula" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-gold/10 shadow-[0_2px_8px_rgba(212,175,55,0.06)]">
+                  <span className="text-gold shrink-0">{item.icon}</span>
+                  <span className="text-[11px] sm:text-xs font-bold text-gold-dark leading-tight" style={{ fontFamily: "var(--font-montserrat)" }}>
+                    {item.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Text + Button below badges */}
+            <div className="text-center mt-8 space-y-5">
+              <h3 
+                className="text-xl sm:text-2xl font-bold text-[#111]"
+                style={{ fontFamily: "var(--font-poppins)" }}
+              >
+                Oil + Capsules Working Together
+              </h3>
+              <a href="https://ojasearth.com/product/ojasearth-stamina-69-desirextract-combocapsule-oil/" className="btn-cta text-center btn-cta-pulse inline-flex">
+                <ShoppingCart className="w-4 h-4" /> ORDER NOW — ₹1,499
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       {/* ═══════════════════════════════════════════════════════
-          BLOCK 2: Ancient Ayurvedic Wisdom + Ingredients
+          INGREDIENTS
           ═══════════════════════════════════════════════════════ */}
-      <div className="ember-bg py-10 lg:py-16 border-b border-white/5 relative">
-        {/* Subtle background glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-gold/3 rounded-full blur-[120px] pointer-events-none" />
+      <div id="ingredients" className="pt-6 sm:pt-8 lg:pt-10 pb-8 sm:pb-12 lg:pb-16 bg-[#faf8f5] relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-gold/[0.03] rounded-full blur-[120px]" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 scroll-reveal">
-          {/* Header */}
-          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-            <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-gold uppercase tracking-[0.25em]">
-              <Sparkles className="w-3.5 h-3.5" /> Powered By Nature
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="scroll-reveal text-center max-w-2xl mx-auto mb-6 sm:mb-8 lg:mb-10 space-y-3">
+            <span 
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold-dark text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              <Sparkles className="w-3 h-3" /> Premium Ingredients
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight leading-tight">
-              Ancient Ayurvedic Wisdom.{" "}
-              <span className="text-metallic">Modern Excellence.</span>
+            <h2 
+              className="text-[clamp(1.75rem,5vw,3.5rem)] font-black text-[#111] leading-[1.1] text-balance"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              Nature's{" "}
+              <span className="text-metallic">Finest Blend</span>
             </h2>
           </div>
 
-          {/* Ingredient grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="scroll-reveal grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
             {ingredients.map((ing, i) => (
-              <div key={i} className="group card-glow bg-[#0c0c0c] rounded-2xl p-3 text-center">
-                <div className="relative w-full aspect-square rounded-xl overflow-hidden mb-3 border border-white/5">
+              <div
+                key={i}
+                className="group bg-white rounded-2xl sm:rounded-3xl border border-black/5 hover:border-gold/30 transition-all duration-500 hover:shadow-[0_12px_48px_rgba(212,175,55,0.12)] hover:-translate-y-2 text-center overflow-hidden"
+              >
+                {/* Full-bleed image - no padding, fills card width */}
+                <div className="relative w-full aspect-[4/3] sm:aspect-[5/4] rounded-xl overflow-hidden bg-gradient-to-br from-gold/[0.06] to-gold/[0.02]">
+                  <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
                   <Image
                     src={ing.image}
                     alt={ing.name}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="object-contain p-4 sm:p-6 group-hover:scale-110 transition-transform duration-500"
                   />
-                  {/* Dark overlay at bottom for text readability */}
-                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
+                  {/* Golden shimmer on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-x-full group-hover:translate-x-full z-20" style={{ transitionDuration: '1s' }} />
                 </div>
-                <h4 className="text-xs font-black uppercase tracking-wider text-gold mb-0.5">{ing.name}</h4>
-                <p className="text-[10px] text-white/45 leading-snug px-1">{ing.desc}</p>
+
+                {/* Text below image */}
+                <div className="px-4 sm:px-5 pb-5 sm:pb-6 pt-4">
+                  <h4 
+                    className="text-sm sm:text-base font-bold text-[#111] mb-1.5 group-hover:text-gold-dark transition-colors duration-300"
+                    style={{ fontFamily: "var(--font-poppins)" }}
+                  >
+                    {ing.name}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-[#555] leading-relaxed" style={{ fontFamily: "var(--font-inter)" }}>
+                    {ing.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -131,68 +357,393 @@ export default function ProductShowcase() {
       </div>
 
       {/* ═══════════════════════════════════════════════════════
-          BLOCK 3: Premium Wellness Kit — Product Detail
+          VIDEO TESTIMONIALS
           ═══════════════════════════════════════════════════════ */}
-      <div className="fire-bg-subtle py-10 lg:py-16 relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gold/4 rounded-full blur-[100px] pointer-events-none" />
+      <div className="pt-6 sm:pt-8 lg:pt-10 pb-8 sm:pb-12 lg:pb-16 bg-white relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gold/[0.03] rounded-full blur-[120px]" />
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 scroll-reveal">
-          {/* Header */}
-          <div className="text-center mb-14 space-y-3">
-            <span className="text-[10px] font-bold text-gold uppercase tracking-[0.25em]">Complete Treatment</span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight">
-              Premium <span className="text-metallic">Wellness Kit</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="scroll-reveal text-center max-w-3xl mx-auto mb-8 sm:mb-10 lg:mb-12 space-y-3">
+            <span 
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold-dark text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              <Star className="w-3 h-3" /> Real Results
+            </span>
+            <h2 
+              className="text-[clamp(1.5rem,4vw,3rem)] font-black text-[#111] leading-[1.1] text-balance"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              Trusted by Thousands of{" "}
+              <span className="text-metallic">Satisfied Men</span>
             </h2>
           </div>
 
-          {/* Kit card */}
-          <div className="card-glow bg-[#0c0c0c] rounded-3xl p-8 sm:p-12 relative overflow-hidden">
-            {/* Top gold line */}
-            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-              {/* Left stats */}
-              <div className="space-y-4 text-center md:text-left">
-                <div className="p-4 bg-white/[0.02] border border-white/5 rounded-2xl">
-                  <span className="block text-3xl font-black text-gold leading-none">60</span>
-                  <span className="text-[10px] text-white/40 font-bold uppercase tracking-wider mt-1 block">Capsules</span>
-                </div>
-                <div className="p-4 bg-white/[0.02] border border-white/5 rounded-2xl">
-                  <span className="block text-sm font-black text-white uppercase tracking-wider leading-none">Gold Enriched</span>
-                  <span className="text-[10px] text-gold font-bold uppercase tracking-wider mt-1 block">Formula</span>
+          {/* Videos - Desktop Grid / Mobile Carousel */}
+          <div className="scroll-reveal hidden md:grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+            {[
+              "/videos/Ankit.mp4",
+              "/videos/Neha.mp4",
+              "/videos/Rajiv.mp4",
+            ].map((src, i) => (
+              <div
+                key={i}
+                className="group bg-white rounded-2xl sm:rounded-3xl border border-black/5 hover:border-gold/30 transition-all duration-500 hover:shadow-[0_12px_48px_rgba(212,175,55,0.12)] hover:-translate-y-1 overflow-hidden"
+              >
+                <div className="relative w-full aspect-[9/16] sm:aspect-[3/4] bg-black rounded-xl overflow-hidden">
+                  <video
+                    src={src}
+                    className="w-full h-full object-cover"
+                    controls
+                    playsInline
+                    preload="metadata"
+                    onPlay={handleVideoPlay}
+                    onPause={handleVideoPause}
+                    onEnded={handleVideoEnded}
+                  />
+                  {/* Bottom gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
                 </div>
               </div>
+            ))}
+          </div>
 
-              {/* Center product */}
-              <div className="flex justify-center relative py-4">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-gold/10 animate-pulse pointer-events-none" />
-                <div className="relative w-52 h-52 z-10 animate-float">
-                  <Image src="/Carousel%20Hero/2.jpeg" alt="OjasEarth Wellness Kit" fill className="object-contain" />
-                </div>
-              </div>
-
-              {/* Right stats */}
-              <div className="space-y-4 text-center md:text-right">
-                <div className="p-4 bg-white/[0.02] border border-white/5 rounded-2xl">
-                  <span className="block text-3xl font-black text-gold leading-none">30ml</span>
-                  <span className="text-[10px] text-white/40 font-bold uppercase tracking-wider mt-1 block">Applicator Oil</span>
-                </div>
-                <div className="p-4 bg-white/[0.02] border border-white/5 rounded-2xl">
-                  <span className="block text-sm font-black text-white uppercase tracking-wider leading-none">100% Herbal</span>
-                  <span className="text-[10px] text-gold font-bold uppercase tracking-wider mt-1 block">Organic Blend</span>
-                </div>
+          {/* Mobile Video Carousel - Show one video at a time */}
+          <div className="scroll-reveal md:hidden">
+            <div 
+              onTouchStart={handleVideoTouchStart}
+              onTouchEnd={handleVideoTouchEnd}
+              className="relative overflow-hidden"
+            >
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${videoIndex * 100}%)` }}
+              >
+                {[
+                  "/videos/Ankit.mp4",
+                  "/videos/Neha.mp4",
+                  "/videos/Rajiv.mp4",
+                ].map((src, i) => (
+                  <div
+                    key={i}
+                    className="min-w-full px-2"
+                  >
+                    <div
+                      className="group bg-white rounded-2xl border border-black/5 overflow-hidden"
+                    >
+                      <div className="relative w-full aspect-[9/16] bg-black rounded-xl overflow-hidden">
+                        <video
+                          src={src}
+                          className="w-full h-full object-cover"
+                          controls
+                          playsInline
+                          preload="metadata"
+                          onPlay={handleVideoPlay}
+                          onPause={handleVideoPause}
+                          onEnded={handleVideoEnded}
+                        />
+                        {/* Bottom gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Bottom CTA row */}
-            <div className="mt-10 pt-8 border-t border-white/5 flex items-center justify-center">
-              <a href="tel:+916269696232" className="btn-fire animate-glow-red w-full sm:w-auto text-center">
-                <ShoppingCart className="w-5 h-5" /> Buy Now — ₹1,619
-              </a>
+            {/* Dot indicators for mobile video carousel */}
+            <div className="flex justify-center gap-2 mt-5">
+              {["/videos/Ankit.mp4", "/videos/Neha.mp4", "/videos/Rajiv.mp4"].map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setVideoIndex(i)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    i === videoIndex
+                      ? 'bg-gold w-6'
+                      : 'bg-gold/30 hover:bg-gold/50'
+                  }`}
+                  aria-label={`Go to video ${i + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>
       </div>
+
+      {/* ═══════════════════════════════════════════════════════
+          CUSTOMER REVIEWS
+          ═══════════════════════════════════════════════════════ */}
+      <div id="reviews" className="pt-6 sm:pt-8 lg:pt-10 pb-8 sm:pb-12 lg:pb-16 bg-[#faf8f5] relative">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-gold/[0.03] rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-gold/[0.02] rounded-full blur-[100px]" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="scroll-reveal text-center max-w-3xl mx-auto mb-8 sm:mb-10 lg:mb-12 space-y-3">
+            <span 
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold-dark text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              <Star className="w-3 h-3" /> Genuine Reviews
+            </span>
+            <h2 
+              className="text-[clamp(1.5rem,4vw,3rem)] font-black text-[#111] leading-[1.1] text-balance"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              What Our{" "}
+              <span className="text-metallic">Indian Customers Say</span>
+            </h2>
+          </div>
+
+          {/* Reviews Carousel - Desktop shows 3 at a time, Mobile shows 1 */}
+          <div className="scroll-reveal relative overflow-hidden">
+            {/* Desktop: 3 cards view */}
+            <div className="hidden sm:block">
+              <div
+                className="flex transition-transform duration-700 ease-in-out"
+                style={{ transform: `translateX(-${(reviewIndex * (100 / 3))}%)` }}
+              >
+                {/* Duplicate reviews array for seamless infinite loop */}
+                {[...reviews, ...reviews].map((review, i) => (
+                  <div
+                    key={i}
+                    className="min-w-[33.333%] px-2 sm:px-2.5"
+                  >
+                    <div className="group bg-white rounded-2xl sm:rounded-3xl border border-black/5 hover:border-gold/30 transition-all duration-500 hover:shadow-[0_12px_48px_rgba(212,175,55,0.12)] hover:-translate-y-2 overflow-hidden h-full">
+                      {/* Review image - full bleed */}
+                      <div className="relative w-full aspect-[4/3] overflow-hidden bg-gradient-to-br from-gold/[0.06] to-gold/[0.02]">
+                        <Image
+                          src={review.image}
+                          alt={review.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        {/* Golden overlay on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </div>
+
+                      {/* Review content */}
+                      <div className="px-4 sm:px-5 pb-5 sm:pb-6 pt-4">
+                        {/* Stars */}
+                        <div className="flex gap-0.5 mb-2">
+                          {Array.from({ length: review.rating }).map((_, j) => (
+                            <Star key={j} className="w-3.5 h-3.5 fill-gold text-gold" />
+                          ))}
+                        </div>
+
+                        {/* Review text */}
+                        <p className="text-xs sm:text-sm text-[#555] leading-relaxed mb-3 line-clamp-3" style={{ fontFamily: "var(--font-inter)" }}>
+                          &ldquo;{review.text}&rdquo;
+                        </p>
+
+                        {/* Author info */}
+                        <div className="flex items-center gap-3 pt-2 border-t border-black/5">
+                          <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-gold/20 shrink-0">
+                            <Image
+                              src={review.image}
+                              alt={review.name}
+                              width={36}
+                              height={36}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <span className="text-sm font-bold text-[#111] block truncate" style={{ fontFamily: "var(--font-poppins)" }}>
+                              {review.name}
+                            </span>
+                            <div className="flex items-center gap-2">
+                              <span className="text-[10px] text-[#888]">{review.location}</span>
+                              <span className="text-[8px] text-gold">●</span>
+                              <span className="text-[9px] font-bold text-green-700 flex items-center gap-0.5">
+                                <Shield className="w-2.5 h-2.5" /> {review.tag}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile: 1 card view */}
+            <div className="sm:hidden">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${reviewIndex * 100}%)` }}
+              >
+                {reviews.map((review, i) => (
+                  <div
+                    key={i}
+                    className="min-w-full px-0"
+                  >
+                    <div className="group bg-white rounded-2xl border border-black/5 overflow-hidden">
+                      {/* Review image - full bleed */}
+                      <div className="relative w-full aspect-[4/3] overflow-hidden bg-gradient-to-br from-gold/[0.06] to-gold/[0.02]">
+                        <Image
+                          src={review.image}
+                          alt={review.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        {/* Golden overlay on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </div>
+
+                      {/* Review content */}
+                      <div className="px-4 pb-5 pt-4">
+                        {/* Stars */}
+                        <div className="flex gap-0.5 mb-2">
+                          {Array.from({ length: review.rating }).map((_, j) => (
+                            <Star key={j} className="w-3.5 h-3.5 fill-gold text-gold" />
+                          ))}
+                        </div>
+
+                        {/* Review text */}
+                        <p className="text-sm text-[#555] leading-relaxed mb-3" style={{ fontFamily: "var(--font-inter)" }}>
+                          &ldquo;{review.text}&rdquo;
+                        </p>
+
+                        {/* Author info */}
+                        <div className="flex items-center gap-3 pt-2 border-t border-black/5">
+                          <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-gold/20 shrink-0">
+                            <Image
+                              src={review.image}
+                              alt={review.name}
+                              width={36}
+                              height={36}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <span className="text-sm font-bold text-[#111] block truncate" style={{ fontFamily: "var(--font-poppins)" }}>
+                              {review.name}
+                            </span>
+                            <div className="flex items-center gap-2">
+                              <span className="text-[10px] text-[#888]">{review.location}</span>
+                              <span className="text-[8px] text-gold">●</span>
+                              <span className="text-[9px] font-bold text-green-700 flex items-center gap-0.5">
+                                <Shield className="w-2.5 h-2.5" /> {review.tag}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Dots indicator */}
+            <div className="flex justify-center gap-2 mt-6">
+              {reviews.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setReviewIndex(i)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    i === reviewIndex % reviews.length
+                      ? 'bg-gold w-5'
+                      : 'bg-gold/30 hover:bg-gold/50'
+                  }`}
+                  aria-label={`Go to review ${i + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════
+          HOW TO USE
+          ═══════════════════════════════════════════════════════ */}
+      <div className="section-padding bg-white relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gold/[0.02] rounded-full blur-[100px]" />
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="scroll-reveal text-center max-w-2xl mx-auto mb-10 lg:mb-14 space-y-3">
+            <span 
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold-dark text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              <Sparkles className="w-3 h-3" /> How To Use
+            </span>
+            <h2 
+              className="text-[clamp(1.75rem,5vw,3.5rem)] font-black text-[#111] leading-[1.1] text-balance"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              Simple 3-Step{" "}
+              <span className="text-metallic">Routine</span>
+            </h2>
+          </div>
+
+          <div className="scroll-reveal relative">
+            {/* Mobile vertical layout */}
+            <div className="md:hidden space-y-0">
+              {howToSteps.map((step, i) => (
+                <div key={i} className="relative">
+                  <div className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className={`w-12 h-12 rounded-full bg-gradient-to-br from-gold to-gold-dark text-white flex items-center justify-center text-sm font-black shadow-lg shrink-0 animate-step-glow`} style={{ animationDelay: `${i * 2}s` }}>
+                        {step.step}
+                      </div>
+                      {i < howToSteps.length - 1 && (
+                        <div className="w-0.5 h-16 bg-gradient-to-b from-gold/40 to-transparent" />
+                      )}
+                    </div>
+                    <div className="flex-1 pb-8">
+                      <div className="bg-white rounded-2xl p-5 border border-black/5 shadow-sm">
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="text-gold">{step.icon}</span>
+                          <h4 className="text-base font-bold text-[#111]" style={{ fontFamily: "var(--font-poppins)" }}>
+                            {step.title}
+                          </h4>
+                        </div>
+                        <p className="text-sm text-[#222] leading-relaxed font-medium" style={{ fontFamily: "var(--font-inter)" }}>
+                          {step.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop horizontal layout */}
+            <div className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8">
+              {howToSteps.map((step, i) => (
+                <div key={i} className="relative text-center">
+                  <div className="bg-white rounded-3xl p-6 lg:p-8 border border-black/5 hover:border-gold/20 transition-all duration-500 hover:shadow-[0_8px_40px_rgba(212,175,55,0.08)] hover:-translate-y-1 h-full">
+                    <div className={`w-14 h-14 rounded-full bg-gradient-to-br from-gold to-gold-dark text-white flex items-center justify-center mx-auto mb-4 text-lg font-black shadow-lg animate-step-glow`} style={{ animationDelay: `${i * 2}s` }}>
+                      {step.step}
+                    </div>
+                    <div className="flex items-center justify-center gap-2 mb-3">
+                      <span className="text-gold">{step.icon}</span>
+                      <h4 className="text-lg font-bold text-[#111]" style={{ fontFamily: "var(--font-poppins)" }}>
+                        {step.title}
+                      </h4>
+                    </div>
+                    <p className="text-sm text-[#222] leading-relaxed font-medium" style={{ fontFamily: "var(--font-inter)" }}>
+                      {step.desc}
+                    </p>
+                  </div>
+                  {/* Arrow connector with glow */}
+                  {i < howToSteps.length - 1 && (
+                    <div className="absolute -right-5 top-1/2 -translate-y-1/2 z-10">
+                      <div className={`w-10 h-10 rounded-full bg-white border border-gold/20 flex items-center justify-center shadow-lg animate-step-glow`} style={{ animationDelay: `${i * 2 + 1}s` }}>
+                        <svg className="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
   );
 }
