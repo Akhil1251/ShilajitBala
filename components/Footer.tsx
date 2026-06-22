@@ -44,17 +44,17 @@ export default function Footer() {
           </div>
 
           {/* Contact Section */}
-          <div className="border-t border-gold/20 pt-4">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <Phone className="w-4 h-4 text-gold" />
-              <a
-                href="tel:+916269696232"
-                className="text-sm font-bold text-gold-dark hover:text-gold transition-colors"
-                style={{ fontFamily: "var(--font-poppins)" }}
-              >
-                Contact Us: +91 6269696232
-              </a>
-            </div>
+          <div className="border-t border-gold/20 pt-4 flex justify-center">
+            <a
+              href="tel:+916269696232"
+              className="flex items-center gap-2 text-sm font-bold text-red-600 hover:text-red-500 transition-colors animate-pulse"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              <div className="w-8 h-8 rounded-full bg-red-600/10 border border-red-600/20 flex items-center justify-center shadow-[0_0_10px_rgba(229,57,53,0.3)] shrink-0">
+                <Phone className="w-4 h-4 text-red-600 fill-red-600" />
+              </div>
+              <span>Contact Us: +91 6269696232</span>
+            </a>
           </div>
 
           {/* Rights */}
@@ -116,11 +116,13 @@ export default function Footer() {
             {/* Contact Info */}
             <a
               href="tel:+916269696232"
-              className="flex items-center gap-2 text-xs sm:text-sm font-bold text-gold-dark hover:text-gold transition-colors"
+              className="flex items-center gap-2 text-xs sm:text-sm font-bold text-red-600 hover:text-red-500 transition-colors animate-pulse"
               style={{ fontFamily: "var(--font-poppins)" }}
             >
-              <Phone className="w-4 h-4" />
-              Contact Us: +91 6269696232
+              <div className="w-8 h-8 rounded-full bg-red-600/10 border border-red-600/20 flex items-center justify-center shadow-[0_0_10px_rgba(229,57,53,0.3)] shrink-0">
+                <Phone className="w-4 h-4 text-red-600 fill-red-600" />
+              </div>
+              <span>Contact Us: +91 6269696232</span>
             </a>
           </div>
         </div>

@@ -154,11 +154,11 @@ export default function SocialProof() {
 
           {/* Still have questions */}
           <div className="scroll-reveal mt-8 sm:mt-10 text-center">
-            <div className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-gold/20 shadow-sm">
-              <MessageCircle className="w-4 h-4 text-gold" />
+            <div className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-red-600/20 shadow-sm animate-pulse">
+              <MessageCircle className="w-4 h-4 text-red-600 fill-red-600/10" />
               <span className="text-xs sm:text-sm font-bold text-[#555]" style={{ fontFamily: "var(--font-poppins)" }}>
                 Still have questions?{" "}
-                <a href="tel:+916269696232" className="text-gold-dark hover:text-gold underline">Call +91 6269696232</a>
+                <a href="tel:+916269696232" className="text-red-600 hover:text-red-500 underline font-black">Call +91 6269696232</a>
               </span>
             </div>
           </div>
