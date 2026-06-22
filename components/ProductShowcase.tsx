@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { ShoppingCart, CheckCircle, Sparkles, Droplets, Pill, Star, Shield, Truck } from "lucide-react";
+import { ShoppingCart, CheckCircle, Sparkles, Droplets, Pill, Star, Shield, Truck, Check, X } from "lucide-react";
 
 const ingredients = [
   {
@@ -349,6 +349,188 @@ export default function ProductShowcase() {
                   <p className="text-xs sm:text-sm text-[#555] leading-relaxed" style={{ fontFamily: "var(--font-inter)" }}>
                     {ing.desc}
                   </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════
+          COMPARISON SECTION (OJASEARTH VS OTHERS)
+          ═══════════════════════════════════════════════════════ */}
+      <div className="pt-6 sm:pt-8 lg:pt-10 pb-8 sm:pb-12 lg:pb-16 bg-white relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gold/[0.02] rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="scroll-reveal text-center max-w-2xl mx-auto mb-8 sm:mb-12 space-y-3">
+            <span 
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold-dark text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              <Shield className="w-3 h-3" /> The OjasEarth Guarantee
+            </span>
+            <h2 
+              className="text-[clamp(1.75rem,5vw,3rem)] font-black text-[#111] leading-[1.1] text-balance"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              Why Ojasearth is{" "}
+              <span className="text-metallic">Way Better</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-[#555] max-w-md mx-auto" style={{ fontFamily: "var(--font-inter)" }}>
+              Don't compromise on your health. See how our premium Ayurvedic system compares to standard market products.
+            </p>
+          </div>
+
+          {/* Desktop Comparison Table (Hidden on Mobile) */}
+          <div className="hidden md:block scroll-reveal overflow-hidden rounded-3xl border border-black/5 shadow-[0_8px_40px_rgba(212,175,55,0.06)] bg-white">
+            <table className="w-full border-collapse text-left">
+              <thead>
+                <tr className="bg-gradient-to-r from-gray-50 to-[#faf8f5] border-b border-black/5">
+                  <th className="p-6 text-xs font-black uppercase text-gray-400 tracking-wider w-[34%]" style={{ fontFamily: "var(--font-montserrat)" }}>Key Benefits</th>
+                  <th className="p-6 text-xs font-black uppercase text-gold-dark tracking-wider w-[33%] bg-gold/[0.03] border-x border-gold/10" style={{ fontFamily: "var(--font-montserrat)" }}>
+                    <div className="flex items-center gap-2">
+                      <span className="bg-gradient-to-r from-gold to-gold-dark text-white text-[9px] px-2 py-0.5 rounded-full uppercase tracking-wider font-extrabold shadow-sm">Winner</span>
+                      OjasEarth Stamina 69
+                    </div>
+                  </th>
+                  <th className="p-6 text-xs font-black uppercase text-gray-500 tracking-wider w-[33%]" style={{ fontFamily: "var(--font-montserrat)" }}>Other Products</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-black/5">
+                {[
+                  {
+                    feature: "Premium Ingredients",
+                    featureDesc: "What goes into the formula",
+                    ojasearth: "Grade A Himalayan Shilajit enriched with 24K Gold Extract (Swarna Bhasma) and Ashwagandha.",
+                    others: "Diluted herbal extracts, heavy metals, or low-grade raw shilajit containing impurities."
+                  },
+                  {
+                    feature: "Dual-Action Synergy",
+                    featureDesc: "How it is administered",
+                    ojasearth: "Unique combo system: Capsules for internal stamina + Oil for external circulation & muscle massage.",
+                    others: "Single tablets or basic capsules without targeted multi-dimensional relief."
+                  },
+                  {
+                    feature: "100% Safe & Natural",
+                    featureDesc: "Side effects and health risks",
+                    ojasearth: "Pure Ayurvedic ingredients. Zero chemicals, zero steroids, zero side effects.",
+                    others: "Often loaded with synthetic prescription drugs that cause headaches, high blood pressure & dependency."
+                  },
+                  {
+                    feature: "Long-Lasting Results",
+                    featureDesc: "Energy longevity and consistency",
+                    ojasearth: "Nourishes the body at a cellular level, building permanent daily energy & sustained strength.",
+                    others: "Temporary high followed by a massive energy crash, only offering brief surface-level boosts."
+                  },
+                  {
+                    feature: "Certified Authentication",
+                    featureDesc: "Quality standards & regulations",
+                    ojasearth: "Manufactured in state-of-the-art AYUSH and GMP certified facilities. Heavily lab-tested.",
+                    others: "Uncertified, mass-produced in unregulated setups with zero testing for heavy metal toxicity."
+                  }
+                ].map((row, idx) => (
+                  <tr key={idx} className="hover:bg-gray-50/50 transition-colors">
+                    <td className="p-6">
+                      <h4 className="text-sm font-bold text-[#111]" style={{ fontFamily: "var(--font-poppins)" }}>{row.feature}</h4>
+                      <p className="text-xs text-gray-400 mt-0.5" style={{ fontFamily: "var(--font-inter)" }}>{row.featureDesc}</p>
+                    </td>
+                    <td className="p-6 bg-gold/[0.02] border-x border-gold/10 relative">
+                      {idx === 0 && (
+                        <div className="absolute inset-x-0 -top-[1px] h-[1px] bg-gold/30" />
+                      )}
+                      <div className="flex gap-3">
+                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0 mt-0.5">
+                          <Check className="w-3.5 h-3.5 text-green-600 stroke-[3]" />
+                        </div>
+                        <p className="text-xs sm:text-sm font-semibold text-gray-800 leading-relaxed" style={{ fontFamily: "var(--font-inter)" }}>{row.ojasearth}</p>
+                      </div>
+                    </td>
+                    <td className="p-6">
+                      <div className="flex gap-3 opacity-75">
+                        <div className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
+                          <X className="w-3.5 h-3.5 text-red-500 stroke-[3]" />
+                        </div>
+                        <p className="text-xs sm:text-sm text-gray-500 leading-relaxed" style={{ fontFamily: "var(--font-inter)" }}>{row.others}</p>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile Card-Based Side-by-Side Comparison Layout (Perfectly Aligned) */}
+          <div className="md:hidden space-y-6 scroll-reveal">
+            {[
+              {
+                feature: "Premium Ingredients",
+                ojasearth: "Grade A Himalayan Shilajit + 24K Swarna Bhasma (Gold Extract) & Ashwagandha.",
+                others: "Low-grade raw shilajit, heavy metals, or diluted herbal fillers."
+              },
+              {
+                feature: "Dual-Action Synergy",
+                ojasearth: "Capsules (internal energy) + Therapeutic Oil (external blood flow/massage).",
+                others: "Standard single tablets/capsules that offer incomplete relief."
+              },
+              {
+                feature: "100% Safe & Natural",
+                ojasearth: "Pure Ayurvedic ingredients. Zero steroids or chemical additives. No side effects.",
+                others: "Often contains hidden chemical drugs causing high BP or headaches."
+              },
+              {
+                feature: "Long-Lasting Results",
+                ojasearth: "Nourishes cells for permanent daily stamina, vitality, and natural power.",
+                others: "Temporary artificial spike followed by energy crashes and addiction."
+              },
+              {
+                feature: "Certified Quality",
+                ojasearth: "Manufactured in AYUSH & GMP-certified lab-tested facilities.",
+                others: "Mass-produced in unregulated setups with zero heavy metal screening."
+              }
+            ].map((item, i) => (
+              <div 
+                key={i} 
+                className="bg-white rounded-2xl border border-black/5 shadow-[0_4px_16px_rgba(0,0,0,0.02)] overflow-hidden"
+              >
+                {/* Header Feature Label */}
+                <div className="bg-gradient-to-r from-gray-50 to-white px-4 py-3 border-b border-black/5">
+                  <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider" style={{ fontFamily: "var(--font-montserrat)" }}>
+                    {item.feature}
+                  </h4>
+                </div>
+                
+                {/* Side by Side mobile columns */}
+                <div className="grid grid-cols-2 divide-x divide-black/5">
+                  {/* Ojasearth Box */}
+                  <div className="p-4 bg-gold/[0.02]">
+                    <div className="flex items-center gap-1.5 mb-2">
+                      <div className="w-4 h-4 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                        <Check className="w-2.5 h-2.5 text-green-600 stroke-[3]" />
+                      </div>
+                      <span className="text-[10px] font-black text-gold-dark uppercase tracking-wider" style={{ fontFamily: "var(--font-montserrat)" }}>
+                        OjasEarth
+                      </span>
+                    </div>
+                    <p className="text-[11px] font-semibold text-gray-800 leading-relaxed" style={{ fontFamily: "var(--font-inter)" }}>
+                      {item.ojasearth}
+                    </p>
+                  </div>
+                  
+                  {/* Others Box */}
+                  <div className="p-4 opacity-75">
+                    <div className="flex items-center gap-1.5 mb-2">
+                      <div className="w-4 h-4 rounded-full bg-red-100 flex items-center justify-center shrink-0">
+                        <X className="w-2.5 h-2.5 text-red-500 stroke-[3]" />
+                      </div>
+                      <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider" style={{ fontFamily: "var(--font-montserrat)" }}>
+                        Others
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-gray-500 leading-relaxed" style={{ fontFamily: "var(--font-inter)" }}>
+                      {item.others}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
