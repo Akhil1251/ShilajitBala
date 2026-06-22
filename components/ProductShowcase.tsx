@@ -227,6 +227,7 @@ export default function ProductShowcase() {
                   src="/hero-img/4.jpeg"
                   alt="Stamina 69 Oil + Capsules Combo"
                   fill
+                  sizes="(max-width: 768px) 85vw, (max-width: 1200px) 75vw, 896px"
                   className="object-contain hover:scale-105 transition-transform duration-700"
                   priority
                 />
@@ -332,6 +333,7 @@ export default function ProductShowcase() {
                     src={ing.image}
                     alt={ing.name}
                     fill
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     className="object-contain p-4 sm:p-6 group-hover:scale-110 transition-transform duration-500"
                   />
                   {/* Golden shimmer on hover */}
@@ -697,6 +699,7 @@ export default function ProductShowcase() {
                           src={review.image}
                           alt={review.name}
                           fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                         {/* Golden overlay on hover */}
@@ -766,6 +769,7 @@ export default function ProductShowcase() {
                           src={review.image}
                           alt={review.name}
                           fill
+                          sizes="(max-width: 640px) 100vw, 33vw"
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                         {/* Golden overlay on hover */}

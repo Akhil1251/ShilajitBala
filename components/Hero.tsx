@@ -146,6 +146,7 @@ export default function Hero() {
                         src={src}
                         alt={`Hero image ${index + 1}`}
                         fill
+                        sizes="(max-width: 768px) 100vw, 448px"
                         className="object-cover"
                         priority={index === 0}
                       />

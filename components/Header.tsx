@@ -39,6 +39,7 @@ export default function Header() {
                   src="/logo.png"
                   alt="Stamina 69"
                   fill
+                  sizes="(max-width: 640px) 128px, 144px"
                   className="object-contain object-left"
                   priority
                 />
