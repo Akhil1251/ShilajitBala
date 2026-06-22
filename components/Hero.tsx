@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { ShoppingCart, CheckCircle, Star, Shield, Zap, TrendingUp } from "lucide-react";
+import { ShoppingCart, CheckCircle, Star, Shield, Zap, TrendingUp, Phone } from "lucide-react";
 
 const heroImages = [
   "/hero-img/img-1.jpeg",
@@ -49,7 +49,7 @@ export default function Hero() {
 
       <div ref={containerRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="min-h-[calc(100vh-64px)] lg:min-h-[calc(100vh-80px)] flex items-center">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full py-8 lg:py-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full pt-2 pb-8 lg:py-0">
 
             {/* ── Left: Content ── */}
             <div className="text-center lg:text-left space-y-6 lg:space-y-8 order-2 lg:order-1">
@@ -88,11 +88,16 @@ export default function Hero() {
               </p>
 
               {/* CTA + Stats Row */}
-              <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                <a href="https://ojasearth.com/product/ojasearth-stamina-69-desirextract-combocapsule-oil/" className="btn-cta text-base sm:text-lg px-8 py-4 sm:px-10 sm:py-5 w-full sm:w-auto btn-cta-pulse">
-                  <ShoppingCart className="w-5 h-5" /> ORDER NOW — ₹1,499
-                </a>
-                <div className="flex items-center gap-3 text-sm text-[#555]">
+              <div className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start w-full">
+                <div className="flex flex-col gap-3 w-full sm:w-auto">
+                  <a href="https://ojasearth.com/product/ojasearth-stamina-69-desirextract-combocapsule-oil/" className="btn-cta text-base sm:text-lg px-8 py-4 sm:px-10 sm:py-5 w-full btn-cta-pulse">
+                    <ShoppingCart className="w-5 h-5" /> ORDER NOW — ₹1,619
+                  </a>
+                  <a href="tel:+916269696232" className="btn-cta text-base sm:text-lg px-8 py-4 sm:px-10 sm:py-5 w-full btn-cta-pulse">
+                    <Phone className="w-5 h-5" /> CALL NOW
+                  </a>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-[#555] shrink-0">
                   <div className="flex -space-x-2">
                     {[1,2,3].map((i) => (
                       <div key={i} className="w-8 h-8 rounded-full bg-gold/20 border-2 border-white flex items-center justify-center">
@@ -125,7 +130,7 @@ export default function Hero() {
             </div>
 
             {/* ── Right: Product Visual ── */}
-            <div className="relative flex items-center justify-center py-6 lg:py-0 order-1 lg:order-2">
+            <div className="relative flex items-center justify-center pt-0 pb-6 lg:py-0 order-1 lg:order-2">
               {/* Parallax glow */}
               <div className="parallax-glow absolute w-[350px] h-[350px] sm:w-[450px] sm:h-[450px] bg-gradient-to-br from-gold/15 via-gold/8 to-transparent rounded-full blur-[100px] transition-transform duration-300 ease-out" />
 

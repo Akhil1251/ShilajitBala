@@ -63,10 +63,12 @@ export default function Header() {
             <div className="hidden lg:flex items-center gap-3">
               <a
                 href="tel:+916269696232"
-                className="flex items-center gap-2 px-4 py-2 text-sm font-bold text-gold-dark hover:text-gold transition-colors"
+                className="flex items-center gap-2 px-4 py-2 text-sm font-bold text-red-600 hover:text-red-500 transition-colors animate-pulse"
                 style={{ fontFamily: "var(--font-poppins)" }}
               >
-                <Phone className="w-4 h-4" />
+                <div className="w-8 h-8 rounded-full bg-red-600/10 border border-red-600/20 flex items-center justify-center shadow-[0_0_10px_rgba(229,57,53,0.3)] shrink-0">
+                  <Phone className="w-4 h-4 text-red-600 fill-red-600" />
+                </div>
                 <span>+91 6269696232</span>
               </a>
               <a
@@ -81,9 +83,9 @@ export default function Header() {
             <div className="flex lg:hidden items-center gap-2">
               <a
                 href="tel:+916269696232"
-                className="flex items-center justify-center w-10 h-10 rounded-xl bg-gold/10 text-gold hover:bg-gold/20 transition-all"
+                className="flex items-center justify-center w-10 h-10 rounded-xl bg-red-600 text-white hover:bg-red-700 transition-all shadow-[0_0_15px_rgba(229,57,53,0.5)] animate-pulse"
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="w-4 h-4 fill-white" />
               </a>
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -120,7 +122,7 @@ export default function Header() {
                 onClick={() => setIsOpen(false)}
                 className="btn-cta w-full text-center text-sm"
               >
-                <ShoppingCart className="w-4 h-4" /> ORDER NOW — ₹1,499
+                <ShoppingCart className="w-4 h-4" /> ORDER NOW — ₹1,619
               </a>
             </div>
           </div>

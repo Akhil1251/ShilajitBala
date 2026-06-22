@@ -1,6 +1,6 @@
 "use client";
 
-import { ShoppingCart, Clock, Shield, Truck, HeadphonesIcon, Sparkles, Star, Zap, ArrowRight, CheckCircle } from "lucide-react";
+import { ShoppingCart, Clock, Shield, Truck, HeadphonesIcon, Sparkles, Star, Zap, ArrowRight, CheckCircle, Phone } from "lucide-react";
 
 export default function Checkout() {
   return (
@@ -72,7 +72,7 @@ export default function Checkout() {
                 <div className="flex items-center justify-center lg:justify-start gap-4">
                   <div>
                     <span className="text-4xl sm:text-5xl lg:text-6xl font-black text-gold" style={{ fontFamily: "var(--font-poppins)" }}>
-                      ₹1,499
+                      ₹1,619
                     </span>
                   </div>
                   <div className="text-left">
@@ -101,9 +101,12 @@ export default function Checkout() {
                 </div>
 
                 {/* CTA */}
-                <div className="pt-2">
-                  <a href="https://ojasearth.com/product/ojasearth-stamina-69-desirextract-combocapsule-oil/" className="btn-cta text-base sm:text-lg px-10 py-5 sm:px-14 sm:py-6 w-full sm:w-auto btn-cta-pulse">
-                    <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6" /> ORDER NOW — ₹1,499
+                <div className="pt-2 flex flex-col gap-3 w-full sm:w-auto">
+                  <a href="https://ojasearth.com/product/ojasearth-stamina-69-desirextract-combocapsule-oil/" className="btn-cta text-base sm:text-lg px-10 py-5 sm:px-14 sm:py-6 w-full btn-cta-pulse">
+                    <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6" /> ORDER NOW — ₹1,619
+                  </a>
+                  <a href="tel:+916269696232" className="btn-cta text-base sm:text-lg px-10 py-5 sm:px-14 sm:py-6 w-full btn-cta-pulse">
+                    <Phone className="w-5 h-5 sm:w-6 sm:h-6" /> CALL NOW
                   </a>
                 </div>
               </div>

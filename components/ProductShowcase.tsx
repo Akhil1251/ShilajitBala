@@ -41,7 +41,7 @@ const howToSteps = [
   {
     step: "02",
     title: "Use Oil",
-    desc: "Apply 5-10 drops externally. Massage in upward strokes for 2-3 minutes, morning & night.",
+    desc: "Use 5-6 drops and massage gently before intimate moments. For external use only.",
     icon: <Droplets className="w-5 h-5 sm:w-6 sm:h-6" />
   },
   {
@@ -247,7 +247,7 @@ export default function ProductShowcase() {
                       ₹2,999
                     </span>
                     <span className="text-xs sm:text-sm font-black text-white" style={{ fontFamily: "var(--font-poppins)" }}>
-                      ₹1,499
+                      ₹1,619
                     </span>
                     <span className="text-[9px] sm:text-[10px] font-bold text-yellow-300 uppercase">
                       Today Only!
@@ -289,7 +289,7 @@ export default function ProductShowcase() {
                 Oil + Capsules Working Together
               </h3>
               <a href="https://ojasearth.com/product/ojasearth-stamina-69-desirextract-combocapsule-oil/" className="btn-cta text-center btn-cta-pulse inline-flex">
-                <ShoppingCart className="w-4 h-4" /> ORDER NOW — ₹1,499
+                <ShoppingCart className="w-4 h-4" /> ORDER NOW — ₹1,619
               </a>
             </div>
           </div>
@@ -392,11 +392,11 @@ export default function ProductShowcase() {
               >
                 <div className="relative w-full aspect-[9/16] sm:aspect-[3/4] bg-black rounded-xl overflow-hidden">
                   <video
-                    src={src}
+                    src={`${src}#t=0.001`}
                     className="w-full h-full object-cover"
                     controls
                     playsInline
-                    preload="metadata"
+                    preload="auto"
                     onPlay={handleVideoPlay}
                     onPause={handleVideoPause}
                     onEnded={handleVideoEnded}
@@ -433,11 +433,11 @@ export default function ProductShowcase() {
                     >
                       <div className="relative w-full aspect-[9/16] bg-black rounded-xl overflow-hidden">
                         <video
-                          src={src}
+                          src={`${src}#t=0.001`}
                           className="w-full h-full object-cover"
                           controls
                           playsInline
-                          preload="metadata"
+                          preload="auto"
                           onPlay={handleVideoPlay}
                           onPause={handleVideoPause}
                           onEnded={handleVideoEnded}
