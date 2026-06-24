@@ -35,7 +35,7 @@ export default function RootLayout({
       className={`${inter.variable} ${poppins.variable} ${montserrat.variable} h-full antialiased scroll-smooth`}
       suppressHydrationWarning
     >
-      <body className="min-h-full font-sans">{children}</body>
+      <body className="min-h-full font-sans" suppressHydrationWarning>{children}</body>
     </html>
   );
 }

@@ -7,6 +7,7 @@ import ProductShowcase from "@/components/ProductShowcase";
 import SocialProof from "@/components/SocialProof";
 import Checkout from "@/components/Checkout";
 import Footer from "@/components/Footer";
+import LeadPopup from "@/components/LeadPopup";
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
         <Checkout />
       </main>
       <Footer />
+      <LeadPopup />
     </div>
   );
 }
