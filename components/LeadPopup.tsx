@@ -12,8 +12,16 @@ export default function LeadPopup() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
-    // Trigger after a 5-second delay
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
+    // Trigger after a 15-second delay
     const timer = setTimeout(() => {
       setIsOpen(true);
       // Brief timeout to trigger the fade/scale-in transition
@@ -21,9 +29,25 @@ export default function LeadPopup() {
     }, 15000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [mounted]);
 
-  const handleClose = () => {
+  // Lock scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  const handleClose = (e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
     setIsVisible(false);
     // Wait for animation to finish before unmounting/hiding
     setTimeout(() => {
@@ -82,14 +106,14 @@ export default function LeadPopup() {
     }
   };
 
-  if (!isOpen) return null;
+  if (!mounted || !isOpen) return null;
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm transition-opacity duration-300 ${
+      className={`fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm transition-opacity duration-300 ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
-      onClick={handleClose}
+      onClick={(e) => handleClose(e)}
     >
       <div
         className={`relative w-full max-w-md overflow-hidden rounded-3xl bg-neutral-950 border border-gold/30 p-6 sm:p-8 shadow-[0_0_50px_rgba(212,175,55,0.2)] transition-all duration-300 transform ${
@@ -103,11 +127,11 @@ export default function LeadPopup() {
 
         {/* Close Button */}
         <button
-          onClick={handleClose}
-          className="absolute top-4 right-4 text-neutral-400 hover:text-white bg-neutral-900/80 hover:bg-neutral-800 p-2 rounded-full border border-neutral-800 transition-all duration-200 z-10 cursor-pointer"
+          onClick={(e) => handleClose(e)}
+          className="absolute top-4 right-4 text-neutral-400 hover:text-white bg-neutral-900/80 hover:bg-neutral-800 w-11 h-11 flex items-center justify-center rounded-full border border-neutral-800 transition-all duration-200 z-50 cursor-pointer"
           aria-label="Close popup"
         >
-          <X className="w-4 h-4" />
+          <X className="w-5 h-5" />
         </button>
 
         {!isSuccess ? (
