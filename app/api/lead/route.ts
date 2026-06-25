@@ -25,7 +25,7 @@ export async function POST(request: Request) {
         mobile: Number(mobile),
         email: "info@neodove.com",
         detail: "Popup Form Lead",
-        detail2: "ShilajitBala Website"
+        detail2: "Stamina 69 Lead"
       }),
     });
 

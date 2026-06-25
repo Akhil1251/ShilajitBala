@@ -18,7 +18,7 @@ export default function LeadPopup() {
       setIsOpen(true);
       // Brief timeout to trigger the fade/scale-in transition
       setTimeout(() => setIsVisible(true), 50);
-    }, 5000);
+    }, 15000);
 
     return () => clearTimeout(timer);
   }, []);
